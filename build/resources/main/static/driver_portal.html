@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="css/driver_portal.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+
+    <script defer src="vendor/fontawesome/js/solid.js"></script>
+    <script defer src="vendor/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="vendor/jquery/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="js/common.js"></script>
+    <script src="js/main_window.js"></script>
+    <script src="js/driver_portal.js"></script>
+
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+
+    <title>Sethyana</title>
+</head>
+
+<body style="font-size: 0.94rem">
+
+<!-- ### Nav Bar ### -->
+<nav class="navbar navbar-expand bg-light ml-0 pl-0 mb-0 pb-1" style="font-size: 1.3rem;" id="navbar">
+
+    <!-- Navbhar Left -->
+    <ul class="navbar-nav">
+        <!-- Toggler -->
+        <li class="nav-item">
+            <a href="#"> <span class="ml-4"><i class="fas fa-bars"></i></span></a>
+        </li>
+    </ul>
+
+    <!-- Navbar Right -->
+    <ul class="navbar-nav ml-4 ml-auto">
+
+        <!-- Notification -->
+        <li class="nav-item mt-2 mr-4" id="notification">
+            <div class="dropdown">
+                <i class="fas fa-bell dropdown-toggle mr-2" data-toggle="dropdown" type="button"></i>
+
+                <div class="dropdown-menu dropdown-menu-left">
+
+                    <p class="dropdown-item mb-0 text-center"><span class="badge badge-primary"
+                                                                    id="newNotificationCount">1 </span>
+                        New Notification
+                    </p>
+                    <div class="dropdown-divider"></div>
+
+                    <div class="dropdown-item">
+                        <div class="d-flex">
+
+                            <i class="fas fa-info-circle mr-4"></i>
+
+                            <div class="flex-column justify-content-start">
+                                <p>Maintenance</p>
+                                <div>Vehicle CAL-4759 is set on
+                                    maintenance
+                                </div>
+                                <p class=" text-muted">2h ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item mb-0 text-center" href="#">Show all notification</a>
+                </div>
+
+            </div>
+        </li>
+
+        <!-- Profile Img -->
+        <li class="nav-item dropdown" style="font-size:0.9rem">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link d-flex mb-0 pb-0"
+               data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                <img class="rounded-circle mr-3 mb-0 pb-0" id="profileImage"
+                     src="/image/user.jpg">
+                <div class="d-flex flex-column">
+                    <p id="lblLogUser" class="mb-2 pb-0" style="font-weight: 500;"></p>
+                    <p id="spnDesignation" class="loggedUserNameField text-center text-muted dropdown-toggle mb-0 pb-0"
+                       style="font-size:0.9rem; line-height: 0;"></p>
+                </div>
+            </a>
+
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                <a class="dropdown-item" data-target="#settingsModal" data-toggle="modal" href="#"><i
+                        class="far fa-sliders-v"></i> Change
+                    Password</a>
+                <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                        class="fas fa-sign-out-alt"></i> Sign Out</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <main>
+        <!--Carousel-->
+        <div id="reservationCarousel" data-interval="false" data-touch="false" class="carousel slide "
+             data-ride="carousel">
+
+            <!--Reservation Table: Carousel-->
+            <div class="carousel-inner">
+
+                <!--Table-->
+                <div class="carousel-item active">
+
+                    <!--Search Bar-->
+                    <input class="form-control mt-4" id="txtSearchName" placeholder="Search" type="text">
+
+                    <div class="row p-3 formcontent" id="divTable">
+                        <div class="table-responsive" class="table-container ml-2" id="tableParent">
+
+                            <script>
+
+                                function getPickUpDate(ob){
+                                    return sqlDateTimeToLocalC(ob.expect_pick_up_datetime)
+                                }
+
+                                var metadata = [
+                                    {
+                                        name: 'Res No.',
+                                        search: false,
+                                        datatype: 'link',
+                                        property: 'cd_reservation_code'
+                                    }, <!--name:table columns / property:column name-->
+                                    {
+                                        name: 'Customer',
+                                        search: false,
+                                        datatype: 'text',
+                                        property: 'customer_id.first_name'
+                                    },
+                                    {
+                                        name: 'Pick Time',
+                                        search: false,
+                                        datatype: 'text',
+                                        property: getPickUpDate
+                                    },
+                                    {name: 'Pick Up', search: false, datatype: 'text', property: 'pick_up_location'},
+                                    {name: 'Status', search: false, datatype: 'text', property: 'reservation_status_id.name'}
+
+                                ];
+                                table("tableParent", "tblCDReservation", metadata, false);
+                            </script>
+                        </div>
+
+                        <!-- #Entries -->
+                        <p class="d-inline-block mr-2 mt-1 text-small text-black">Show</p>
+                        <div class="d-inline-block float-left">
+                            <select class="form-control form-control-sm input  border2 " id="cmbPageSize"
+                                    style="width: 80px;">
+                                <option selected value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                            </select>
+                            <script>
+                                cmbPageSize.onchange = function chnagePageSize() {
+                                    activepage = 1;
+                                    btnSearchMC();
+                                };
+                            </script>
+                        </div>
+                        <p class="d-inline-block ml-2 mt-1"></p>
+
+                        <!-- Page Size -->
+                        <div class="d-inline-block ml-auto mb-4">
+                            <ul class="pagination" id="pagination"></ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Reservation Record Detail Carousel-->
+                <div class="carousel-item mt-4" style="font-size: 1.04rem">
+
+                    <!--Carousel Back Button-->
+                    <a class="ml-1" id="backToTableStart" href="#reservationCarousel" role="button"
+                       data-slide-to="0">
+                        <span><i class="fas fa-chevron-left text-secondary"></i></span>
+                        <span class="text-secondary" style="text-decoration: underline">Table</span>
+                    </a>
+
+                    <!-- Data-->
+                    <div style="font-size: 0.94rem" id="divData">
+                        <div class="row justify-content-center mt-4 ml-1">
+                            <div class="col-5">
+                                Reservation No
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblResNo">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Customer Name
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblCustomerName">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Vehicle Model
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblVehicleModel">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                License Plate
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblLicensePlate">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Pick Up Location
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblPickLocation">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Return Location
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblReturnLocation">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divMultipleStop1">
+                            <div class="col-5">
+                                Multiple Stop 1
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblMultipleStop1">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divMultipleStop2">
+                            <div class="col-5">
+                                Multiple Stop 2
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblMultipleStop2">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divMultipleStop3">
+                            <div class="col-5">
+                                Multiple Stop 3
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblMultipleStop3">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Pick Up Time
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblPickTime">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Return Time
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6 d-inline">
+                                <label class="form-label d-inline" id="lblReturnTime">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Package Duration
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblPackageDuration">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Package Kilometer
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblPackageKm">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-3 ml-1">
+                            <div class="col-6 align-self-center">
+                                <label for="txtPickOdometer">Pick Up Odometer<span class="required2"> *</span></label>
+                            </div>
+                            <!--                                <div class="col-1"></div>-->
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <input id="txtPickOdometer" class="form-control" placeholder="Enter Value" required>
+                                    <!--                                    onkeyup="textFieldBinder(txtPickOdometer, '', 'cdReservation', 'pick_up_odometer', 'oldCDReservation')"-->
+
+                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                </div>
+                                <div class="invalid-comment d-none">
+                                    Provide valid value
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-3 ml-1 d-none" id="divlblResNote">
+                            <div class="col-5">
+                                <lable class="form-label d-flex" id="lblResNoteOnGoing">Note :</lable>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-6"></div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divtxtResNote">
+                            <div class="col-12">
+                                <p class="d-flex" id="txtResNote"></p>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center" style="margin-top: 1rem">
+                            <div class="col-7 mt-3">
+                                <button id="btnStartTrip" style="font-size: 0.94rem"
+                                        class="btn btn-primary btn-block" disabled><i
+                                        class="fas fa-play mr-2 fa-sm"></i>Start Trip
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--On-Going-->
+                    <div style="font-size: 0.94rem" id="divOnGoing" class="d-none">
+                        <div class="row justify-content-center mt-4 ml-1">
+                            <div class="col-5">
+                                Reservation No
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblResNoGoing">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Customer Name
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblCustomerNameGoing">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Return Location
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblReturnLocationGoing">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divMultipleStop1Going">
+                            <div class="col-5">
+                                Multiple Stop 1
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblMultipleStop1Going">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divMultipleStop2Going">
+                            <div class="col-5">
+                                Multiple Stop 2
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblMultipleStop2Going">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divMultipleStop3Going">
+                            <div class="col-5">
+                                Multiple Stop 3
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblMultipleStop3Going">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Return Time
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6 d-inline">
+                                <label class="form-label d-inline" id="lblReturnTimeGoing">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none">
+                            <div class="col-5">
+                                Current Duration
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6">
+                                <label class="form-label d-inline" id="lblCurrentDurationGoing">-</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1">
+                            <div class="col-5">
+                                Start Odometer
+                            </div>
+                            <div class="col-1">:</div>
+                            <div class="col-6 d-inline">
+                                <label class="form-label d-inline" id="lblStartOdometerGoing">-</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-center mt-3 ml-1">
+                            <div class="col-6 align-self-center">
+                                <label for="txtEndOdometerGoing">End Odometer<span
+                                        class="required2"> *</span></label>
+                            </div>
+                            <div class="col-6">
+
+                                <div class="d-flex align-items-center">
+                                    <input id="txtEndOdometerGoing" class="form-control" placeholder="Enter Value"
+                                           required>
+                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                </div>
+                                <div class="invalid-comment d-none">
+                                    Provide valid value
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-center mt-3 ml-1 d-none" id="divlblResNoteOnGoing">
+                            <div class="col-5">
+                                <lable class="form-label d-flex" id="lblResNoteOnGoing">Note :</lable>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-6"></div>
+                        </div>
+
+                        <div class="row justify-content-center mt-2 ml-1 d-none" id="divtxtResNoteOnGoing">
+                            <div class="col-12">
+                                <p class="d-flex" id="txtResNoteOnGoing"></p>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center" style="margin-top: 1rem">
+                            <div class="col-7 mt-3">
+                                <button id="btnEndTripGoing" style="font-size: 0.94rem"
+                                        class="btn btn-primary btn-block" disabled><i
+                                        class="fas fa-stop mr-2 fa-sm"></i>End Trip
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Payment -->
+                <div class="carousel-item mt-4" style="font-size: 1.04rem">
+
+                    <!--Carouse Back: Payment-->
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <a class="ml-1 d-none" id="backToTablePayment" href="#reservationCarousel" role="button"
+                               data-slide-to="0">
+                                <span><i class="fas fa-chevron-left text-secondary"></i></span>
+                                <span class="text-secondary" style="text-decoration: underline">Table</span>
+                            </a>
+                        </div>
+                        <div class="col-6 text-right">
+                        </div>
+                    </div>
+
+
+                    <div class="card mt-4">
+                        <div class="card-header fw-5 bg-primary" style="font-size: 1.07rem; color: white">
+                            Customer Payment
+                        </div>
+                        <div class="card-body px-0 pt-0" style="font-size: 0.94rem; background-color:#e1e3e5;"
+                             id="divPayment">
+
+                            <!--Required Mark-->
+                            <div class="row justify-content-center">
+                                <div class="col-11 text-right">
+                                    <p class="m-0 text-danger"
+                                       style="font-weight: 400; font-size: 0.94rem; ">
+                                        <span class="required2">*</span>
+                                        Required
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-2 ml-1">
+                                <div class="col-5">
+                                    Reservation No.
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblResNoPayment">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-2 ml-1">
+                                <div class="col-5">
+                                    Customer
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblCustomerPayment">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-2 ml-1">
+                                <div class="col-5">
+                                    Trip Duration
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblTripDurationPayment">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-2 ml-1">
+                                <div class="col-5">
+                                    Trip Distance
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblTripKmPayment">-</label>
+                                </div>
+                            </div>
+
+
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-11 border-top border-secondary">
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-4 ml-1">
+                                <div class="col-5">
+                                    Package price
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblPackagePrice">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-start mt-3 ml-1">
+                                <div class="col-5">
+                                    Additional Time Charge
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="d-inline" id="lblAddHourCharge">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3 ml-1">
+                                <div class="col-5">
+                                    Additional Km Charge
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="d-inline" id="lblAddKmCharge">-</label>
+                                </div>
+                            </div>
+
+
+                            <div class="row justify-content-center mt-3 ml-1">
+                                <div class="col-5">
+                                    Pick Up Charge
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblPickUpCharge">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3 ml-1 fw-5 d-none">
+                                <div class="col-5">
+                                    Sub Total
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblSubTotal">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-11 border-top border-secondary">
+
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3 ml-1 text-primary fw-6 mb-1"
+                                 style="font-size: 1.07rem">
+                                <div class="col-5">
+                                    Total Payable
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="fw-6 d-inline" id="lblTotalPayable">-</label>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3 ml-1">
+                                <div class="col-5 align-self-center">
+                                    <label for="txtCashPayment">Cash<span
+                                            class="required2"> *</span></label>
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+
+                                    <div class="d-flex align-items-center pr-3">
+                                        <input id="txtCashPayment" class="form-control" placeholder="Enter Cash"
+                                               required>
+                                        <!--                                    onkeyup="textFieldBinder(txtEndOdometerGoing, '', 'cdReservation', 'drop_off_odometer', 'oldCDReservation')"-->
+
+                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                    </div>
+                                    <div class="invalid-comment d-none">
+                                        Provide valid value
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3 ml-1">
+                                <div class="col-5">
+                                    Change
+                                </div>
+                                <div class="col-1">:</div>
+                                <div class="col-6">
+                                    <label class="form-label d-inline" id="lblChange">-</label>
+                                </div>
+                            </div>
+
+
+                            <div class="row justify-content-around mt-5" style="margin-top: 1rem">
+                                <div class="col-4">
+                                    <button id="btnPrintPayment" class="btn btn-sm bg-secondary-light mt-1 text-light" disabled data-toggle="modal" data-target="#paymentPrintModal"><i class="fas fa-print mr-2"></i>Print</button>
+                                </div>
+                                <div class="col-6">
+                                    <button id="btnCollectCash" style="font-size: 0.94rem"
+                                            class="btn btn-primary btn-block" disabled><i
+                                            class="fas fa-check fa-sm mr-2"></i>Cash Collected
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--Customer payment print-->
+           <section>
+               <div class="modal fade" id="paymentPrintModal" role="dialog">
+                   <div class="modal-dialog">
+                       <div class="modal-content">
+                           <div class="modal-body" id="printformtable">
+                               <div class="row mt-4">
+                                   <div class="col-12 text-center">
+                                       <h3 class="fw-6" style="font-size: 1.8rem;">Sethyana Car Rental</h3>
+                                   </div>
+                               </div>
+
+                               <div class="row mt-2">
+                                   <div class="col-12">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem; text-transform: uppercase;">141/1, RATHNAPURA
+                                           ROAD,
+                                           AVISSAWELLA.
+                                       </p>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-12">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Tel : 075-7-611-611 /
+                                           075-5-570-570
+                                       </p>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-12">
+                                       <p class="fw-6 ml-1" style="font-size: 1rem;" id="dateTimePrint">-</p>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-12">
+                                       <p style="border-top-style: dashed; border-width: 2px; "></p>
+                                   </div>
+                               </div>
+
+
+                               <div class="row mt-1">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Invoice No.
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="invoiceNoPrint">-</p>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Reservation No.
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="resNoPrint">-</p>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Customer
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="customerPrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Driver
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="driverPrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Pick Up
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="pickUpPrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Drop Off
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="dropOffPrint">-</p>
+
+                                   </div>
+                               </div>
+
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Trip Distance
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="tripDistancePrint">-</p>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Trip Duration
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mr-1" style="font-size: 1rem;" id="tripDurationPrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row mt-2">
+                                   <div class="col-12">
+                                       <p style="border-top-style: dashed; border-width: 2px; "></p>
+                                   </div>
+                               </div>
+
+
+
+
+                               <div class="row mt-1">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Package Price
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="packagePricePrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-3 ml-1" style="font-size: 1rem;">Addt. Time Charge
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-3 mr-1" style="font-size: 1rem;" id="addTimeChargePrint"></p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-3 ml-1" style="font-size: 1rem;">Addt. Km Charge
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-3 mr-1" style="font-size: 1rem;" id="addKmChargePrint">-</p>
+
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Pick Up Charge
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="pickUpChargePrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row d-none">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Sub Total
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mr-1" style="font-size: 1rem;" id="subTotalPrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row mt-2">
+                                   <div class="col-12">
+                                       <p style="border-top-style: dashed; border-width: 2px; "></p>
+                                   </div>
+                               </div>
+
+                               <div class="row mt-1">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1.3rem;">Total
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1.3rem;" id="totalPrint">-</p>
+
+                                   </div>
+                               </div>
+
+
+
+                               <div class="row mt-1">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Cash
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mb-2 mr-1" style="font-size: 1rem;" id="cashAmountPrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-5">
+                                       <p class="fw-6 mb-2 ml-1" style="font-size: 1rem;">Change
+                                       </p>
+                                   </div>
+                                   <div class="col-7 text-right">
+                                       <p class="fw-6 mr-1" style="font-size: 1rem;" id="changePrint">-</p>
+
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="col-12">
+                                       <p style="border-top-style: dashed; border-width: 2px; "></p>
+                                   </div>
+                               </div>
+
+
+                               <div class="row mb-1 mt-3">
+                                   <div class="col-12 text-center">
+                                       <p class="fw-6 mb-3" style="font-size: 1.6rem;">Thank You!
+                                       </p>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="modal-footer">
+                               <button class="btn btn-secondary-light" data-dismiss="modal" type="button">Close</button>
+                               <button class="btn btn-primary" onclick="btnPrintRowMC()" type="button">Print</button>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>
+        </div>
+    </main>
+</div>
+</body>
+</html>

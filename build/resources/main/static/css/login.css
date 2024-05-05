@@ -1,0 +1,73 @@
+
+:root {
+    --primary-color: #3F808D;
+    --secondary-color: #F1F1F1;
+    --tertiary-color: #dc6413;
+    --text-color: #212529;
+
+    --primary-tint-color:  #f3f9fa;
+
+    --success-color: #66a80f;
+    --warning-color: #fcc419;
+    --danger-color: #f03e3e;
+
+}
+
+
+html{
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--secondary-color);
+    color: var(--text-color);
+
+    height: 100%;
+
+}
+
+
+#showcase {
+    background: url("../image/login_image.jpg");
+    background-repeat: no-repeat;
+    background-position: center bottom ;
+    background-size: auto 80%;
+    background-color: #E4E4E4;
+    /* opacity: 0.8; */
+
+}
+#showcase h1 {
+    /* font-family: 'Dosis', sans-serif; */
+    /* font-family: 'Anton', sans-serif; */
+    line-height: 1.7;
+    margin-top: 5.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    /* font-style: italic; */
+}
+#loginWindow {
+    /* font-family: 'Segoe UI', sans-serif; */
+    background-color: var(--secondary-color);
+
+}
+
+#userLogin{
+    /* font-size: 1.8rem; */
+    /* font-weight: 500; */
+    margin-top: 17rem;
+}
+
+
+#loginForm{
+    margin-top: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    #userLogin{
+        margin-top: 10rem;
+    }
+
+
+}
+

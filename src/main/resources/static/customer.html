@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <link href="vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+
+
+    <script defer src="vendor/fontawesome/js/solid.js"></script>
+    <script defer src="vendor/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="vendor/jquery/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="js/common.js"></script>
+    <script src="js/main_window.js"></script>
+    <script src="js/customer.js"></script>
+
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+
+    <!--Enable to slow down sidebar OR Disable to use Tooltip-->
+    <!--    <script src="resources/jquery/jquery-3.3.1.slim.min.js"></script>-->
+
+    <title>Sethyana</title>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar closes">
+
+    <div class="logo-details">
+        <i class='bx bxs-car'></i>
+        <span class="logo_name">Sethyana</span>
+    </div>
+    <ul class="nav-links">
+        <li class="">
+            <a href="http://localhost:8080/mainwindow">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">Dashboard</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/mainwindow"><span>Dashboard</span></a></li>
+            </ul>
+        </li>
+
+        <li class="SDRESERVATION">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/sd_reservation">
+                    <i class='bx bx-file'></i>
+                    <span class="link_name">Self-Drive</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/sd_reservation">Self-Drive</a></li>
+            </ul>
+        </li>
+
+        <li class="CDRESERVATION" id="CDSidebar">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/cd_reservation">
+                    <i class='bx bx-file'></i>
+                    <span class="link_name">Chauffeur-Drive</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/cd_reservation">Chauffeur-Drive</a></li>
+            </ul>
+        </li>
+
+        <li class="VEHICLE">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/vehicle">
+                    <i class='bx bxs-car'></i>
+                    <span class="link_name">Vehicles</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/vehicle">Vehicles</a></li>
+            </ul>
+        </li>
+
+        <li class="DRIVER">
+            <a href="#">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Drivers</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Drivers</a></li>
+            </ul>
+        </li>
+
+        <li class="PACKAGE">
+            <a href="http://localhost:8080/package">
+                <i class='bx bx-package'></i>
+                <span class="link_name">Packages</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/package">Packages</a></li>
+            </ul>
+        </li>
+
+        <li class="CUSTOMER active2">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/customer">
+                    <i class='bx bxs-user-account'></i>
+                    <span class="link_name">Customers</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name active2" href="http://localhost:8080/customer">Customers</a></li>
+            </ul>
+        </li>
+
+        <li class="CUSTOMERPAYMENT">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/customer_payment">
+                    <i class='bx bxs-coin-stack'></i>
+                    <span class="link_name">Payments</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/customer_payment">Payments</a></li>
+            </ul>
+        </li>
+
+        <li class="REPORTS">
+            <a href="http://localhost:8080/report_revenue">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <span class="link_name">Reports</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/report_revenue">Reports</a></li>
+            </ul>
+        </li>
+
+        <li class="NOTIFICATION">
+            <a href="#">
+                <i class='bx bxs-bell'></i>
+                <span class="link_name">Notifications</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Notifications</a></li>
+            </ul>
+        </li>
+
+        <li class="EMPLOYEE">
+            <a href="http://localhost:8080/employee">
+                <i class='bx bxs-user-detail'></i>
+                <span class="link_name">Employees</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/employee">Employees</a></li>
+            </ul>
+        </li>
+
+
+        <li class="USER">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/user">
+                    <i class='bx bxs-user'></i>
+                    <span class="link_name">Users</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/user">Users</a></li>
+            </ul>
+        </li>
+
+        <li class="PRIVILEGE">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/privilege">
+                    <i class='bx bxs-crown'></i>
+                    <span class="link_name">Privilege</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/privilege">Privilege</a></li>
+            </ul>
+        </li>
+
+        <li class="DRIVERPORTAL">
+            <a href="http://localhost:8080/driverPortal">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Driver Portal</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/driverPortal">Driver Portal</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- MAIN-->
+<main id="main-content">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light ml-0 pl-0 " id="navbar">
+
+        <!--Sidebar Toggler -->
+        <a class="navbar-brand" href="#"> <span class="navbar-toggler-icon sidebar-toggler ml-4"></span></a>
+        <!--            <i class='bx bx-menu' ></i>-->
+        <div class="container">
+            <!-- Small Screen Toggler -->
+            <button class="navbar-toggler ml-auto" data-target="#navbarNav" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav d-none d-md-block ">
+                    <!-- Breadcrum -->
+                    <li class="nav-item" style="font-weight: 500; font-size: 1.1rem;">
+                        <a href="http://localhost:8080/mainwindow">Dashboard</a>
+                        <span class="mx-1" style="font-size:80%; font-style: italic;"><i
+                                class="fas fa-chevron-right"></i></span>
+                        <a class="text-tertiary" href="http://localhost:8080/customer">Customer Management</a>
+                    </li>
+                </ul>
+
+                <ul class=" navbar-nav ml-4 ml-sm-auto align-items-sm-center">
+                    <!-- Quick Access Button-->
+                    <li class="nav-item mr-5 mb-resp order-sm-1 order-3" style="font-weight: 500;">
+                        <a class="nav-link text-primary" data-target="#quickAccess" data-toggle="collapse"
+                           type="button">
+                            Quick Access <i class="fas fa-caret-down" style="font-size: 1.3rem;"></i></a>
+                    </li>
+
+                    <!-- Notification (Not Suitable for Long Text)-->
+                    <li class="nav-item  mr-5 mb-resp order-sm-2 order-1" id="notification">
+                        <div class="dropdown">
+                            <i class="fas fa-bell fa-lg dropdown-toggle" data-toggle="dropdown" type="button"></i>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+
+                                <p class="dropdown-item mb-0 text-center"><span class="badge badge-primary"
+                                                                                id="newNotificationCount">1 </span>
+                                    New Notification
+                                </p>
+                                <div class="dropdown-divider"></div>
+
+                                <div class="dropdown-item">
+                                    <div class="d-flex">
+
+                                        <i class="fas fa-info-circle mr-4"></i>
+
+                                        <div class="flex-column justify-content-start">
+                                            <p>Maintenance</p>
+                                            <div>Vehicle CAL-4759 is set on
+                                                maintenance
+                                            </div>
+                                            <p class=" text-muted">2h ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item mb-0 text-center" href="#">Show all notification</a>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- Profile Img -->
+                    <li class="nav-item dropdown order-sm-2 order-2 mb-resp mr-4">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link d-flex mb-0 pb-0"
+                           data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                            <img class="rounded-circle mr-3 mb-0 pb-0" id="profileImage"
+                                 src="/image/user.jpg">
+                            <div class="d-flex flex-column">
+                                <p id="lblLogUser" class="mb-2 pb-0" style="font-weight: 500;"></p>
+                                <p id="spnDesignation" class="loggedUserNameField text-center text-muted dropdown-toggle mb-0 pb-0"
+                                   style="font-size: 0.96rem; line-height: 0;"></p>
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                            <a class="dropdown-item" data-target="#settingsModal" data-toggle="modal" href="#"><i
+                                    class="far fa-sliders-v"></i> Change
+                                Password</a>
+                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                    class="fas fa-sign-out-alt"></i> Sign Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QUICK ACCESS -->
+    <div class="collapse" id="quickAccess">
+        <div class="py-4 bg-background-color border-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class=" col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block ">
+                            <i class="fas fa-plus fa"></i>
+                            Add Reservation
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Check In
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-check"></i>
+                            Check Out
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-alt"></i>
+                            View Calendar
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-car"></i>
+                            Add Vehicle
+                        </buttoon>
+                    </div>
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-users"></i>
+                            Add Customer
+                        </buttoon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--HEADER-->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-light navbar-light my-4 py-3 align-items-center border">
+
+                <ul class="navbar-nav mt-2">
+                    <li class="nav-item">
+                        <h4 style="font-weight:500; font-size: 1.6rem;"><i class="fas fa-users mr-2"></i>Customer
+                            Management</h4>
+                    </li>
+                </ul>
+
+                <!-- Links -->
+                <ul class="navbar-nav ml-sm-auto">
+                    <li class="nav-item ">
+                        <button class="btn btn-tertiary mr-5 px-sm-5 mb-resp" data-backdrop="static"
+                                data-keyboard="false" data-target="#addCustomerModal" data-toggle="modal"><i
+                                class="fas fa-plus fa"></i> Add
+                            Customer
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-secondary mr-5 px-4  mb-resp" id="btnPrintTable"
+                                onclick="btnPrintTableMC()"><i class="fas fa-print"></i>
+                            Print
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <input class="form-control" id="txtSearchName" placeholder="Search" type="text">
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!--TABLE-->
+    <section>
+        <div class="container">
+            <div class="row p-3 formcontent" id="divTable">
+                <div class="table-responsive" class="table-container ml-2" id="tableParent">
+
+                    <script>
+
+                        function getCustomerName(ob) {
+                            var name = "";1
+                            if (ob.customer_type_id.name == "Individual") {
+                                name = ob.first_name + " " + ob.last_name;
+                            } else {
+                                name = ob.company_name;
+                            }
+                            return name;
+                        }
+
+                        function getLocation(ob) {
+                            var location = "";
+                            if (ob.customer_type_id.name == "Individual") {
+                                location = ob.address;
+                            } else {
+                                location = ob.company_address;
+                            }
+                            return location;
+                        }
+
+                        function getContact(ob) {
+                            var contact = "";
+                            if (ob.customer_type_id.name == "Individual") {
+                                contact = ob.phone;
+                            } else {
+                                contact = ob.company_phone + "\n" + ob.contact_person_phone;
+                            }
+                            return contact;
+                        }
+
+                        function getEmail(ob) {
+                            var email = "";
+                            if (ob.customer_type_id.name == "Individual") {
+                                email = ob.email;
+                            } else {
+                                email = ob.company_email;
+                            }
+                            return email;
+                        }
+
+                        var metadata = [
+                            {
+                                name: 'Customer ID',
+                                search: false,
+                                datatype: 'text',
+                                property: 'register_no'
+                            }, <!--name:table columns / property:column name-->
+                            {name: 'Name', search: false, datatype: 'text', property: getCustomerName},
+                            {
+                                name: 'Type',
+                                search: false,
+                                datatype: 'text',
+                                property: 'customer_type_id.name'
+                            },
+                            {name: 'Location', search: false, datatype: 'text', property: getLocation},
+                            {name: 'Contacts', search: false, datatype: 'text', property: getContact},
+                            // {name: 'Email', search: false, datatype: 'text', property: getEmail},
+                            {name: 'Points', search: false, datatype: 'text', property: 'points'},
+                            {
+                                name: 'Added Date',
+                                search: false,
+                                datatype: 'text',
+                                property: 'added_date'
+                            },
+                            {
+                                name: 'Status',
+                                search: false,
+                                datatype: 'text',
+                                property: 'customer_status_id.name'
+                            }
+                        ];
+                        table("tableParent", "tblCustomer", metadata, true);
+
+                    </script>
+                </div>
+
+                <!-- #Entries -->
+                <p class="d-inline-block mr-2 mt-1 text-small text-black">Show</p>
+                <div class="d-inline-block float-left">
+                    <select class="form-control form-control-sm input  border2 " id="cmbPageSize"
+                            style="width: 80px;">
+                        <option selected value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                    </select>
+                    <script>
+                        cmbPageSize.onchange = function chnagePageSize() {
+                            activepage = 1;
+                            btnSearchMC();
+                        };
+                    </script>
+                </div>
+                <p class="d-inline-block ml-2 mt-1"></p>
+
+                <!-- Page Size -->
+                <div class="d-inline-block ml-auto mb-4">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!--ERROR LOG-->
+    <section>
+        <div class="container">
+            <h6 class="form-collapse d-block border-bottom" data-target="#errorLog" data-toggle="collapse"
+                type="button">
+                <i class="fas fa-chevron-down mr-2"></i>
+            </h6>
+
+            <div class="collapse" id="errorLog">
+                <div id="err"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FORM MODAL -->
+    <div class="modal fade" id="addCustomerModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content bg-background-color">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title ml-auto text-white" id="addCustomerModalLabel"
+                        style="font-weight: 400; font-size: 1.6rem;"><i class="fas fa-user-plus mr-2"></i>Add Customer
+                    </h5>
+                    <button class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true" class="text-white"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--FORM-->
+                    <div class="row p-3" id="divFrom">
+                        <div class="col-md-12">
+                            <form class="" id="customerForm" novalidate onsubmit="return false">
+                                <!--onsubmit-false: prevent form refreshing on submit otherwise impossible to check null pass -->
+
+                                <!--Required Mark-->
+                                <div class="row">
+                                    <div class="col-md-12  text-right">
+                                        <p class="m-0 text-danger" style="font-weight: 400;"><span
+                                                class="required">*</span>
+                                            Required</p>
+                                    </div>
+                                </div>
+
+                                <!--Customer Type/ Customer ID-->
+                                <div class="row align-items-baseline">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbCustomerType">Customer
+                                                Type<span class="required"> *</span></label>
+                                            <div class="d-flex align-items-center">
+                                                <select class="form-control" id="cmbCustomerType"
+                                                        onchange="comboBoxBinder(cmbCustomerType,'','customer','customer_type_id','oldCustomer')"
+                                                        required></select>
+                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"
+                                                ></i>
+                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"
+                                                ></i>
+                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                            </div>
+                                            <div class="invalid-comment d-none">
+                                                Please select valid customer type
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" style="display: none">
+                                        <div class="form-group">
+                                            <label class="form-label" for="txtRegisterNo">Customer ID<span
+                                                    class="required"> *</span><span class="autogen">(Auto generated)</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text form-label">ID</span>
+                                                    </div>
+
+                                                    <input class="form-control" id="txtRegisterNo"
+                                                           onkeyup="textFieldBinder(txtRegisterNo, '^[0-9]{10}$', 'customer','register_no','oldCustomer')"
+                                                           placeholder="Enter customer id" required
+                                                           type="text">
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"
+                                                    ></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"
+                                                    ></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <p class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please provide valid customer id
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Individual-->
+                                <div class="row" id="divIndividual" style="margin-top: 3px">
+                                    <div class="col-md-12">
+<!--                                        class="card-body p-0 mt-3"-->
+                                            <!--First Name/ Last Name-->
+                                            <div class="row mt-1" style="margin-top: 5px">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="txtFirstName">First
+                                                            Name<span
+                                                                    class="required"> *</span></label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fa fa-user"></i></span>
+                                                                </div>
+
+                                                                <input class="form-control"
+                                                                       id="txtFirstName"
+                                                                       onkeyup="textFieldBinder(txtFirstName, '^[a-zA-Z\'.-]+$', 'customer','first_name','oldCustomer')"
+                                                                       placeholder="Enter first name"
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"
+                                                                ></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"
+                                                                ></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"
+                                                                ></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Please provide valid first name
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="txtLastName">Last
+                                                            Name<span
+                                                                    class="required"> *</span></label>
+                                                        <div class="d-flex align-items-center">
+                                                            <input class="form-control" id="txtLastName"
+                                                                   onkeyup="textFieldBinder(txtLastName, '^[a-zA-Z\'.-]+$', 'customer','last_name','oldCustomer')"
+                                                                   placeholder="Enter last name"
+                                                                   type="text">
+
+                                                            <i class="fas fa-exclamation-circle  text-danger ml-2 d-none iconInvalid"></i>
+                                                            <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                            <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                        </div>
+                                                        <div class="invalid-comment d-none">
+                                                            Please provide valid last name
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--Phone/ Email/-->
+                                            <div class="row align-items-baseline mt-1">
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="margin-top: -5px">
+                                                        <label class="form-label"
+                                                               for="txtPhone">Phone<span
+                                                                class="required"> *</span></label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-phone-alt"></i></span>
+                                                                </div>
+                                                                <input class="form-control" id="txtPhone"
+                                                                       onkeyup="textFieldBinder(txtPhone, '^[0][0-9]{9}$','customer', 'phone','oldCustomer')"
+                                                                       placeholder="eg: 0778720768"
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Phone number is not valid
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label"
+                                                               for="txtEmail">Email</label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-envelope"></i></span>
+                                                                </div>
+                                                                <input class="form-control" id="txtEmail"
+                                                                       onkeyup="textFieldBinder(txtEmail, '^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$','customer', 'email','oldCustomer')"
+                                                                       placeholder="eg: sample90@gmail.com"
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Please provide valid email address
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                       <!--NIC/ Driving License-->
+                                        <div class="row mt-2">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="txtLicense">Driving License Number</label>
+                                                    <div class="input-group">
+                                                        <div class="d-flex align-items-center d-block2">
+                                                            <div class="input-group-prepend">
+                                                                    <span class="input-group-text d-block">
+                                                                        <i class="far fa-id-card"></i></span>
+                                                            </div>
+                                                            <input class="form-control" id="txtLicense"
+                                                                   onkeyup="textFieldBinder(txtLicense, '^([B][0-9]{7})$','customer', 'license_no','oldCustomer')"
+                                                                   placeholder="eg: B4188942" type="text">
+
+                                                            <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                            <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                            <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                        </div>
+                                                        <div class="invalid-comment d-none"
+                                                             style="margin-left: 40px;">
+                                                            Please provide valid license number
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="dteLicenseExp">License Expire Date</label>
+                                                    <div class="input-group">
+                                                        <div class="d-flex align-items-center d-block2">
+                                                            <div class="input-group-prepend">
+                                                                    <span class="input-group-text d-block">
+                                                                        <i class="far fa-id-card"></i></span>
+                                                            </div>
+                                                            <input class="form-control" id="dteLicenseExp"
+                                                                   onkeyup="textFieldBinder(dteLicenseExp, '','customer', 'license_exp_date','oldCustomer')"
+                                                                   type="date">
+
+                                                            <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                            <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                            <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                        </div>
+                                                        <div class="invalid-comment d-none"
+                                                             style="margin-left: 40px;">
+                                                            Please provide valid date
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="txtNIC">NIC<i
+                                                            class="far fa-question-circle align-text-top ml-1 text-secondary"
+                                                            data-placement="top" data-toggle="tooltip"
+                                                            title="Enter new NIC (12 digits) or old NIC (ends with V)"></i></label>
+                                                    <div class="input-group">
+                                                        <div class="d-flex align-items-center d-block2">
+                                                            <div class="input-group-prepend">
+                                                                    <span class="input-group-text d-block">
+                                                                        <i class="far fa-id-card"></i></span>
+                                                            </div>
+                                                            <input class="form-control" id="txtNIC"
+                                                                   onkeyup="textFieldBinder(txtNIC, '^([0-9]{9}[vV]|[0-9]{12})$','customer', 'nic','oldCustomer')"
+                                                                   placeholder="eg: 950702245V" type="text">
+
+                                                            <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                            <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                            <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                        </div>
+                                                        <div class="invalid-comment d-none"
+                                                             style="margin-left: 40px;">
+                                                            Please provide valid NIC
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <!--Address-->
+                                            <div class="row mt-1">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="txtAddress">Address<span
+                                                                class="required"> *</span></label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text form-label d-block"><i
+                                                                                class="fas fa-map-marker-alt"></i></span>
+                                                                </div>
+                                                                <textarea class="form-control" id="txtAddress" rows="3"
+                                                                       onkeyup="textFieldBinder(txtAddress, '^[0-9a-zA-Z\'#:;. ,/-]+$','customer', 'address','oldCustomer')"
+                                                                       placeholder="eg: No. 3/A, Honiton  Place, Avissawella."
+                                                                          type="text"></textarea>
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Please provide valid address
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <!--Company-->
+                                <div class="row" id="divCompany" style="display: none">
+                                    <div class="col-md-12">
+
+                                            <!--Company Name/ Company Phone/ Company Email-->
+                                            <div class="row align-items-start mt-2">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="txtCompanyName">Company
+                                                            Name<span
+                                                                    class="required"> *</span></label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-building"></i></span>
+                                                                </div>
+                                                                <input class="form-control" id="txtCompanyName"
+                                                                       onkeyup="textFieldBinder(txtCompanyName, '^[a-zA-Z0-9 &]*$', 'customer','company_name','oldCustomer')"
+                                                                       placeholder="Enter company name"
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Please provide valid company name
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="txtCompanyPhone">Company
+                                                            Phone<span
+                                                                    class="required"> *</span></label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-phone-alt"></i></span>
+                                                                </div>
+                                                                <input class="form-control" id="txtCompanyPhone"
+                                                                       onkeyup="textFieldBinder(txtCompanyPhone, '^[0][0-9]{9}$','customer', 'company_phone','oldCustomer')"
+                                                                       placeholder="eg: 0112232543"
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Phone number is not valid
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-3" style="margin-top: 5px">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="txtCompanyEmail">Company
+                                                        Email</label>
+                                                    <div class="input-group">
+                                                        <div class="d-flex align-items-center d-block2">
+                                                            <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-envelope"></i></span>
+                                                            </div>
+                                                            <input class="form-control" id="txtCompanyEmail"
+                                                                   onkeyup="textFieldBinder(txtCompanyEmail, '^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$','customer', 'company_email','oldCustomer')"
+                                                                   placeholder="eg: sample08@gmail.com"
+                                                                   type="text">
+
+                                                            <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                            <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                            <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                        </div>
+                                                        <div class="invalid-comment d-none"
+                                                             style="margin-left: 40px;">
+                                                            Please provide valid email address
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            <!--Contact Person Name/ Contact Person Phone-->
+                                            <div class="row mt-3">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label"
+                                                               for="txtContactPersonName">Contact Person Name</label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fa fa-user"></i></span>
+                                                                </div>
+                                                                <input class="form-control" id="txtContactPersonName"
+                                                                       onkeyup="textFieldBinder(txtContactPersonName, '^[a-zA-Z\'.-]+$', 'customer','contact_person_name','oldCustomer')"
+                                                                       placeholder="Enter contact person name "
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Please provide valid contact person name
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label"
+                                                               for="txtContactPersonPhone">Contact Person
+                                                            Phone</label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex align-items-center d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-mobile-alt"></i></span>
+                                                                </div>
+                                                                <input class="form-control" id="txtContactPersonPhone"
+                                                                       onkeyup="textFieldBinder(txtContactPersonPhone, '^[0][0-9]{9}$','customer', 'contact_person_phone','oldCustomer')"
+                                                                       placeholder="eg: 0778719766"
+                                                                       type="text">
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Phone number is not valid
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--Company Address-->
+                                            <div class="row mt-2">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="txtCompanyAddress">Company
+                                                            Address<span
+                                                                    class="required"> *</span></label>
+                                                        <div class="input-group">
+                                                            <div class="d-flex d-block2">
+                                                                <div class="input-group-prepend">
+                                                                        <span class="input-group-text form-label"><i
+                                                                                class="fas fa-map-marker-alt"></i></span>
+                                                                </div>
+                                                                <textarea class="form-control" id="txtCompanyAddress" rows="3"
+                                                                       onkeyup="textFieldBinder(txtCompanyAddress, '^[0-9a-zA-Z\'#:;. ,/-]+$','customer', 'company_address','oldCustomer')"
+                                                                       placeholder="eg: No. 3/A, Honiton  Place, Avissawella."
+                                                                          type="text"></textarea>
+
+
+                                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                            </div>
+                                                            <div class="invalid-comment d-none"
+                                                                 style="margin-left: 40px;">
+                                                                Please provide valid Company address
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <!--Notes/ Added Date/ Status/ Added By-->
+                                <div class="row align-items-end mt-1">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="txtNotes">Notes</label>
+                                            <div class="d-flex align-items-center d-block2">
+                                            <textarea class="form-control" id="txtNotes"
+                                                      onkeyup="textFieldBinder(txtNotes, '','customer', 'notes','oldCustomer')"
+                                                      placeholder="Notes about customer"
+                                                      rows="4"></textarea>
+
+                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                            </div>
+                                            <div class="invalid-comment d-none">
+                                                Please enter valid characters
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" style="display: none;" id="divCustomerStatus">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbCustomerStatus">Customer
+                                                Status
+                                                <span class="required"> *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><i
+                                                                class="fa fa-adjust"></i></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbCustomerStatus"
+                                                            onchange="comboBoxBinder(cmbCustomerStatus,'','customer','customer_status_id','oldCustomer')"
+                                                            required></select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select customer status
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="display: none">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbAddedBy">Added By<span
+                                                    class="required"> *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i
+                                                                    class="fas fa-user-shield"></i></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbAddedBy" required></select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select added by employee
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" style="display: none">
+                                        <div class="form-group">
+                                            <label class="form-label" for="dteAddedDate">Added Date<span
+                                                    class="required"> *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i
+                                                                    class="fas fa-calendar"></i></span>
+                                                    </div>
+                                                    <input class="form-control" id="dteAddedDate" required
+                                                           type="date">
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Added date is not valid
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Form Buttons (Clear/ Update/ Add) -->
+                                <div class="row justify-content-center py-5">
+
+                                    <div class="col-md-2">
+                                        <button class="btn btn-secondary-light btn-block" id="btnClear"
+                                                type="button">Clear
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-tertiary btn-block" id="btnUpdate" type="submit"><i
+                                                class="fas fa-edit mr-2"></i>Update
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary btn-block" id="btnAdd" type="submit"><i
+                                                class="fas fa-plus mr-2"></i>Add
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--Form Buttons (Clear/ Update/ Add) -->
+                                <!--                                    <div class="text-right">-->
+                                <!--                                        <button class="btn btn-outline-info" type="button" id="btnClear"-->
+                                <!--                                                style="width: 25%">-->
+                                <!--                                            <i class="fas fa-recycle mr-2"></i> Clear-->
+                                <!--                                        </button>-->
+                                <!--                                        <button class="btn btn-outline-warning" type="submit" id="btnUpdate"-->
+                                <!--                                                style="width: 25%"><i class="fas fa-edit mr-2"></i> Update-->
+                                <!--                                        </button>-->
+                                <!--                                        <button class="btn btn-outline-success" style="width: 25%" type="submit"-->
+                                <!--                                                id="btnAdd">-->
+                                <!--                                            <i class='fas fa-plus-circle mr-2'></i>Add-->
+                                <!--                                        </button>-->
+
+                                <!--                                    </div>-->
+
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Table Row Print Modal-->
+    <div aria-hidden="true" aria-labelledby="dataViewModalLabel" class="modal fade" id="dataViewModal" role="dialog"
+         tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dataViewModalLabel">View Customer Details</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--Row Print: Customer Details-->
+                    <table class="mt-5 table table-bordered table-striped" id="printformtable">
+                        <!--remove on modal-> style="display: none"-->
+                        <tbody>
+                        <tr>
+                            <th>Registration No :</th>
+                            <td id="tdReg"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Name :</th>
+                            <td id="tdName"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Type :</th>
+                            <td id="tdType"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Location :</th>
+                            <td id="tdLocation"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Contacts :</th>
+                            <td id="tdContacts"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Email :</th>
+                            <td id="tdEmail"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Points :</th>
+                            <td id="tdPoints"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Notes :</th>
+                            <td id="tdNotes"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Customer Status :</th>
+                            <td id="tdStatus"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Added Date :</th>
+                            <td id="tdAddedDate"></td>
+                        </tr>
+                        <!--    <tr>-->
+                        <!--        <td>Employee Photo :</td>-->
+                        <!--        <td><img id="tdphoto" width="100px" height="100px"></td>-->
+                        <!--    </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary-light" data-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-primary" onclick="btnPrintRowMC()" type="button">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- Settings Modal-->
+    <div aria-hidden="true" aria-labelledby="settingsModal" class="modal fade" id="settingsModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content" id="modalContent">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"><i
+                            class="fas fa-cog"></i> Settings</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="changePasswordForm" onsubmit="return false">
+                        <div class="form-row">
+                            <!-- Username -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue" for="txtUsernameView">
+                                    <b>Username</b>
+                                </label>
+                                <div class="form-control-plaintext" id="txtUsernameView"
+                                     readonly></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Current Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue"
+                                       for="txtCurrentPassword"><b>Current Password</b> <i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtCurrentPassword"
+                                       onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- New Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue" for="txtNewPassword"><b>New
+                                    Password</b><i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtNewPassword"
+                                       onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Confirm Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue"
+                                       for="txtConfirmPassword"><b>Confirm
+                                    Password</b><i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtConfirmPassword"
+                                       onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" id="brnClosechnagepasswordmodle"
+                            type="button">
+                        Close
+                    </button>
+                    <button class="btn btn-primary" onclick="btnSaveChangePasswordMC()"
+                            type="button">Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script src="js/sidebar.js"></script>
+</body>
+
+</html>

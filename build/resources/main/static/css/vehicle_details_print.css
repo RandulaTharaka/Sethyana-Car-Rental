@@ -1,0 +1,22 @@
+@media print {
+    .svg-inline--fa {
+        width: initial !important;
+        height: initial !important;
+    }
+}
+
+@media print {
+    .svg-inline--fa {
+        width: 16px !important; /* Adjust as needed */
+        height: 16px !important; /* Adjust as needed */
+    }
+}
+
+@media print {
+    .svg-inline--fa {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    /* Additional styles or resets as needed */
+}
