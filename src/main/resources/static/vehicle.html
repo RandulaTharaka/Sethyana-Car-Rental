@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+
+    <script defer src="vendor/fontawesome/js/solid.js"></script>
+    <script defer src="vendor/fontawesome/js/fontawesome.js"></script>
+
+    <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="vendor/jquery/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/common.js"></script>
+    <script src="js/main_window.js"></script>
+    <script src="js/vehicle.js"></script>
+
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+
+    <title>Sethyana</title>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar closes">
+
+    <div class="logo-details">
+        <i class='bx bxs-car'></i>
+        <span class="logo_name">Sethyana</span>
+    </div>
+    <ul class="nav-links">
+        <li class="">
+            <a href="http://localhost:8080/mainwindow">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">Dashboard</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/mainwindow"><span>Dashboard</span></a></li>
+            </ul>
+        </li>
+
+        <li class="SDRESERVATION">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/sd_reservation">
+                    <i class='bx bx-file'></i>
+                    <span class="link_name">Self-Drive</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/sd_reservation">Self-Drive</a></li>
+            </ul>
+        </li>
+
+        <li class="CDRESERVATION" id="CDSidebar">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/cd_reservation">
+                    <i class='bx bx-file'></i>
+                    <span class="link_name">Chauffeur-Drive</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/cd_reservation">Chauffeur-Drive</a></li>
+            </ul>
+        </li>
+
+        <li class="VEHICLE active2">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/vehicle">
+                    <i class='bx bxs-car'></i>
+                    <span class="link_name">Vehicles</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name active2" href="http://localhost:8080/vehicle">Vehicles</a></li>
+            </ul>
+        </li>
+
+        <li class="DRIVER">
+            <a href="#">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Drivers</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Drivers</a></li>
+            </ul>
+        </li>
+
+        <li class="PACKAGE">
+            <a href="http://localhost:8080/package">
+                <i class='bx bx-package'></i>
+                <span class="link_name">Packages</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/package">Packages</a></li>
+            </ul>
+        </li>
+
+        <li class="CUSTOMER">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/customer">
+                    <i class='bx bxs-user-account'></i>
+                    <span class="link_name">Customers</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/customer">Customers</a></li>
+            </ul>
+        </li>
+
+        <li class="CUSTOMERPAYMENT">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/customer_payment">
+                    <i class='bx bxs-coin-stack'></i>
+                    <span class="link_name">Payments</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/customer_payment">Payments</a></li>
+            </ul>
+        </li>
+
+        <li class="REPORTS">
+            <a href="http://localhost:8080/report_revenue">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <span class="link_name">Reports</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/report_revenue">Reports</a></li>
+            </ul>
+        </li>
+
+        <li class="NOTIFICATION">
+            <a href="#">
+                <i class='bx bxs-bell'></i>
+                <span class="link_name">Notifications</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Notifications</a></li>
+            </ul>
+        </li>
+
+        <li class="EMPLOYEE">
+            <a href="http://localhost:8080/employee">
+                <i class='bx bxs-user-detail'></i>
+                <span class="link_name">Employees</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/employee">Employees</a></li>
+            </ul>
+        </li>
+
+
+        <li class="USER">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/user">
+                    <i class='bx bxs-user'></i>
+                    <span class="link_name">Users</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/user">Users</a></li>
+            </ul>
+        </li>
+
+        <li class="PRIVILEGE">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/privilege">
+                    <i class='bx bxs-crown'></i>
+                    <span class="link_name">Privilege</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/privilege">Privilege</a></li>
+            </ul>
+        </li>
+
+        <li class="DRIVERPORTAL">
+            <a href="http://localhost:8080/driverPortal">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Driver Portal</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/driverPortal">Driver Portal</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- MAIN-->
+<main id="main-content">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light ml-0 pl-0 " id="navbar">
+
+        <!--Sidebar Toggler -->
+        <a class="navbar-brand" href="#"> <span class="navbar-toggler-icon sidebar-toggler ml-4"></span></a>
+        <!--            <i class='bx bx-menu' ></i>-->
+        <div class="container">
+            <!-- Small Screen Toggler -->
+            <button class="navbar-toggler ml-auto" data-target="#navbarNav" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav d-none d-md-block ">
+                    <!-- Breadcrum -->
+                    <li class="nav-item" style="font-weight: 500; font-size: 1.1rem;">
+                        <a href="http://localhost:8080/mainwindow">Dashboard</a>
+                        <span class="mx-1" style="font-size:80%; font-style: italic;"><i
+                                class="fas fa-chevron-right"></i></span>
+                        <a class="text-tertiary" href="http://localhost:8080/vehicle">Vehicle Management</a>
+                    </li>
+                </ul>
+
+                <ul class=" navbar-nav ml-4 ml-sm-auto align-items-sm-center">
+                    <!-- Quick Access Button-->
+                    <li class="nav-item mr-5 mb-resp order-sm-1 order-3" style="font-weight: 500;">
+                        <a class="nav-link text-primary" data-target="#quickAccess" data-toggle="collapse"
+                           type="button">
+                            Quick Access <i class="fas fa-caret-down" style="font-size: 1.3rem;"></i></a>
+                    </li>
+
+                    <!-- Notification (Not Suitable for Long Text)-->
+                    <li class="nav-item  mr-5 mb-resp order-sm-2 order-1" id="notification">
+                        <div class="dropdown">
+                            <i class="fas fa-bell fa-lg dropdown-toggle" data-toggle="dropdown" type="button"></i>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+
+                                <p class="dropdown-item mb-0 text-center"><span class="badge badge-primary"
+                                                                                id="newNotificationCount">1 </span>
+                                    New Notification
+                                </p>
+                                <div class="dropdown-divider"></div>
+
+                                <div class="dropdown-item">
+                                    <div class="d-flex">
+
+                                        <i class="fas fa-info-circle mr-4"></i>
+
+                                        <div class="flex-column justify-content-start">
+                                            <p>Maintenance</p>
+                                            <div>Vehicle CAL-4759 is set on
+                                                maintenance
+                                            </div>
+                                            <p class=" text-muted">2h ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item mb-0 text-center" href="#">Show all notification</a>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- Profile Img -->
+                    <li class="nav-item dropdown order-sm-2 order-2 mb-resp mr-4">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link d-flex mb-0 pb-0"
+                           data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                            <img class="rounded-circle mr-3 mb-0 pb-0" id="profileImage"
+                                 src="/image/user.jpg">
+                            <div class="d-flex flex-column">
+                                <p id="lblLogUser" class="mb-2 pb-0" style="font-weight: 500;"></p>
+                                <p id="spnDesignation" class="loggedUserNameField text-center text-muted dropdown-toggle mb-0 pb-0"
+                                   style="font-size: 0.96rem; line-height: 0;"></p>
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                            <a class="dropdown-item" data-target="#settingsModal" data-toggle="modal" href="#"><i
+                                    class="far fa-sliders-v"></i> Change
+                                Password</a>
+                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                    class="fas fa-sign-out-alt"></i> Sign Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QUICK ACCESS -->
+    <div class="collapse" id="quickAccess">
+        <div class="py-4 bg-background-color border-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class=" col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block ">
+                            <i class="fas fa-plus fa"></i>
+                            Add Reservation
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Check In
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-check"></i>
+                            Check Out
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-alt"></i>
+                            View Calendar
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-car"></i>
+                            Add Vehicle
+                        </buttoon>
+                    </div>
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-users"></i>
+                            Add Customer
+                        </buttoon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--HEADER-->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-light navbar-light my-4 py-3 align-items-center border">
+
+                <ul class="navbar-nav mt-2">
+                    <li class="nav-item">
+                        <h4 style="font-weight:500; font-size: 1.6rem;"><i class="fas fa-car mr-2"></i>Vehicle
+                            Management</h4>
+                    </li>
+                </ul>
+
+                <!-- Links -->
+                <ul class="navbar-nav ml-sm-auto">
+                    <li class="nav-item ">
+                        <button class="btn btn-tertiary mr-5 px-sm-5 mb-resp" data-backdrop="static"
+                                data-keyboard="false" data-target="#addVehicleModal" data-toggle="modal"><i
+                                class="fas fa-plus fa"></i> Add
+                            Vehicle
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-secondary mr-5 px-4  mb-resp" id="btnPrintTable"
+                                onclick="btnPrintTableMC()"><i class="fas fa-print"></i>
+                            Print
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <input class="form-control" id="txtSearchName" placeholder="Search" type="text" data-toggle="tooltip" data-placement="bottom" title="Search by: Brand, Model, Type, Plate">
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!--TABLE-->
+    <section>
+        <div class="container">
+            <div class="row p-3 formcontent" id="divTable">
+                <div class="table-responsive" class="table-container ml-2" id="tableParent">
+
+                    <script>
+
+                        function getModelName(ob){
+                            return modelName = ob.model_id.brand_id.name + ' ' + ob.model_id.name;
+                        }
+
+                        function getNextServiceDate(ob){
+                            return nextServiceDate = sqlDateTimeToLocalC(ob.next_service_date);
+                        }
+
+                        function getOdometer(ob){
+                            return odometer = ob.current_odometer + ' Km';
+                        }
+
+                        function getSeats(ob){
+                            return seats = ob.num_of_seats + ' Seats';
+                        }
+
+                        var metadata = [
+                            {name: 'License Plate', search: false, datatype: 'text', property: 'license_plate'},
+                            {name: 'Photo', search: false, datatype: 'photo', property: 'display_photo'},<!--name:table columns / property:column name-->
+                            {name: 'Model', search: false, datatype: 'text', property: getModelName},<!--name:table columns / property:column name-->
+                            // {name: 'Vehicle', search: false, datatype: 'text', property: 'vehicle_name'},
+                            {name: 'Vehicle Type', search: false, datatype: 'text', property: 'model_id.vehicle_type_id.name'},
+                            {name: 'Seats', search: false, datatype: 'text', property: getSeats},
+                            // {name: 'Day Price', search: false, datatype: 'text', property: ''},
+                            {name: 'Odometer', search: false, datatype: 'text', property: getOdometer},
+                            {name: 'Transmission', search: false, datatype: 'text', property: 'transmission_type_id.name'},
+                            {name: 'Fuel', search: false, datatype: 'text', property: 'fuel_type_id.name'},
+                            // {name: 'Location', search: false, datatype: 'text', property: ''},
+                            {name: 'Owner', search: false, datatype: 'text', property: 'owner_type_id.name'},
+                            {name: 'Status', search: false, datatype: 'text', property: 'vehicle_status_id.name'}
+                        ];
+                        table("tableParent", "tblVehicle", metadata, true);
+
+                    </script>
+                </div>
+
+                <!-- #Entries -->
+                <p class="d-inline-block mr-2 mt-1 text-small text-black">Show</p>
+                <div class="d-inline-block float-left">
+                    <select class="form-control form-control-sm input  border2 " id="cmbPageSize"
+                            style="width: 80px;">
+                        <option selected value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                    </select>
+                    <script>
+                        cmbPageSize.onchange = function chnagePageSize() {
+                            activepage = 1;
+                            btnSearchMC();
+                        };
+                    </script>
+                </div>
+                <p class="d-inline-block ml-2 mt-1"></p>
+
+                <!-- Page Size -->
+                <div class="d-inline-block ml-auto mb-4">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM MODAL -->
+    <div class="modal fade" id="addVehicleModal" role="dialog" tabindex="-1" data-backdrop="static">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content bg-background-color">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title ml-auto text-white" id="addVehicleModalLabel"
+                        style="font-weight: 400; font-size: 1.6rem;"><i class="fas fa-car mr-2"></i>Add Vehicle</h5>
+                    <button class="close" data-dismiss="modal" type="button" onclick="modalCloseBtnClick(tblVehicle)">
+                        <span aria-hidden="true" class="text-white"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--FORM-->
+                    <div class="row p-3" id="divFrom">
+                        <div class="col-md-12">
+                            <form class="" id="customerForm" onsubmit="return false">
+                                <!--onsubmit-false: prevent form refreshing on submit otherwise impossible to check null pass -->
+
+                                <!--Required Mark-->
+                                <div class="row" style="margin-bottom: -1rem">
+                                    <div class="col-md-12  text-right">
+                                        <p class="m-0 text-danger" style="font-weight: 400;"><span
+                                                class="required">*</span>
+                                            Required</p>
+                                    </div>
+                                </div>
+
+                                <!--Vehicle Details-->
+                                <div class="divider form-collapse"><i class="fas fa-car mr-1" style="display: block;"></i>Basic Info</div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label" for="txtVLicenseNo">License Plate<span
+                                                    class="required">
+                                                        *</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><span class="input-text icon-light">PLATE</span></span>
+                                                    </div>
+                                                    <input class="form-control" id="txtVLicenseNo"
+                                                           onkeyup="textFieldBinder(txtVLicenseNo, '','vehicle', 'license_plate','oldVehicle')"
+                                                           placeholder="eg: CAL-4986" type="text" required>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 70px;">
+                                                    Please provide valid license no.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbVType">Vehicle
+                                                Type<span class="required"> *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><i class="fas fa-car-side icon-light"></i></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbVType" required
+                                                            onchange= cmbVehicleTypeCH()>
+                                                    </select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 46px;">
+                                                    Please select vehicle type
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbVBrand">Brand<span
+                                                    class="required">
+                                                        *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block" style="font-weight: 600;"><span class="input-text icon-light">B</span></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbVBrand" required
+                                                            onchange= cmbVehicleBrandCH()>
+                                                    </select>
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select valid brand
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbVModel">Model<span
+                                                    class="required">
+                                                        *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><i class="fas fa-car icon-light"></i></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbVModel" required
+                                                            onchange="comboBoxBinder(cmbVModel,'','vehicle','model_id','oldVehicle')">
+                                                    </select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select vehicle model
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Vehicle Specification Row 1-->
+
+                                <div class="divider form-collapse" data-target="#vSpecification"
+                                     data-toggle="collapse" type="button"><i class="fas fa-cog mr-1" style="display: block;"></i>Specification
+                                </div>
+
+                                <div class="collapse show" id="vSpecification">
+
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cmbTransmission">Transmission
+                                                    Type<span class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block">
+                                                               <i class="fas fa-cog icon-light"></i></span>
+                                                        </div>
+                                                        <select class="form-control" id="cmbTransmission"
+                                                                required onchange="comboBoxBinder(cmbTransmission,'','vehicle','transmission_type_id','oldVehicle')">
+                                                        </select>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please select transmission type
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cmbAirCondition">Air Condition<span
+                                                        class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-fan icon-light"></i></span>
+                                                        </div>
+                                                        <select class="form-control" id="cmbAirCondition" required
+                                                                onchange="comboBoxBinder(cmbAirCondition,'','vehicle','air_condition_type_id','oldVehicle')">
+                                                        </select>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please select air condition type
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cmbFuel">FuelType<span
+                                                        class="required"> *</span></label>
+                                                <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><i class="fas fa-gas-pump icon-light"></i></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbFuel" required
+                                                            onchange="comboBoxBinder(cmbFuel,'','vehicle','fuel_type_id','oldVehicle')">
+                                                    </select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select fuel type
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cmbVehicleColor">Color<span
+                                                        class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-palette icon-light"></i></span>
+                                                        </div>
+                                                        <select class="form-control" id="cmbVehicleColor"
+                                                                onchange="comboBoxBinder(cmbVehicleColor,'','vehicle','color_id','oldVehicle')">
+                                                        </select>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please select vehicle color
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Vehicle Specification Row 2-->
+                                    <div class="row mt-3 align-items-baseline">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtSeats">Number
+                                                    of Seats<span class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><object data="image/seat3.svg" width="20px" height="16px"
+                                                            ></object></span>
+                                                        </div>
+                                                        <input class="form-control" id="txtSeats" required type="text" placeholder="eg: 5"
+                                                                onkeyup="textFieldBinder(txtSeats,'','vehicle','num_of_seats','oldVehicle')">
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 46px;">
+                                                        Please provide valid no. of seats
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cmbLuggage">Luggage</label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-briefcase icon-light"></i></span>
+                                                        </div>
+                                                        <select class="form-control" id="cmbLuggage" required
+                                                                onchange="comboBoxBinder4(cmbLuggage,'','vehicle','num_of_luggage','oldVehicle')">
+                                                        </select>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please select no of luggage
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtMaxWeight">Max
+                                                    Weight</label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <input class="form-control" id="txtMaxWeight" required type="text"
+                                                               onkeyup="textFieldBinder(txtMaxWeight, '','vehicle', 'max_weight','oldVehicle')"
+                                                               placeholder="eg: 250">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><span class="input-text icon-light">kg</span></span>
+                                                        </div>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none">
+                                                        Please provide valid max weight
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtKmPerLiter">Kilometre per Liter</label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <input class="form-control" id="txtKmPerLiter" required type="text"
+                                                               onkeyup="textFieldBinder(txtKmPerLiter, '','vehicle', 'km_per_liter','oldVehicle')" placeholder="eg: 15">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><span class="input-text icon-light">km</span></span>
+                                                        </div>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none">
+                                                        Please provide kilometre per liter
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Vehicle Specification Row 3-->
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtEntryOdometer">Odometer at Vehicle Entry
+                                                </label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-tachometer-alt icon-light"></i></span>
+                                                        </div>
+                                                        <input class="form-control" id="txtEntryOdometer" required type="text"
+                                                               onkeyup="textFieldBinder(txtEntryOdometer, '','vehicle', 'entry_odometer','oldVehicle')"
+                                                               placeholder="eg: 45000">
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please provide valid odometer at entry
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="row" style="display: none">
+                                                <div class="col-md-12">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="chkMusicPlayer"
+                                                               type="checkbox" onchange="CheckBoxBinder(chkMusicPlayer, '', 'vehicle','music_player','oldVehicle')">
+                                                        <label class="custom-control-label form-label"
+                                                               for="chkMusicPlayer"><i class="fas fa-music mr-2 icon-light"></i>Music Player</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 ">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="chkUSBCharging"
+                                                               type="checkbox" onchange="CheckBoxBinder(chkUSBCharging, '', 'vehicle','usb_charging','oldVehicle')">
+                                                        <label class="custom-control-label form-label"
+                                                               for="chkUSBCharging"><i class="fab fa-usb mr-2 icon-light"></i>USB
+                                                            Charging</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-12">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="chkRearviewCamera"
+                                                               type="checkbox" onchange="CheckBoxBinder(chkRearviewCamera, '', 'vehicle','rearview_camera','oldVehicle')">
+                                                        <label class="custom-control-label form-label"
+                                                               for="chkRearviewCamera"><i class="fas fa-video mr-2 icon-light"></i>Rearview
+                                                            Camera</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+                                <!--Documents-->
+                                <div class="divider form-collapse" data-target="#vDocuments" style="pointer-events: auto"
+                                     data-toggle="collapse" type="button"><i class="far fa-id-card mr-1"></i>Documents</div>
+
+
+                                <div class="collapse show" id="vDocuments">
+                                    <div class="row align-items-baseline">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="dteRevenueLExp">Revenue License
+                                                    Expire Date
+                                                    <span class="required"> *</span></label>
+                                                <input class="form-control" id="dteRevenueLExp"
+                                                       type="date" onchange="dateFieldBinder(dteRevenueLExp,'','vehicle','revenue_license_exp_date','oldVehicle')">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="dteInsuranceExp">Insurance Expire
+                                                    Date
+                                                    <span class="required"> *</span></label>
+                                                <input class="form-control" id="dteInsuranceExp"
+                                                       type="date" onchange="dateFieldBinder(dteInsuranceExp,'','vehicle','insurance_exp_date','oldVehicle')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--Maintenance-->
+                                <div class="divider form-collapse" data-target="#vMaintenance" style="pointer-events: auto"
+                                     data-toggle="collapse" type="button"><i class="fas fa-tools mr-1"></i>Maintenance</div>
+
+
+                                <div class="collapse show" id="vMaintenance">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtNextServiceOdometer">Next
+                                                    Service
+                                                    Odometer
+                                                </label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-tachometer-alt icon-light"></i></span>
+                                                        </div>
+                                                        <input class="form-control" id="txtNextServiceOdometer" type="text"
+                                                               onkeyup="textFieldBinder(txtNextServiceOdometer, '','vehicle', 'next_service_odometer','oldVehicle')"
+                                                               placeholder="eg: 53800">
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please provide next odometer
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="dteNextService">Next Service Date
+                                                </label>
+                                                <input class="form-control" id="dteNextService"
+                                                       type="date" onchange="dateFieldBinder(dteNextService,'','vehicle','next_service_date','oldVehicle')">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="dteDamageUpdate">Damage Update Date
+                                                </label>
+                                                <input class="form-control" id="dteDamageUpdate"
+                                                       type="date">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--Owner Details-->
+
+                                <div class="divider form-collapse" data-target="#vOwnerDetails" style="pointer-events: auto"
+                                     data-toggle="collapse" type="button"><i class="fas fa-key mr-1" style="display: block;"></i>Owner Details</div>
+
+                                <div class="collapse show" id="vOwnerDetails">
+
+                                    <div class="row mb-0">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cmbOwnerType">Owner
+                                                    Type
+                                                    <span class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-key icon-light"></i></span>
+                                                        </div>
+                                                        <select class="form-control" id="cmbOwnerType"
+                                                                onchange="comboBoxBinder(cmbOwnerType,'','vehicle','owner_type_id','oldVehicle')" required></select>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please select owner type
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" id="divOwnerName" style="display: block">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtOwnerName">Owner
+                                                    Name
+                                                    <span class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text d-block"><i class="fas fa-user icon-light"></i></span>
+                                                        </div>
+                                                        <input class="form-control" id="txtOwnerName"
+                                                               onkeyup="textFieldBinder(txtOwnerName, '','vehicle', 'owner_name','oldVehicle')" placeholder="eg: H.D. Sampath Perera"
+                                                               type="text">
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                        Please provide valid Name
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" id="divOwnerPhone" style="display: block">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtOwnerPhone">Owner
+                                                    Phone
+                                                    <span class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex align-items-center d-block2">
+                                                        <div class="input-group-prepend">
+                                                                        <span class="input-group-text d-block"><i
+                                                                                class="fas fa-mobile-alt icon-light"></i></span>
+                                                        </div>
+                                                        <input class="form-control" id="txtOwnerPhone"
+                                                               onkeyup="textFieldBinder(txtOwnerPhone, '','vehicle', 'owner_phone','oldVehicle')"
+                                                               placeholder="eg: 0778232543"
+                                                               type="text" required>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none"
+                                                         style="margin-left: 40px;">
+                                                        Phone number is not valid
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2 align-items-baseline">
+                                        <div class="col-md-4" id="divOwnerAddress" style="display: block">
+                                            <div class="form-group">
+                                                <label class="form-label" for="txtOwnerAddress">Address<span
+                                                        class="required"> *</span></label>
+                                                <div class="input-group">
+                                                    <div class="d-flex d-block2">
+                                                        <div class="input-group-prepend">
+                                                                        <span class="input-group-text form-label d-block"><i
+                                                                                class="fa fa-map-marker-alt icon-light"></i></span>
+                                                        </div>
+                                                        <textarea class="form-control" id="txtOwnerAddress" rows="3"
+                                                               onkeyup="textFieldBinder(txtOwnerAddress, '','vehicle', 'owner_address','oldVehicle')"
+                                                               placeholder="eg: No. 3/A, Honiton  Place, Avissawella."
+                                                                  type="text"></textarea>
+
+                                                        <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                        <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                        <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                    </div>
+                                                    <div class="invalid-comment d-none"
+                                                         style="margin-left: 40px;">
+                                                        Please provide valid address
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <!--Final Row-->
+                                <div class="divider"></div>
+                                <div class="row align-items-end mt-2">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label" for="txtVehicleNotes">Notes</label>
+                                            <div class="d-flex align-items-center d-block2">
+                                            <textarea class="form-control" id="txtVehicleNotes" placeholder="Notes about vehicle" rows="3"
+                                                      onkeyup="textFieldBinder(txtVehicleNotes, '','vehicle', 'notes','oldVehicle')"></textarea>
+
+                                                <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                            </div>
+                                            <div class="invalid-comment d-none">
+                                                Please enter valid characters
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="display: none" id="divVehicleStatus">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbVehicleStatus">Vehicle Status
+                                                <span class="required"> *</span></label>
+                                                <div class="d-flex align-items-center">
+                                                    <select class="form-control" id="cmbVehicleStatus"
+                                                            onchange="comboBoxBinder(cmbVehicleStatus,'','vehicle','vehicle_status_id','oldVehicle')" required></select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select vehicle status
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" id="print-form">
+                                            <script>
+                                                // (parentid, photofeildId,labletext,lablesize,type, maxsize,datarequerd,object, property , oldobject)
+                                                fileChooser('print-form', 'flePhoto', 'Photo', 4, ['.jpg', '.png'], 5, true, 'vehicle', 'display_photo', 'oldVehicle');
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="display: none">
+                                        <div class="form-group">
+                                            <label class="form-label" for="cmbAddedBy">Added
+                                                By
+                                                <span class="required"> *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><i class="fas fa-user-shield icon-light"></i></span>
+                                                    </div>
+                                                    <select class="form-control" id="cmbAddedBy" required></select>
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Please select added by employee
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" style="display: none">
+                                        <div class="form-group">
+                                            <label class="form-label" for="dteAdded">Added
+                                                Date
+                                                <span class="required"> *</span></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text d-block"><i
+                                                                class="fas fa-calendar icon-light"></i></span>
+                                                    </div>
+                                                    <input class="form-control" id="dteAdded" required type="date">
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none" style="margin-left: 40px;">
+                                                    Added date is not valid
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center py-5">
+
+                        <div class="col-md-2">
+                            <button class="btn btn-secondary-light btn-block" id="btnClear"
+                                    type="button">Clear
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-tertiary btn-block" id="btnUpdate" type="submit"><i
+                                    class="fas fa-edit mr-2"></i>Update
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn-block" id="btnAdd" type="submit"><i
+                                    class="fas fa-plus mr-2"></i>Add
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Table Row Print Modal-->
+    <div aria-hidden="true" aria-labelledby="dataViewModalLabel" class="modal fade" id="dataViewModal" role="dialog"
+         tabindex="-1"  data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content bg-background-color">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title ml-auto text-white" id="dataViewModalLabel" style="font-weight: 400; font-size: 1.5rem"><i class="fas fa-file-alt mr-3"></i>Vehicle Details</h5>
+                    <button class="close" data-dismiss="modal" type="button" onclick="modalCloseBtnClick(tblVehicle)">
+                        <span aria-hidden="true" class="text-white"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+
+                <div class="modal-body" id="printformtable">
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-5 text-center"  id="displayPhotoVD">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center" style="margin-top: 35px">
+                        <div class="col-md-5 text-center">
+                            <h3 class="font-weight-bold" id="vehicleBrandAndModelVD" style="font-size: 1.65rem"></h3>
+                            <h4 id="licensePlateVD" style="font-size: 1.4rem"></h4>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-2" style="font-size: 1.1rem">
+                        <div class="col-3 d-inline-block text-center">
+                            <div id="vehicleStatusOutlineColorVD" style="border-radius: 50px; padding-top: 3px; padding-bottom: 1px; width:87%; margin-left:13px">
+                                <div id="vehicleStatusColorVD" style="width: 17px; height: 17px; border-radius: 50%; display:inline-block; margin-left: -6px"></div>
+                                <div id="vehicleStatusVD" style="font-weight: 600; display: inline-block; margin-left: 7px"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 1.1rem" class="mt-3">
+                        <div class="row justify-content-center">
+                            <div class="col-4 justify-content-center" style="font-weight: 600;display:flex; margin-top: 5px" id="odometerVDCol">
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c; border-radius: 2px 0 0 2px;"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c ;"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c ;"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c ;"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c ;"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c ;"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c; border-radius: 0 2px 2px 0; margin-right: 5px"><p>0</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c; border-radius: 2px 0 0 2px;"><p>K</p></div>
+                                <div style="width: 20px; height: 30px; background-image: linear-gradient(white, #d8d8d8); display: inline-block;  text-align:center; border: 1px solid #9c9c9c; border-radius: 0 2px 2px 0;"><p>m</p></div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-8" style="border: 1px solid #D4D4D4; border-radius: 10px; padding-top:10px">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p style="font-weight: 600"><i class="fas fa-cog mr-1"></i>Specification</p>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-5">
+                                        <p>Type</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="vehicleTypeVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Transmission</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="transmissionVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Fuel</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="fuelVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Color</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <div id="vehicleColorVD" style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid #9c9c9c"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Seats</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="seatsVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Luggage</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="luggageVD">N/A</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Max Weight</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="maxWeightVD">N/A</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Fuel Consumption</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="KmPerLiterVD">N/A</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-8" style="border: 1px solid #D4D4D4; border-radius: 10px; padding-top:10px">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p style="font-weight: 600"><i class="fas fa-clipboard-check mr-2"></i>Options</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>AC</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <img id="airConditionVD" width="20px" height="20px">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>USB Charging</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <img id="usbChargingVD" width="20px" height="20px">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Rearview Camera</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <img id="rearviewCamVD" width="20px" height="20px">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Music Player</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <img id="musicPlayerVD" width="20px" height="20px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!--Owner Details-->
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-8" style="border: 1px solid #D4D4D4; border-radius: 10px; padding-top:10px">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p style="font-weight: 600"><i class="fas fa-key mr-2"></i>Owner</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>Type</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="ownerTypeVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="rowOfOwnerNameVD">
+                                    <div class="col-5">
+                                        <p>Name</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="ownerNameVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="rowOfOwnerPhoneVD">
+                                    <div class="col-5">
+                                        <p>Phone</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="ownerPhoneVD"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="rowOfOwnerAddressVD">
+                                    <div class="col-5">
+                                        <p>Address</p>
+                                    </div>
+                                    <div class="col-1">
+                                    </div>
+                                    <div class="col-6">
+                                        <p id="ownerAddressVD"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--Maintenance-->
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-8" style="border: 1px solid #D4D4D4; border-radius: 10px; padding-top:10px">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p style="font-weight: 600"><i class="far fa-id-card mr-2"></i>Documents</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>Revenue license Expiration</p>
+                                        </div>
+                                        <div class="col-1">
+                                        </div>
+                                        <div class="col-5">
+                                            <p id="revenueLicenseExpirationVD">N/A</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>Insurance Expiration</p>
+                                        </div>
+                                        <div class="col-1">
+                                        </div>
+                                        <div class="col-5">
+                                            <p id="insuranceExpirationVD">N/A</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>Next Service Date</p>
+                                        </div>
+                                        <div class="col-1">
+                                        </div>
+                                        <div class="col-5">
+                                            <p id="nextServiceDateVD">N/A</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>Next Service Odometer</p>
+                                        </div>
+                                        <div class="col-1">
+                                        </div>
+                                        <div class="col-5">
+                                            <p id="nextServiceOdometerVD">N/A</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-8" style="border: 1px solid #D4D4D4; border-radius: 10px; padding-top:10px; margin-bottom: 20px">
+                                <p style="font-weight: 600"><i class="far fa-sticky-note mr-2"></i>Notes</p>
+                                <p id="vehicleNotesVD"></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-secondary-light ml-3" data-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-primary px-4" onclick="btnPrintRowMC()" type="button"><i class="fas fa-print mr-2"></i>Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- Settings Modal-->
+    <div aria-hidden="true" aria-labelledby="settingsModal" class="modal fade" id="settingsModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content" id="modalContent">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"><i
+                            class="fas fa-cog"></i> Settings</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="changePasswordForm" onsubmit="return false">
+                        <div class="form-row">
+                            <!-- Username -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue" for="txtUsernameView">
+                                    <b>Username</b>
+                                </label>
+                                <div class="form-control-plaintext" id="txtUsernameView"
+                                     readonly></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Current Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue"
+                                       for="txtCurrentPassword"><b>Current Password</b> <i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtCurrentPassword"
+                                       onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- New Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue" for="txtNewPassword"><b>New
+                                    Password</b><i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtNewPassword"
+                                       onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Confirm Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue"
+                                       for="txtConfirmPassword"><b>Confirm
+                                    Password</b><i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtConfirmPassword"
+                                       onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" id="brnClosechnagepasswordmodle"
+                            type="button">
+                        Close
+                    </button>
+                    <button class="btn btn-primary" onclick="btnSaveChangePasswordMC()"
+                            type="button">Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script src="js/sidebar.js"></script>
+</body>
+
+</html>

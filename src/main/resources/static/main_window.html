@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+
+    <script defer src="vendor/fontawesome/js/solid.js"></script>
+    <script defer src="vendor/fontawesome/js/fontawesome.js"></script>
+
+    <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="vendor/jquery/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/common.js"></script>
+    <script src="js/main_window.js"></script>
+
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+
+    <title>Sethyana</title>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar closes">
+
+    <div class="logo-details">
+        <i class='bx bxs-car'></i>
+        <span class="logo_name">Sethyana</span>
+    </div>
+    <ul class="nav-links">
+        <li class="active2">
+            <a href="http://localhost:8080/mainwindow">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">Dashboard</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name active2" href="http://localhost:8080/mainwindow"><span>Dashboard</span></a></li>
+            </ul>
+        </li>
+
+        <li class="SDRESERVATION">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/sd_reservation">
+                    <i class='bx bx-file'></i>
+                    <span class="link_name">Self-Drive</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/sd_reservation">Self-Drive</a></li>
+            </ul>
+        </li>
+
+        <li class="CDRESERVATION" id="CDSidebar">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/cd_reservation">
+                    <i class='bx bx-file'></i>
+                    <span class="link_name">Chauffeur-Drive</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/cd_reservation">Chauffeur-Drive</a></li>
+            </ul>
+        </li>
+
+        <li class="VEHICLE">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/vehicle">
+                    <i class='bx bxs-car'></i>
+                    <span class="link_name">Vehicles</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/vehicle">Vehicles</a></li>
+            </ul>
+        </li>
+
+        <li class="DRIVER">
+            <a href="#">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Drivers</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Drivers</a></li>
+            </ul>
+        </li>
+
+        <li class="PACKAGE">
+            <a href="http://localhost:8080/package">
+                <i class='bx bx-package'></i>
+                <span class="link_name">Packages</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/package">Packages</a></li>
+            </ul>
+        </li>
+
+        <li class="CUSTOMER">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/customer">
+                    <i class='bx bxs-user-account'></i>
+                    <span class="link_name">Customers</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/customer">Customers</a></li>
+            </ul>
+        </li>
+
+        <li class="CUSTOMERPAYMENT">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/customer_payment">
+                    <i class='bx bxs-coin-stack'></i>
+                    <span class="link_name">Payments</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="http://localhost:8080/customer_payment">Payments</a></li>
+            </ul>
+        </li>
+
+        <li class="REPORTS">
+            <a href="http://localhost:8080/report_revenue">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <span class="link_name">Reports</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/report_revenue">Reports</a></li>
+            </ul>
+        </li>
+
+        <li class="NOTIFICATION">
+            <a href="#">
+                <i class='bx bxs-bell'></i>
+                <span class="link_name">Notifications</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Notifications</a></li>
+            </ul>
+        </li>
+
+        <li class="EMPLOYEE">
+            <a href="http://localhost:8080/employee">
+                <i class='bx bxs-user-detail'></i>
+                <span class="link_name">Employees</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/employee">Employees</a></li>
+            </ul>
+        </li>
+
+
+        <li class="USER">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/user">
+                    <i class='bx bxs-user'></i>
+                    <span class="link_name">Users</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/user">Users</a></li>
+            </ul>
+        </li>
+
+        <li class="PRIVILEGE">
+            <div class="iocn-link">
+                <a href="http://localhost:8080/privilege">
+                    <i class='bx bxs-crown'></i>
+                    <span class="link_name">Privilege</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' style="display: none"></i>
+            </div>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/privilege">Privilege</a></li>
+            </ul>
+        </li>
+
+        <li class="DRIVERPORTAL">
+            <a href="http://localhost:8080/driverPortal">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Driver Portal</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="http://localhost:8080/driverPortal">Driver Portal</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- MAIN-->
+<main id="main-content">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light ml-0 pl-0 " id="navbar">
+
+        <!--Sidebar Toggler -->
+        <a class="navbar-brand" href="#"> <span class="navbar-toggler-icon sidebar-toggler ml-4"></span></a>
+        <!--            <i class='bx bx-menu' ></i>-->
+        <div class="container">
+            <!-- Small Screen Toggler -->
+            <button class="navbar-toggler ml-auto" data-target="#navbarNav" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav d-none d-md-block ">
+                    <!-- Breadcrum -->
+                    <li class="nav-item" style="font-weight: 500; font-size: 1.1rem;">
+                        <a href="http://localhost:8080/mainwindow" class="text-tertiary">Dashboard</a>
+                    </li>
+                </ul>
+
+                <ul class=" navbar-nav ml-4 ml-sm-auto align-items-sm-center">
+                    <!-- Quick Access Button-->
+                    <li class="nav-item mr-5 mb-resp order-sm-1 order-3" style="font-weight: 500;">
+                        <a class="nav-link text-primary" data-target="#quickAccess" data-toggle="collapse"
+                           type="button">
+                            Quick Access <i class="fas fa-caret-down" style="font-size: 1.3rem;"></i></a>
+                    </li>
+
+                    <!-- Notification (Not Suitable for Long Text)-->
+                    <li class="nav-item  mr-5 mb-resp order-sm-2 order-1" id="notification">
+                        <div class="dropdown">
+                            <i class="fas fa-bell fa-lg dropdown-toggle" data-toggle="dropdown" type="button"></i>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+
+                                <p class="dropdown-item mb-0 text-center"><span class="badge badge-primary"
+                                                                                id="newNotificationCount">1 </span>
+                                    New Notification
+                                </p>
+                                <div class="dropdown-divider"></div>
+
+                                <div class="dropdown-item">
+                                    <div class="d-flex">
+
+                                        <i class="fas fa-info-circle mr-4"></i>
+
+                                        <div class="flex-column justify-content-start">
+                                            <p>Maintenance</p>
+                                            <div>Vehicle CAL-4759 is set on
+                                                maintenance
+                                            </div>
+                                            <p class=" text-muted">2h ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item mb-0 text-center" href="#">Show all notification</a>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- Profile Img -->
+                    <li class="nav-item dropdown order-sm-2 order-2 mb-resp mr-4">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link d-flex mb-0 pb-0"
+                           data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                            <img class="rounded-circle mr-3 mb-0 pb-0" id="profileImage"
+                                 src="/image/user.jpg">
+                            <div class="d-flex flex-column">
+                                <p id="lblLogUser" class="mb-2 pb-0" style="font-weight: 500;"></p>
+                                <p id="spnDesignation" class="loggedUserNameField text-center text-muted dropdown-toggle mb-0 pb-0"
+                                   style="font-size: 0.96rem; line-height: 0;"></p>
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                            <a class="dropdown-item" data-target="#settingsModal" data-toggle="modal" href="#"><i
+                                    class="far fa-sliders-v"></i> Change
+                                Password</a>
+                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                    class="fas fa-sign-out-alt"></i> Sign Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QUICK ACCESS -->
+    <div class="collapse" id="quickAccess">
+        <div class="py-4 bg-background-color border-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class=" col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block" id="addSDRQuick" onclick="addSDRQuickMC()">
+                            <i class="fas fa-plus fa"></i>
+                            Add Reservation
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Check In
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-check"></i>
+                            Check Out
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-alt"></i>
+                            View Calendar
+                        </buttoon>
+                    </div>
+
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-car"></i>
+                            Add Vehicle
+                        </buttoon>
+                    </div>
+                    <div class="col-sm-2 mb-resp">
+                        <buttoon class="btn btn-primary btn-block">
+                            <i class="fas fa-users"></i>
+                            Add Customer
+                        </buttoon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="container d-none">
+            <h6 class="form-collapse d-block border-bottom" data-target="#errorLog" data-toggle="collapse"
+                type="button">
+                <i class="fas fa-chevron-down mr-2"></i>
+            </h6>
+
+            <div class="collapse" id="errorLog">
+                <div id="err"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Settings Modal-->
+    <div aria-hidden="true" aria-labelledby="settingsModal" class="modal fade" id="settingsModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content" id="modalContent">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"><i
+                            class="fas fa-cog"></i> Settings</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="changePasswordForm" onsubmit="return false">
+                        <div class="form-row">
+                            <!-- Username -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue" for="txtUsernameView">
+                                    <b>Username</b>
+                                </label>
+                                <div class="form-control-plaintext" id="txtUsernameView"
+                                     readonly></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Current Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue"
+                                       for="txtCurrentPassword"><b>Current Password</b> <i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtCurrentPassword"
+                                       onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9A-Za-z]{5,10}$', 'changePassword', 'currentPassword', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- New Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue" for="txtNewPassword"><b>New
+                                    Password</b><i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtNewPassword"
+                                       onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9A-Za-z]{5,10}$', 'changePassword', '', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Confirm Password -->
+                            <div class="form-group col-md-12">
+                                <label class="text-blue"
+                                       for="txtConfirmPassword"><b>Confirm
+                                    Password</b><i
+                                        class="fas fa-question-circle text-primary ml-1"
+                                        data-placement="right" data-toggle="tooltip"
+                                        title=""></i></label>
+                                <input class="form-control form-control-sm changePasswordFields"
+                                       id="txtConfirmPassword"
+                                       onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9A-Za-z]{5,10}$', 'changePassword', 'newPassword', 'oldChangePassword')"
+                                       type="password">
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" id="brnClosechnagepasswordmodle"
+                            type="button">
+                        Close
+                    </button>
+                    <button class="btn btn-primary" onclick="btnSaveChangePasswordMC()"
+                            type="button">Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/sidebar.js"></script>
+
+<script>
+
+    //Validation
+    function validF(id) {
+
+        $(id).removeClass("invalid2 update2"); //remove borders
+        $(id).addClass("valid2"); //add border
+
+        $(id).parent().parent().find(".invalid-comment").removeClass("d-block"); //remove comment
+        $(id).parent().parent().find(".invalid-comment").addClass("d-none");
+
+        $(id).parent().children(".iconInvalid").removeClass("d-block"); //remove icon
+        $(id).parent().children(".iconInvalid").addClass("d-none");
+
+        $(id).parent().children(".tickUpdate").removeClass("d-block"); //remove icon
+        $(id).parent().children(".tickUpdate").addClass("d-none");
+
+        $(id).parent().children(".tickValid").removeClass("d-none"); //add icon
+        $(id).parent().children(".tickValid").addClass("d-block");
+    }
+
+    function updateF(id) {
+
+        $(id).removeClass("invalid2 valid2"); //remove borders
+        $(id).addClass("update2"); //add border
+
+        $(id).parent().parent().find(".invalid-comment").removeClass("d-block"); //remove comment
+        $(id).parent().parent().find(".invalid-comment").addClass("d-none");
+
+        $(id).parent().children(".iconInvalid").removeClass("d-block"); //remove icon
+        $(id).parent().children(".iconInvalid").addClass("d-none");
+
+        $(id).parent().children(".tickValid").removeClass("d-block"); //remove icon
+        $(id).parent().children(".tickValid").addClass("d-none");
+
+        $(id).parent().children(".tickUpdate").removeClass("d-none"); //add icon
+        $(id).parent().children(".tickUpdate").addClass("d-block");
+    }
+
+    function invalidF(id) {
+
+        $(id).removeClass("update2 valid2"); //remove borders
+        $(id).addClass("invalid2"); //add border
+
+        $(id).parent().children(".tickUpdate").removeClass("d-block"); //remove icon
+        $(id).parent().children(".tickUpdate").addClass("d-none");
+
+        $(id).parent().children(".tickValid").removeClass("d-block"); //remove icon
+        $(id).parent().children(".tickValid").addClass("d-none");
+
+        $(id).parent().children(".iconInvalid").removeClass("d-none"); //add icon
+        $(id).parent().children(".iconInvalid").addClass("d-block");
+
+        $(id).parent().parent().find(".invalid-comment").removeClass("d-none"); //add comment
+        $(id).parent().parent().find(".invalid-comment").addClass("d-block");
+    }
+
+    function initialF(id) {
+
+        $(id).removeClass("invalid2 update2 valid2"); //remove borders
+
+        $(id).parent().parent().find(".invalid-comment").removeClass("d-block"); //remove comment
+        $(id).parent().parent().find(".invalid-comment").addClass("d-none");
+
+        $(id).parent().children(".iconInvalid").removeClass("d-block"); //remove icon
+        $(id).parent().children(".iconInvalid").addClass("d-none");
+
+        $(id).parent().children(".tickUpdate").removeClass("d-block"); //remove icon
+        $(id).parent().children(".tickUpdate").addClass("d-none");
+
+        $(id).parent().find(".tickValid").removeClass("d-block"); //remove icon
+        $(id).parent().find(".tickValid").addClass("d-none");
+    }
+
+</script>
+</body>
+
+</html>
