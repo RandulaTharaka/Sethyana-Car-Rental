@@ -169,15 +169,15 @@ public class PackageController {
         return dao.packageList();
     }
 
-    @GetMapping(value = "/findAll", params = {"page", "size"}, produces = "application/json")
-    public Page<Package> findAll(@RequestParam("page") int page, @RequestParam("size") int size) {
+    @GetMapping(value = "/findAll", params = {"page", "size", "searchtext"}, produces = "application/json")
+    public Page<Package> findAll(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam("searchtext") String searchtext) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUserName(auth.getName());
         HashMap<String, Boolean> priv = previlageController.getPrivileges(user, "PACKAGE");
 
         if (user != null && priv != null && priv.get("select")) {
 
-            return dao.findAll(PageRequest.of(page, size, Sort.Direction.DESC, "id"));
+            return dao.findAll(searchtext, PageRequest.of(page, size, Sort.Direction.DESC, "id"));
         } else {
             return null;
         }

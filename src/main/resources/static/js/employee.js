@@ -467,10 +467,10 @@ function savedata() {
                 swal({
                     position: 'center',
                     icon: 'success',
-                    title: 'Your work has been Done \n Save SuccessFully..!',
+                    title: 'Save SuccessFully..!',
                     text: '\n',
                     button: false,
-                    timer: 1200
+                    timer: 2000
                 });
                 activepage = 1;
                 activerowno = 1;
@@ -546,9 +546,15 @@ function filldata(emp) {
     txtNIC.value = employee.nic;
     txtAddress.value = employee.address;
     txtMobile.value = employee.mobile;
-    txtLand.value = employee.land;
     dteDOAssignment.value = employee.doassignment;
-    txtDescription.value = employee.description;
+
+    if(employee.description !== undefined){
+        txtDescription.value = employee.description;
+    }
+
+    if(employee.land !== undefined){
+        txtLand.value = employee.land;
+    }
 
     fillCombo(cmbGender, "Select Gender", genders, "name", employee.genderId.name);
     fillCombo(cmbDesignation, "Select Designation", designations, "name", employee.designationId.name);
@@ -635,7 +641,7 @@ function btnUpdateMC() {
                 timer: 1200});
         else {
             swal({
-                title: "Are you sure to update following empolyee details...?",
+                title: "Are you sure to update following employee details...?",
                 text: "\n"+ getUpdates(),
                 icon: "warning", buttons: true, dangerMode: true,
             })

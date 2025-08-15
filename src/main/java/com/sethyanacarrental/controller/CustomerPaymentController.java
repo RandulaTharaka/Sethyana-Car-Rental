@@ -149,7 +149,7 @@ public class CustomerPaymentController {
             } catch (Exception ex) {
                 return "Save Not Completed..." + ex.getMessage();
             }
-        } else {
+        }   else {
             return "Error in Saving: You have no Privilege!";
         }
 

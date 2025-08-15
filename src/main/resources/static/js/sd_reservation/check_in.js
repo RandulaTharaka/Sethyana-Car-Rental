@@ -557,8 +557,8 @@ function loadReceiptCHI() {
             divCompanyCusPrintCHI.style.display = "none";
             divIndividualCusPrintCHI.style.display = "block";
         } else if (completedPayment.self_drive_reservation_id.customer_id.customer_type_id.id == 2) { // Company
-            spnCompanyNamePrintCHI.innerHTML = oldCDReservation.customer_id.company_name;
-            spnCompanyCPPhonePrintCHI.innerHTML = oldCDReservation.customer_id.contact_person_phone;
+            spnCompanyNamePrintCHI.innerHTML = oldSDReservation.customer_id.company_name;
+            spnCompanyCPPhonePrintCHI.innerHTML = oldSDReservation.customer_id.contact_person_phone;
             divIndividualCusPrintCHI.style.display = "none";
             divCompanyCusPrintCHI.style.display = "block";
         }

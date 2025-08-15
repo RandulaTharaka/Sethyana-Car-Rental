@@ -119,7 +119,7 @@ function updateConfirmTab(){
     txtCdrResvCode.innerHTML = oldCDReservation.cd_reservation_code;
     txtReservationNotes.value = oldCDReservation.trip_notes;
 
-    if(oldCDReservation.reservation_status_id.id === 2){
+    if(oldCDReservation.reservation_status_id.id === 2 || oldCDReservation.reservation_status_id.id === 4 || oldCDReservation.reservation_status_id.id === 5){
         setReservationStatus('update');
     }else if(oldCDReservation.reservation_status_id.id === 7){
         setReservationStatus('onRent');

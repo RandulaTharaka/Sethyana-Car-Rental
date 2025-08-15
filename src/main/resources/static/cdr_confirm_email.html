@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Reservation Confirmation Email</title>
+    <title>Sethyana</title>
 </head>
 
-<body style="margin: 0; font-family:Poppins, sans-serif; font-size: 14px; font-weight: 400;font-style: normal; background-color:#3F808D; padding:50px 75px 75px 75px;">
+<body bgcolor="#3f808d" style="margin: 0; font-family:Poppins, sans-serif; font-size: 14px; font-weight: 400;font-style: normal; background-color:#3f808d; padding:50px 75px 75px 75px;">
 
 <div style="display: grid;
     grid-template-areas:
@@ -18,11 +18,11 @@
     'box-3'
     'box-4'
     'box-5'; width:600px; margin: 0 auto;">
-    <div style="background-color: white; grid-area: box-1; width:100%;">
+    <div style="background-color: #ffffff; grid-area: box-1; width:100%;">
         <div style="text-align: center;">
             <img src="https://i.ibb.co/Msqx3Zg/Sethyana-Logo-with-title.png" alt="Sethyana Logo" width="117px" height="46px" style="margin-top: 24px;" >
-            <h3 style="font-size: 28px; font-weight: 500; margin-bottom: 0; ">You car is reserved at Sethyana</h3>
-            <p style="color: #919191; font-size: 13.6px; font-weight: 600; margin-top: 5px;">Toyota Corolla 2018 or something equally as awesome!</p>
+            <h3 style="font-size: 26px; font-weight: 500; margin-bottom: 0; ">Your ride with Sethyana is confirmed!</h3>
+            <p style="color: #919191; font-size: 13.6px; font-weight: 600; margin-top: 5px;"><span>{{carModel}}</span>  or something equally awesome!</p>
             <div style="margin:0;padding: 0;">
                 <img src="https://i.ibb.co/Zmt8hkF/cityscape-line-art-cropped.png" alt="Cityscape" width="500px">
             </div>
@@ -30,18 +30,18 @@
         </div>
     </div>
 
-    <div style="background-color: white; grid-area: box-2; width:100%;">
-        <p style="font-weight: 500; margin: 48px 32px 0 32px">Hi Randula Tharaka,</p>
+    <div style="background-color: #ffffff; grid-area: box-2; width:100%;">
+        <p style="font-weight: 500; margin: 48px 32px 0 32px">Hi {{customerName}},</p>
         <p style="margin: 16px 32px 0 32px">
-            <span style="font-weight: 500;">Your vehicle reservation for a 2018 Toyota Corolla has been confirmed</span>
-            for Wednesday, December 27, 2024, at 5:40 PM.
-            Please remember to bring your valid driver's license.
-            Below, you'll find your reservation details.
+            <span style="font-weight: 500;">Your chauffeur-driven vehicle reservation for a {{carModel}} has been confirmed</span>
+            for {{detailedPickUpDateAndTime}}.
+            Our professional chauffeur, {{driverName}}, will ensure a smooth and comfortable journey for you.
             We look forward to meeting you at the pickup location.
         </p>
+        <p style="margin: 16px 32px 0 32px" >Your driver's contact no: {{driverContactNo}}</p>
     </div>
 
-    <div style="grid-area: box-3; background-color: white; width:100%; padding-bottom: 3.3rem;">
+    <div style="grid-area: box-3; background-color: #ffffff; width:100%; padding-bottom: 3.3rem;">
 
         <!-- 1 -->
 
@@ -50,11 +50,10 @@
             'reservation-card'
             'vehicle-card'
             'package-card'
-            'estimate-card'
-            'payable-card'; ">
+            'estimate-card'; ">
 
             <div style="grid-area: reservation-card; margin: 40px auto 0 auto;">
-                <div style="min-width: 26rem; background-color: #A0D4DF; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
+                <div style="min-width: 26rem; background-color: #a0d4df; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
                     <p style="font-size: 18px; font-weight: 500; margin: 10px 0 10px 0;  margin-left: 32px; margin-right: 32px;" >Reservation Details</p>
                     <hr style="margin: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
 
@@ -64,16 +63,25 @@
                                 <p>Pick Up Location</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p>Office</p>
+                                <p>{{pickUpLocation}}</p>
                             </div>
                         </div>
 
                         <div style="display: flex; width: 100%;">
                             <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Return Location</p>
+                                <p style="margin-top: 0;">Drop Off Location</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Office</p>
+                                <p style="margin-top: 0;">{{dropOffLocation}}</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; width: 100%;">
+                            <div style="margin: 0 32px;">
+                                <p style="margin-top: 0;">Multiple Stops</p>
+                            </div>
+                            <div style="margin: 0 32px 0 auto">
+                                <p style="margin-top: 0;">{{multipleStops}}</p>
                             </div>
                         </div>
 
@@ -83,17 +91,17 @@
                                 <p style="margin-top: 0;">Pick Up Date & Time</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">2024-05-10 2.00 PM</p>
+                                <p style="margin-top: 0;">{{pickUpDateAndTime}}</p>
                             </div>
                         </div>
 
 
                         <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Return Date & Time</p>
+                            <div style="margin:0 32px 10px 32px;">
+                                <p style="margin-top: 0;">Drop Off Date & Time</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">2024-05-15 4.00 PM</p>
+                                <p style="margin-top: 0;">{{dropOffDate&Time}}</p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +111,7 @@
 
             <!-- 2 -->
             <div style="grid-area: vehicle-card; margin: 36px auto 0 auto;">
-                <div style="min-width: 26rem; background-color: #A0D4DF; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
+                <div style="min-width: 26rem; background-color: #a0d4df; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
                     <p style="font-size: 18px; font-weight: 500; margin: 10px 0 10px 0;  margin-left: 32px; margin-right: 32px;" >Vehicle Details</p>
                     <hr style="margin: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
 
@@ -113,65 +121,72 @@
                                 <p>Vehicle Model</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p>Toyota Corolla 2018</p>
+                                <p>{{carModel}}</p>
                             </div>
                         </div>
 
                         <div style="display: flex; width: 100%;">
                             <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Seats</p>
+                                <p style="margin-top: 0;">License Plate</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">5</p>
+                                <p style="margin-top: 0;">{{licensePlate}}</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; width: 100%;">
+                            <div style="margin: 0 32px;">
+                                <p style="margin-top: 0;">Passenger Seats</p>
+                            </div>
+                            <div style="margin: 0 32px 0 auto">
+                                <p style="margin-top: 0;">{{seats}}</p>
                             </div>
                         </div>
 
 
                         <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
+                            <div style="margin: 0 32px 10px 32px;">
                                 <p style="margin-top: 0;">Color</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">White</p>
-                            </div>
-                        </div>
-
-
-                        <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Transmission</p>
-                            </div>
-                            <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Auto</p>
+                                <p style="margin-top: 0;">{{color}}</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <!-- 3 -->
             <div style="grid-area: package-card; margin: 36px auto 0 auto;">
-                <div style="min-width: 26rem; background-color: #A0D4DF; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
+                <div style="min-width: 26rem; background-color: #a0d4df; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
                     <p style="font-size: 18px; font-weight: 500; margin: 10px 0 10px 0;  margin-left: 32px; margin-right: 32px;" >Package Details</p>
                     <hr style="margin: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
 
                     <div>
                         <div style="display: flex; width: 100%;">
                             <div style="margin: 0 32px">
-                                <p>Km Per Day</p>
+                                <p>Allocated Duration</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p>100Km</p>
+                                <p>{{allocatedDuration}}</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; width: 100%;">
+                            <div style="margin: 0 32px">
+                                <p style="margin-top: 0;">Allocated Kilometers</p>
+                            </div>
+                            <div style="margin: 0 32px 0 auto">
+                                <p style="margin-top: 0;">{{allocatedKM}}Km</p>
                             </div>
                         </div>
 
                         <div style="display: flex; width: 100%;">
                             <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Price Per Day</p>
+                                <p style="margin-top: 0;">Package Price</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Rs. 3000.00</p>
+                                <p style="margin-top: 0;">Rs. {{packagePrice}}</p>
                             </div>
                         </div>
 
@@ -181,17 +196,17 @@
                                 <p style="margin-top: 0;">Price Per Add. Km</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Rs. 250.00</p>
+                                <p style="margin-top: 0;">Rs. {{pricePerAddKm}}</p>
                             </div>
                         </div>
 
 
                         <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
+                            <div style="margin: 0 32px 10px 32px;">
                                 <p style="margin-top: 0;">Price Per Add. Hour</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Rs. 400.00</p>
+                                <p style="margin-top: 0;">Rs. {{pricePerAddHour}}</p>
                             </div>
                         </div>
                     </div>
@@ -201,26 +216,17 @@
 
             <!-- 4 -->
             <div style="grid-area: estimate-card; margin: 36px auto 0 auto;">
-                <div style="min-width: 26rem; background-color: #A0D4DF; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
+                <div style="min-width: 26rem; background-color: #a0d4df; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
                     <p style="font-size: 18px; font-weight: 500; margin: 10px 0 10px 0;  margin-left: 32px; margin-right: 32px;" >Estimated Charge</p>
                     <hr style="margin: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
 
                     <div>
                         <div style="display: flex; width: 100%;">
                             <div style="margin: 0 32px">
-                                <p>Rental Days Charge</p>
+                                <p>Package Price</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p>Rs. 150000.00</p>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Add. Hours Charge</p>
-                            </div>
-                            <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Rs. 800.00</p>
+                                <p>Rs. {{packagePrice}}</p>
                             </div>
                         </div>
 
@@ -230,69 +236,27 @@
                                 <p style="margin-top: 0;">Pick Up Charge</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">none</p>
+                                <p style="margin-top: 0;">Rs. {{pickUpCharge}}</p>
                             </div>
                         </div>
 
 
-                        <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Price Per Add. Hour</p>
-                            </div>
-                            <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Rs. 400.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- 5 -->
-            <div style="grid-area: payable-card; margin: 36px auto 0 auto;">
-                <div style="min-width: 26rem; background-color: #A0D4DF; border: 1px solid rgba(0,0,0,0.125); border-radius: 4px;">
-                    <p style="font-size: 18px; font-weight: 500; margin: 10px 0 10px 0;   margin-left: 32px; margin-right: 32px;" >Payable Upfront</p>
-                    <hr style="margin: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
-
-                    <div>
-                        <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px">
-                                <p>Advance</p>
-                            </div>
-                            <div style="margin: 0 32px 0 auto">
-                                <p>Rs. 1500.00</p>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; width: 100%;">
-                            <div style="margin: 0 32px;">
-                                <p style="margin-top: 0;">Refundable Deposit</p>
-                            </div>
-                            <div style="margin: 0 32px 0 auto">
-                                <p style="margin-top: 0;">Rs. 20000.00</p>
-                            </div>
-                        </div>
-
-
-                        <div style="display: flex; width: 100%; margin-bottom: 12px; font-weight: 500; font-size: 1.3rem; color:purple">
-                            <div style="margin: 0 32px;">
+                        <div style="display: flex; width: 100%; margin-bottom: 6px; font-weight: 500; font-size: 1.3rem; color:#800080">
+                            <div style="margin: 0 32px 10px 32px;">
                                 <p style="margin-top: 0;">Total</p>
                             </div>
                             <div style="margin: 0 32px 0 auto">
-                                <p  style="margin-top: 0;">Rs. 21500.00</p>
+                                <p style="margin-top: 0;">Rs. {{estimatedTotal}}</p>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
             </div>
-
         </div>
     </div>
 
-    <div class="row" style="grid-area: box-4; background-color: #FFA96E; padding-bottom: 3.25rem; width:600px; margin: 0 auto;">
+    <div class="row" style="grid-area: box-4; background-color: #ffa96e; padding-bottom: 3.25rem; width:600px; margin: 0 auto;">
         <div style="text-align: center;">
             <h3 style="font-size: 1.3rem; font-weight: 600; margin-top: 3rem;">Have any questions?</h3>
             <p style="margin-bottom: 0;">If you have any questions or need to change this reservation,</p>
@@ -316,17 +280,17 @@
 
 
 
-<div style="grid-area: box-5; width:600px; margin: 2rem auto 0 auto; color: #CCCCCC; text-align: center;">
+<div style="grid-area: box-5; width:600px; margin: 2rem auto 0 auto; color: #cccccc; text-align: center;">
     <p style="font-size: 17px; font-weight: 500; margin-bottom: 5px;">Follow Us</p>
     <div>
-        <a href="#"><img src="https://i.ibb.co/pzm1GHR/facebook-64x64.png" alt="Facebook Icon" width="23px" style="vertical-align: middle; margin-right: 0.25rem;"></a>
+        <a href="https://www.facebook.com/sethyana.rentacar/"><img src="https://i.ibb.co/pzm1GHR/facebook-64x64.png" alt="Facebook Icon" width="23px" style="vertical-align: middle; margin-right: 0.25rem;"></a>
         <a href="#"><img src="https://i.ibb.co/R0WVkVh/instagram-64x64.png" alt="Instagram Icon" width="26px" style="vertical-align: middle; margin-right: 0.25rem"></a>
         <a href="#"><img src="https://i.ibb.co/VV2qxfZ/whatsapp-64x64.png" alt="WhatsApp Icon" width="24px" style="vertical-align: middle;"></a>
     </div>
 
     <div style="margin-top: 1.2rem; font-size: 12px">
-        <a href="#" style="color: #CCCCCC;">Unsubscribe</a> |
-        <a href="#" style="color: #CCCCCC;">Terms & Conditions</a>
+        <a href="#" style="color: #cccccc;">Unsubscribe</a> |
+        <a href="#" style="color: #cccccc;">Terms & Conditions</a>
     </div>
     <p style="margin: 2px; font-size: 12px">141/1, Rathnapura Road, Avissawella. &#169; 2024 Sethyana</p>
 </div>

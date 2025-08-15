@@ -12,7 +12,7 @@ function loadReportUI() {
     // Set min max for date selectors
 
     // Restrict Receptionist to generate daily reports only
-    if(session.getObject("activeuser").employeeId.designationId.name == "Receptionist"){
+    if(session.getObject("activeuser").Id.designationId.name == "Receptionist"){
         dteStartdate.value = nowDate("date");
         dteEnddate.value = nowDate("date");
         cmbReportType.value = "Daily";

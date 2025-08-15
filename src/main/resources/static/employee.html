@@ -488,21 +488,17 @@
                                             </div>
                                             <div class="col-md-12 mb-1">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="txtCallingname">Employee Calling Name
+                                                    <label class="form-label" for="txtCallingname">Calling Name
                                                         <span class="required"> *</span></label>
-                                                    <input type="text" id="txtCallingname" placeholder="eg: Nisal"
+                                                    <input type="text" id="txtCallingname" placeholder="Enter Calling Name"
                                                            class="form-control" required
-                                                           data-toggle="tooltip" data-placement="bottom"
-                                                           title="eg :- Johne"
                                                            onkeyup="textFieldBinder(txtCallingname,'^[A-Za-z\\s]+$','employee','callingname','oldemployee')"/>
-
-                                                   <!-- ([a-zA-z\s])+-->
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-label" for="txtFullname">Employee Full Name<span class="required"> *</span></label>
-                                            <textarea id="txtFullname" placeholder="Enter Full Name Here"
+                                            <label class="form-label" for="txtFullname">Full Name<span class="required"> *</span></label>
+                                            <textarea id="txtFullname" placeholder="Enter Full Name"
                                                       class="form-control" required
                                                       onkeyup="textFieldBinder(txtFullname,'^[A-Za-z\\s]+$','employee','fullname','oldemployee')">
                                                     </textarea>
@@ -519,9 +515,9 @@
                                 </div>
 
                                 <div class="row mt-1">
-                                    <div class="col-md-4">
+                                    <!--<div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label" for="txtNIC">Employee NIC<span
+                                            <label class="form-label" for="txtNIC">NIC<span
                                                     class="required"> *</span></label>
                                             <input type="text" id="txtNIC"
                                                    placeholder="9 digite plus vVxX or 12 digits"
@@ -529,6 +525,36 @@
                                                    data-toggle="tooltip" data-placement="bottom"
                                                    title="9 digite plus vVxX or 12 digits"
                                                    onkeyup="nicTestFieldBinder(txtNIC,'^(([0-9]{9}[vVxX])|([0-9]{12}))$','','','')"/>
+                                        </div>
+                                    </div>-->
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label" for="txtNIC">NIC<span
+                                                    class="required ml-1">*</span><i
+                                                    class="far fa-question-circle align-text-top ml-1 text-secondary"
+                                                    data-placement="top" data-toggle="tooltip"
+                                                    title="Enter 12-digit NIC or 9-digit NIC ending with 'V'."></i></label>
+                                            <div class="input-group">
+                                                <div class="d-flex align-items-center d-block2">
+                                                    <div class="input-group-prepend">
+                                                                    <span class="input-group-text d-block">
+                                                                        <i class="far fa-id-card"></i></span>
+                                                    </div>
+                                                    <input class="form-control" id="txtNIC" required
+                                                           onkeyup="nicTestFieldBinder(txtNIC, '^(([0-9]{9}[vVxX])|([0-9]{12}))$','', '','')"
+                                                           placeholder="eg: 950702245V" type="text">
+
+                                                    <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
+                                                    <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
+                                                    <i class="fas fa-check-circle text-primary ml-2 d-none tickValid"></i>
+                                                </div>
+                                                <div class="invalid-comment d-none"
+                                                     style="margin-left: 40px;">
+                                                    Please provide valid NIC
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -554,20 +580,19 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label" for="txtMobile">Employee Mobile-Number<span
+                                            <label class="form-label" for="txtMobile">Mobile<span
                                                     class="required"> *</span></label>
                                             <input type="text" id="txtMobile"
-                                                   placeholder="Enter Mobile-Number Here"
+                                                   placeholder="eg: 0778720768"
                                                    class="form-control" required
                                                    onkeyup="textFieldBinder(txtMobile,'^0\\d{9}$','employee','mobile','oldemployee')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label" for="txtLand">Employee Land-Number<span
-                                                    class="required"> *</span></label>
+                                            <label class="form-label" for="txtLand">Telephone</label>
                                             <input type="text" id="txtLand"
-                                                   placeholder="Enter Land-Number Here (optional)"
+                                                   placeholder="eg: 0364020846"
                                                    class="form-control"
                                                    onkeyup="textFieldBinder(txtLand,'^0\\d{9}$','employee','land','oldemployee')"/>
                                         </div>
@@ -577,9 +602,9 @@
                                 <div class="row mt-2">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="txtAddress">Employee Address<span
+                                            <label class="form-label" for="txtAddress">Address<span
                                                     class="required"> *</span></label>
-                                            <textarea id="txtAddress" placeholder="Enter Address Here"
+                                            <textarea id="txtAddress" placeholder="eg: No. 3/A, Honiton  Place, Avissawella."
                                                       class="form-control" required
                                                       onkeyup="textFieldBinder(txtAddress,'','employee','address','oldemployee')"></textarea>
                                         </div>
@@ -587,7 +612,7 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label" for="cmbCivilstatus">Civilstatus<span
+                                            <label class="form-label" for="cmbCivilstatus">Marital Status<span
                                                     class="required"> *</span></label>
                                             <select id="cmbCivilstatus" class="form-control" required
                                                     onchange="comboBoxBinder(cmbCivilstatus,'','employee','civilstatusId','oldemployee')"></select>
@@ -595,7 +620,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label" for="cmbDesignation">Employee Designation<span class="required"> *</span></label>
+                                            <label class="form-label" for="cmbDesignation">Designation<span class="required"> *</span></label>
                                             <select id="cmbDesignation" class="form-control" required
                                                     onchange="comboBoxBinder(cmbDesignation,'','employee','designationId','oldemployee')"></select>
                                         </div>
@@ -607,9 +632,9 @@
                                 <div class="row mt-2">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="txtDescription">Employee Description</label>
+                                            <label class="form-label" for="txtDescription">Description</label>
                                             <textarea id="txtDescription" rows="2"
-                                                      placeholder="Enter Description Here (optional)"
+                                                      placeholder="Description about employee"
                                                       class="form-control"
                                                       onkeyup="textFieldBinder(txtDescription,'','employee','description','oldemployee')"></textarea>
                                         </div>

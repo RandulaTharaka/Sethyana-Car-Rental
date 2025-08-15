@@ -1,6 +1,9 @@
 package com.sethyanacarrental.repository;
 
 import com.sethyanacarrental.model.Package;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -151,4 +154,10 @@ public interface PackageRepository extends JpaRepository<Package, Integer> {
             "ORDER BY p.package_category_id.id, p.package_duration_id.id")
     List<Package> packagesByVModelPkgDurationSdr(@Param("vehicle_model_id") Integer vehicle_model_id,
                                                  @Param("pkg_duration_id") Integer pkg_duration_id);
+
+    //Query Returning Function Mapping
+    @Query("SELECT pkg FROM Package pkg WHERE (pkg.package_code LIKE CONCAT('%', :searchtext, '%') OR " +
+            "pkg.package_type_id.name LIKE CONCAT('%', :searchtext, '%') OR " +
+            "pkg.package_name LIKE CONCAT('%', :searchtext, '%'))")
+    Page<Package> findAll(@Param("searchtext") String searchtext, Pageable of);
 }

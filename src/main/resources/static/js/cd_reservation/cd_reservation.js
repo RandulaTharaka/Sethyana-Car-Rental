@@ -118,6 +118,7 @@ function loadForm() {
     fillCombo3(cmbPkDuration, "Nothing selected", packageDurations, "name", "package_duration_type_id.name", "");
     fillTable('tblAvPackage', packages, fillForm, btnDeleteMC, viewitem, radioBindingFunctionPackage, 'avPackage');
 
+    console.log(`vehicleModels ${vehicleModels}`);
     fillCombo5(cmbVModel, "Nothing selected", vehicleModels, "name", "brand_id.name", "");
     fillCombo(txtPlate, "Nothing Selected", vehicles, "license_plate", "")
 
@@ -185,9 +186,8 @@ function disableButtons(add, upd, del) {
         if (cdReservations[index].reservation_status_id.name == "Deleted") {
             tblCDReservation.children[1].children[index].style.color = "#f03e3e"; //change row color
             tblCDReservation.children[1].children[index].style.cursor = "not-allowed";
-            tblCDReservation.children[1].children[index].lastChild.children[1].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
-            tblCDReservation.children[1].children[index].lastChild.children[1].style.cursor = "not-allowed"; //cursor not allowed
-
+            tblCDReservation.children[1].children[index].lastChild.children[2].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
+            tblCDReservation.children[1].children[index].lastChild.children[2].style.cursor = "not-allowed"; //cursor not allowed
         }
     }
 
@@ -274,6 +274,14 @@ function savedata() {
         customer_name = cdReservation.customer_id.company_name;
     }
 
+    // If no ongoing reservation for the selected vehicle, vehicle status set to reserved(2)
+    let onGoingReservation = new Array(httpRequest("../sd_reservation/on_going_list_by_vehicle?vehicle_id=" + cdReservation.vehicle_id.id,  "GET"),
+                                             httpRequest("../cd_reservation/on_going_list_by_vehicle?vehicle_id=" + cdReservation.vehicle_id.id,  "GET"));
+    if(onGoingReservation[0] == '' && onGoingReservation[1] == ''){
+        cdReservation.vehicle_id.vehicle_status_id.id = 2;
+    }
+
+
     swal({
         title: "Are you sure to add following Reservation...?",
         text: "\nReservatino Code: " + cdReservation.cd_reservation_code +
@@ -282,7 +290,7 @@ function savedata() {
             "\nReturn Date & Time : " + sqlDateTimeToLocal(cdReservation.expect_return_datetime)[0] + " " + sqlDateTimeToLocal(cdReservation.expect_return_datetime)[1] +
             "\nDrop Off Location : " + cdReservation.drop_off_location +
             "\nPackage : " + cdReservation.package_id.package_name +
-            "\nVehicle : " + cdReservation.vehicle_id.vehicle_name +
+            "\nVehicle : " + cdReservation.vehicle_id.model_id.brand_id.name + " " + cdReservation.vehicle_id.model_id.name +
             "\nDriver : " + cdReservation.driver_id.calling_name +
             "\nCustomer : " + customer_name +
             "\nReservation Status : " + cdReservation.reservation_status_id.name,
@@ -291,16 +299,20 @@ function savedata() {
         dangerMode: true,
     }).then((save) => { //then: if user click 'Yes' then
         if (save) {
-            //
-            var response = httpRequest("/cd_reservation", "POST", cdReservation);//Post: because it's a Add
-            if (response == "0") { //message 0: means successful
+            var response = JSON.parse(httpRequest("/cd_reservation", "POST", cdReservation));
+            if (response.reservation === "0") { //message 0: means successful
+                // Set response text for sms & email
+                let displayResponseText= "";
+                displayResponseText += (response.sms === "0") ? "SMS sent succesfully!\n" : response.sms + "\n";
+                displayResponseText += (response.email === "0") ? "Email sent succesfully!" : response.email;
+
                 swal({
                     position: 'center',
                     icon: 'success',
-                    title: 'Your work has been Done \n Save SuccessFully..!',
-                    text: '\n',
+                    title: 'Saved Successfully..!',
+                    text: displayResponseText,
                     button: false,
-                    timer: 1200
+                    timer: 3000
                 });
                 activepage = 1;
                 activerowno = 1; //1: highlight added row which is 1 row
@@ -309,7 +321,7 @@ function savedata() {
                 $('#addReservationModal').modal('hide');
             } else swal({
                 title: 'Save not Success... , You have following errors', icon: "error",
-                text: '\n ' + response,
+                text: '\n ' + response.reservation,
                 button: true
             });
         }
@@ -443,12 +455,12 @@ function btnUpdateMC() {
             })
                 .then((yesUpdate) => {
                     if (yesUpdate) {
-                        var response = httpRequest("/cd_reservation", "PUT", cdReservation);
-                        if (response == "0") {
+                        var response =httpRequest("/cd_reservation", "PUT", cdReservation);
+                        if (response == "0") { //message 0: means successful
                             swal({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'Your work has been Done \n Updated Successfully..!',
+                                title: 'Updated Successfully!',
                                 text: '\n',
                                 button: false,
                                 timer: 1200
@@ -488,8 +500,8 @@ function btnDeleteMC(cdr) {
             if (responce == 0) {
                 swal({
                     title: "Deleted Successfully....!",
-                    text: "\n\n  Status change to delete",
-                    icon: "success", button: false, timer: 1200,
+                    text: "\nStatus change to delete",
+                    icon: "success", button: false, timer: 2000,
                 });
                 loadSearchedTable();
                 loadForm();

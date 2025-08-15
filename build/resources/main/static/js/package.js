@@ -407,10 +407,8 @@ function disableButtons(add, upd, del) {
         if (packages[index].package_status_id.name == "Deleted") {
             tblPackage.children[1].children[index].style.color = "#f03e3e"; //change row color
             tblPackage.children[1].children[index].style.cursor = "not-allowed";
-            // tblCustomer.children[1].children[index].style.border = "2px solid red"; //change border color
-            tblPackage.children[1].children[index].lastChild.children[1].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
-            tblPackage.children[1].children[index].lastChild.children[1].style.cursor = "not-allowed"; //cursor not allowed
-
+            tblPackage.children[1].children[index].lastChild.children[2].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
+            tblPackage.children[1].children[index].lastChild.children[2].style.cursor = "not-allowed"; //cursor not allowed
         }
     }
 
@@ -532,20 +530,17 @@ function savedata() {
     if (package.package_type_id.name== "Self-Drive") {
         swal({
             title: "Are you sure to add following package...?",
-            text: "\nPackage Number: " + package.package_code +
+            text: "\nPackage Code: " + package.package_code +
                 "\nPackage Type : " + package.package_type_id.name +
                 "\nPackage Category : " + package.package_category_id.name +
                 "\nPassenger Seats : " + package.passenger_seats_count +
                 "\nAir Condition Type : " + package.air_condition_type_id.name +
-                "\nPackage Kilometers : " + package.package_km +
-                "\nPackage Duration : " + package.package_duration_id.name +
-                "\nPackage Price : " + package.package_price +
-                "\nRefundable Deposit: " + package.refundable_deposit +
-                "\nPrice per Additional Km : " + package.price_per_additional_km +
-                "\nPackage Name : " + package.package_name +
-                "\nPackage Status : " + package.package_status_id.name +
-                "\nAdded By : " + package.employee_id.callingname +
-                "\nAdded Date : " + package.added_date,
+                "\nPackage Kilometers : " + package.package_km + " Km" +
+                "\nPackage Duration : " + package.package_duration_id.name + " Hour" +
+                "\nPackage Price : Rs " + package.package_price +
+                "\nRefundable Deposit: Rs " + package.refundable_deposit +
+                "\nPrice per Additional Km : Rs " + package.price_per_additional_km +
+                "\nPackage Name : " + package.package_name,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -556,10 +551,10 @@ function savedata() {
                     swal({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your work has been Done \n Save SuccessFully..!',
+                        title: 'Save SuccessFully..!',
                         text: '\n',
                         button: false,
-                        timer: 1200
+                        timer: 2000
                     });
                     activepage = 1;
                     activerowno = 1; //1: highlight added row which is 1 row
@@ -576,20 +571,17 @@ function savedata() {
     } else if (package.package_type_id.name== "Chauffeur-Drive") {
         swal({
             title: "Are you sure to add following package...?",
-            text: "\nPackage Number: " + package.package_code +
+            text: "\nPackage Code: " + package.package_code +
                 "\nPackage Type : " + package.package_type_id.name +
                 "\nPackage Category : " + package.package_category_id.name +
                 "\nPassenger Seats : " + package.passenger_seats_count +
                 "\nAir Condition Type : " + package.air_condition_type_id.name +
-                "\nPackage Kilometers : " + package.package_km +
-                "\nPackage Duration : " + package.package_duration_id.name +
-                "\nPackage Price : " + package.package_price +
-                "\nPrice per Additional Km : " + package.price_per_additional_km +
-                "\nPrice per Additional Km : " + package.price_per_additional_hour +
-                "\nPackage Name : " + package.package_name +
-                "\nPackage Status : " + package.package_status_id.name +
-                "\nAdded By : " + package.employee_id.callingname +
-                "\nAdded Date : " + package.added_date,
+                "\nPackage Kilometers : " + package.package_km + " Km" +
+                "\nPackage Duration : " + package.package_duration_id.name + " Hour" +
+                "\nPackage Price : Rs " + package.package_price +
+                "\nPrice per Additional Km : Rs " + package.price_per_additional_km +
+                "\nPrice per Additional Hour : Rs " + package.price_per_additional_hour +
+                "\nPackage Name : " + package.package_name,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -600,10 +592,10 @@ function savedata() {
                     swal({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your work has been Done \n Save SuccessFully..!',
+                        title: 'Save SuccessFully..!',
                         text: '\n',
                         button: false,
-                        timer: 1200
+                        timer: 2000
                     });
                     activepage = 1;
                     activerowno = 1; //highlight row 1 (added row)
@@ -775,7 +767,7 @@ function btnUpdateMC() {
     if (getErrors() == "") {
         if (getUpdates() == "") {
             swal({
-                title: 'Nothing to update..', icon: "warning",
+                title: 'Nothing to update...', icon: "warning",
                 text: '\n',
                 button: false,
                 timer: 1200
@@ -793,10 +785,10 @@ function btnUpdateMC() {
                             swal({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'Your work has been Done \n Updated Successfully..!',
+                                title: 'Updated Successfully..!',
                                 text: '\n',
                                 button: false,
-                                timer: 1200
+                                timer: 2000
                             });
                             loadSearchedTable();
                             $('#addPackageModal').modal('hide');
@@ -836,7 +828,7 @@ function btnDeleteMC(pkg) {
                     swal({
                         title: "Deleted Successfully....!",
                         text: "\n\n  Status change to delete",
-                        icon: "success", button: false, timer: 1200,
+                        icon: "success", button: false, timer: 2000,
                     });
                     loadSearchedTable();
                     loadForm();

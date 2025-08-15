@@ -8,10 +8,10 @@ com/sethyanacarrental/repository/CustomerStatusRepository.java
  com.sethyanacarrental.repository.CustomerStatusRepository
 com/sethyanacarrental/model/District.java
  com.sethyanacarrental.model.District
-com/sethyanacarrental/service/EmailService.java
- com.sethyanacarrental.service.EmailService
 com/sethyanacarrental/repository/DriverStatusRepository.java
  com.sethyanacarrental.repository.DriverStatusRepository
+com/sethyanacarrental/service/EmailService.java
+ com.sethyanacarrental.service.EmailService
 com/sethyanacarrental/repository/PrivilegeRepository.java
  com.sethyanacarrental.repository.PrivilegeRepository
 com/sethyanacarrental/model/Module.java
@@ -242,8 +242,8 @@ com/sethyanacarrental/controller/ModuleController.java
  com.sethyanacarrental.controller.ModuleController
 com/sethyanacarrental/controller/EmployeeController.java
  com.sethyanacarrental.controller.EmployeeController
-com/sethyanacarrental/model/Vehicle.java
- com.sethyanacarrental.model.Vehicle
+com/sethyanacarrental/controller/SelfDriveReservationController.java
+ com.sethyanacarrental.controller.SelfDriveReservationController
 com/sethyanacarrental/model/CustomerType.java
  com.sethyanacarrental.model.CustomerType
 com/sethyanacarrental/controller/ReportController.java
@@ -284,6 +284,8 @@ com/sethyanacarrental/controller/RefundableDepositStatusController.java
  com.sethyanacarrental.controller.RefundableDepositStatusController
 com/sethyanacarrental/repository/CustomerRepository.java
  com.sethyanacarrental.repository.CustomerRepository
+com/sethyanacarrental/util/Response.java
+ com.sethyanacarrental.util.Response
 com/sethyanacarrental/model/PackageCategory.java
  com.sethyanacarrental.model.PackageCategory
 com/sethyanacarrental/repository/CivilstatusRepository.java
@@ -300,5 +302,5 @@ com/sethyanacarrental/repository/ModelHasColorRepository.java
  com.sethyanacarrental.repository.ModelHasColorRepository
 com/sethyanacarrental/repository/ReservationStatusRepository.java
  com.sethyanacarrental.repository.ReservationStatusRepository
-com/sethyanacarrental/controller/SelfDriveReservationController.java
- com.sethyanacarrental.controller.SelfDriveReservationController
+com/sethyanacarrental/model/Vehicle.java
+ com.sethyanacarrental.model.Vehicle

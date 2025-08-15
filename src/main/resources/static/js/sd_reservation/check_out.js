@@ -1,4 +1,4 @@
-function openCheckOutTab(){     // First Time Paying - Show Payment & Agrement
+function openCheckOutTab(){     // First Time Paying - Show Payment & Agreement
     navCheckOut.classList.remove('d-none');
     $(checkOutTab).tab('show'); // focus check out tab
 
@@ -78,10 +78,13 @@ function txtOdometerOutPayCHOCH() {
 
 // Advance Paid Function
 function txtCashPayCHOCH() {
-    if (parseFloat(txtCashPayCHO.value) >= minimumAdvance) { // if entered value meeets minimm advance
+    if (parseFloat(txtCashPayCHO.value) >= minimumAdvance) { // if entered value meets minimum advance
         cashCHO = parseFloat(txtCashPayCHO.value);
         validF(txtCashPayCHO);
         customerPayment.cash = cashCHO;
+        console.log("customerPayment 1: " + customerPayment);
+        console.log("customerPayment.cash: " + customerPayment.cash);
+
 
         if (parseFloat(txtCashPayCHO.value) < totalPayableCHO) { // if generate arrears
             //set arrears
@@ -126,7 +129,7 @@ function txtCashPayCHOCH() {
         }
 
 
-    } else if (parseFloat(txtCashPayCHO.value) < minimumAdvance) { // doesen't meeets minimm advance
+    } else if (parseFloat(txtCashPayCHO.value) < minimumAdvance) { // doesn't meet minimum advance
         cashCHO = null;
         invalidF(txtCashPayCHO);
         customerPayment.cash = null;
@@ -142,7 +145,6 @@ function txtCashPayCHOCH() {
         //set paid
         paidCHO = 0.00;
     }
-
 }
 
 //Refundable Deposit Function
@@ -281,11 +283,11 @@ function showRentalAgreement() {
             divCompanyCusPrint.style.display = "none";
             divIndividualCusPrint.style.display = "block";
         } else if (advancePayment.self_drive_reservation_id.customer_id.customer_type_id.id == 2) { // Company
-            spnCompanyNamePrint.innerHTML = oldCDReservation.customer_id.company_name;
-            spnCompanyAddressPrint.innerHTML = oldCDReservation.customer_id.company_address;
-            spnCompanyCPPrint.innerHTML = oldCDReservation.customer_id.contact_person_name;
-            spnCompanyCPPhonePrint.innerHTML = oldCDReservation.customer_id.contact_person_phone;
-            spnCompanyCPNICPrint.innerHTML = oldCDReservation.customer_id.contact_person_nic;
+            spnCompanyNamePrint.innerHTML = oldSDReservation.customer_id.company_name;
+            spnCompanyAddressPrint.innerHTML = oldSDReservation.customer_id.company_address;
+            spnCompanyCPPrint.innerHTML = oldSDReservation.customer_id.contact_person_name;
+            spnCompanyCPPhonePrint.innerHTML = oldSDReservation.customer_id.contact_person_phone;
+            spnCompanyCPNICPrint.innerHTML = oldSDReservation.customer_id.contact_person_nic;
             divIndividualCusPrint.style.display = "none";
             divCompanyCusPrint.style.display = "block";
         }

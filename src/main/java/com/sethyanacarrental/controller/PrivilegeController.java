@@ -25,7 +25,6 @@ public class PrivilegeController {
     @Autowired
     private PrivilegeRepository dao;
 
-
     @Autowired
     private UserService userService;
 

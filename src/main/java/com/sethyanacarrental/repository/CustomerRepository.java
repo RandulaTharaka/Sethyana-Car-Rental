@@ -16,11 +16,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     //Query Returning Function Mapping
     @Query("SELECT c FROM Customer c WHERE (c.register_no LIKE CONCAT('%', :searchtext, '%') OR " +
             "c.first_name LIKE CONCAT('%', :searchtext, '%') OR c.last_name LIKE CONCAT('%', :searchtext, '%') OR " +
+            "CONCAT(c.first_name, ' ', c.last_name) LIKE CONCAT('%', :searchtext, '%') OR " +
             "c.company_name LIKE CONCAT('%', :searchtext, '%') OR c.customer_type_id.name LIKE CONCAT('%',:searchtext, '%') OR " +
-            "c.phone LIKE CONCAT('%', :searchtext, '%') OR c.company_phone LIKE CONCAT('%', :searchtext, '%') OR " +
-            "c.contact_person_phone LIKE CONCAT('%', :searchtext, '%') OR " +
-            "c.email LIKE CONCAT('%', :searchtext, '%') OR c.company_email LIKE CONCAT('%', :searchtext, '%') OR " +
-            "c.customer_status_id.name LIKE CONCAT('%', :searchtext, '%'))")
+            "c.phone LIKE CONCAT('%', :searchtext, '%') OR c.company_phone LIKE CONCAT('%', :searchtext, '%'))")
     Page<Customer> findAll(@Param("searchtext") String searchtext, Pageable of); //@Param to insert searchtext value to @Query
 
     @Query("SELECT c FROM Customer c WHERE c.customer_type_id='1'")

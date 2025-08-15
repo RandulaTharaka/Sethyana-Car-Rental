@@ -208,10 +208,10 @@ function btnAddMC() {
                     swal({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your work has been Done \n Save SuccessFully..!',
+                        title: 'Save SuccessFully..!',
                         text: '\n',
                         button: false,
-                        timer: 1200
+                        timer: 2000
                     })
                     loadForm();
                     activerowno = 1;
@@ -362,7 +362,7 @@ function btnUpdateMC() {
         var updates = getUpdates();
         if (updates == ""){
             swal({
-                title: 'Nothing to update..', icon: "warning",
+                title: 'Nothing to update...', icon: "warning",
                 text: '\n',
                 button: false,
                 timer: 1200
@@ -379,10 +379,10 @@ function btnUpdateMC() {
                         swal({
                             position: 'center',
                             icon: 'success',
-                            title: 'Your work has been Done \n Update Successfully..!',
+                            title: 'Update Successfully...!',
                             text: '\n',
                             button: false,
-                            timer: 1200
+                            timer: 2000
                         });
                         loadSearchedTable(update);
                         $('#addPrivilegeModal').modal('hide');
@@ -426,8 +426,8 @@ function btnDeleteMC(priv) {
             if (response == 0) {
                 swal({
                     title: "Deleted Successfully....!",
-                    text: "\n\n  All Permissions are reworked",
-                    icon: "success", button: false, timer: 1200,
+                    text: "\n All Permissions are reworked",
+                    icon: "success", button: false, timer: 2000,
                 });
                 loadSearchedTable();
             } else {

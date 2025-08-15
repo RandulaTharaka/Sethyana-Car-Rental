@@ -193,8 +193,8 @@ function disableButtons(add, upd, del) {
         if (sdReservations[index].reservation_status_id.name == "Deleted") {
             tblSDReservation.children[1].children[index].style.color = "#f03e3e"; //change row color
             tblSDReservation.children[1].children[index].style.cursor = "not-allowed";
-            tblSDReservation.children[1].children[index].lastChild.children[1].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
-            tblSDReservation.children[1].children[index].lastChild.children[1].style.cursor = "not-allowed"; //cursor not allowed
+            tblSDReservation.children[1].children[index].lastChild.children[2].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
+            tblSDReservation.children[1].children[index].lastChild.children[2].style.cursor = "not-allowed"; //cursor not allowed
 
         }
     }
@@ -365,15 +365,21 @@ function savedata() {
         dangerMode: true,
     }).then((save) => { //then: if user click 'Yes' then
         if (save) {
-            var response = httpRequest("/sd_reservation", "POST", sdReservation);//Post: because it's a Add
-            if (response == "0") { //message 0: means successful
+            var response = JSON.parse(httpRequest("/sd_reservation", "POST", sdReservation));
+
+            if (response.reservation === "0") { //message 0: means successful
+                // Set response text for sms & email
+                let displayResponseText= "";
+                displayResponseText += (response.sms === "0") ? "SMS sent succesfully!\n" : response.sms + "\n";
+                displayResponseText += (response.email === "0") ? "Email sent succesfully!" : response.email;
+
                 swal({
                     position: 'center',
                     icon: 'success',
-                    title: 'Your work has been Done \n Save SuccessFully..!',
-                    text: '\n',
+                    title: 'Saved Successfully...!',
+                    text: displayResponseText,
                     button: false,
-                    timer: 1800
+                    timer: 3000
                 });
                 activepage = 1;
                 activerowno = 1; //1: highlight added row which is 1 row
@@ -382,12 +388,11 @@ function savedata() {
                 $('#addReservationModal').modal('hide');
             } else swal({
                 title: 'Save not Success... , You have following errors', icon: "error",
-                text: '\n ' + response,
+                text: '\n ' + response.reservation,
                 button: true
             });
         }
     });
-
 
 }
 
@@ -433,6 +438,11 @@ function filldata(sdr) {
     updateVehicleTab();
     updateCustomerTab();
     updateConfirmTab();
+
+    // ~~~~ Check Out  ~~~~ //
+    if (oldSDReservation.reservation_status_id.id === 2) { // 2 = reserved
+        openCheckOutTab(customerPayment);
+    }
 
     // ~~~~ Complete  ~~~~ //
     if (oldSDReservation.reservation_status_id.id === 3) { // 3 = completed
@@ -572,7 +582,7 @@ function btnUpdateMC() {
                 title: 'Nothing to update..', icon: "warning",
                 text: '\n',cmbReservationStatus,
                 button: false,
-                timer: 1800
+                timer: 1200
             });
         } else {
             swal({
@@ -587,10 +597,10 @@ function btnUpdateMC() {
                             swal({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'Your work has been Done \n Updated Successfully..!',
+                                title: 'Updated Successfully..!',
                                 text: '\n',
                                 button: false,
-                                timer: 1800
+                                timer: 2000
                             });
                             loadSearchedTable(update);
                             // $('#addReservationModal').modal('hide');
@@ -610,7 +620,6 @@ function btnUpdateMC() {
             text: '\n ' + getErrors(),
             button: true
         });
-
 }
 
 function btnDeleteMC(sdr) {
@@ -627,8 +636,8 @@ function btnDeleteMC(sdr) {
             if (responce == 0) {
                 swal({
                     title: "Deleted Successfully....!",
-                    text: "\n\n  Status change to delete",
-                    icon: "success", button: false, timer: 1200,
+                    text: "\n  Status change to delete",
+                    icon: "success", button: false, timer: 2000,
                 });
                 loadSearchedTable();
                 loadForm();
@@ -929,10 +938,10 @@ function setEventListeners(){
     cmbVType.addEventListener("change", () => showX('cmbVType','btnXVType'));
     cmbCustomerType.addEventListener("change", () => comboBoxBinder(cmbCustomerType,'','customer','customer_type_id','oldCustomer', true));
     cmbReservationStatus.addEventListener("change", () => comboBoxBinder(cmbReservationStatus,'','sdReservation','reservation_status_id','oldSDReservation'));
-    chkRefundableDepositPayCHO.addEventListener("change", chkRefundableDepositPayCHOCH);
+    $('#chkRefundableDepositPayCHO').change(chkRefundableDepositPayCHOCH);
     dateTimeReturnPayCHI.addEventListener("change", onChangeReturnDateCHI);
     nmbDiscountPercentagePayCHI.addEventListener("change", onChangeDiscountPercentageCHI);
-    chkRefDepositPayCHI.addEventListener("change", onToggleRefDepositCHI);
+    $('#chkRefDepositPayCHI').change(onToggleRefDepositCHI);
     txtCashPayCHI.addEventListener("blur", onChangeCashCHI);
     txtDiscountPayCHI.addEventListener("blur", onChangeDiscountCHI);
     datetimetPickUp.addEventListener("change", datetimetPickUpCH);

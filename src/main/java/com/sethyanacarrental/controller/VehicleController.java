@@ -161,7 +161,7 @@ public class VehicleController {
 
         if (user != null && priv != null && priv.get("delete")) {
             try {
-                vehicle.setVehicle_status_id(daoVehicleStatus.getById(3));
+                vehicle.setVehicle_status_id(daoVehicleStatus.getById(9));
                 dao.save(vehicle);
                 return "0";
             } catch (Exception ex) {

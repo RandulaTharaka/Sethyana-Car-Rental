@@ -233,8 +233,6 @@ if(session.getObject("activeuser").employeeId.designation_id.id==4){
 }
 */
 function addSDRQuickMC(){
-    window.location.href = "http://localhost:8080/customer";
-    (addCustomerModal).click()
 }
 
 
@@ -425,28 +423,33 @@ function isEqual(list1,list2,attribute) {
 function httpRequest(url,method,data){
 
     var ajax = new XMLHttpRequest();
-    ajax.open(method, url, false);
+    ajax.open(method, url, false); //synchronous request
     ajax.setRequestHeader("Content-type", "application/json");
+    ajax.setRequestHeader("Accept", "application/json");
+
     startWaiting("Plases Wait");
-    ajax.send(JSON.stringify(data));
+    ajax.send(JSON.stringify(data)); // When the GET method is used, the data parameter in xhr.send(data) is ignored. This is because GET requests do not have a body.
     stopWaiting();
 
 
     // logError("AJAX Responce", url, ajax.responseText+"---"+ajax.status); // un-commented by default
 
     if (ajax.status == 200) {
-        if(method=="GET"&&ajax.responseText!="")
-        return JSON.parse(ajax.responseText);
-        else return ajax.responseText;
+        if(method=="GET"&&ajax.responseText!="") {
+            return JSON.parse(ajax.responseText); // If GET Request - parse as JSON
+        } else {
+            return ajax.responseText;
+        }
+    } else if (ajax.status == 400 || ajax.status == 500 ) {
+        let errorResponse = JSON.parse(ajax.responseText);
+       if(errorResponse.errors !== undefined) {
+           return errorResponse.errors[0].defaultMessage;
+       } else {
+           return errorResponse.message;
+       }
+    } else {
+        return 'Unexpected error';
     }
-    else if (ajax.status == 400 || ajax.status == 500 )
-    {
-       if(JSON.parse(ajax.responseText).errors!=undefined)
-        return JSON.parse(ajax.responseText).errors[0].defaultMessage;
-        else
-        return JSON.parse(ajax.responseText).message;
-
-}
 }
 
 //Loding Screen Lock
@@ -956,7 +959,6 @@ function fillTable(tableid,obs,modifyFunction=null,deletefunction=null,printfunc
             td.appendChild(buttondel);
             row.appendChild(td);
         }
-
 
         tbody.appendChild(row);
     }
@@ -1697,20 +1699,16 @@ function CheckBoxBinder(field,pattern,obj,prop,oldobj){
     if (field.checked) {
         ob[prop] = 1;
         if (oldob != null && oldob[prop] != ob[prop]){
-            // field.parentNode.style.border = updated;
             updateF(field.parentNode);
         }else{
-            // field.parentNode.style.border = valid;
             // validF(field.parentNode); // doesnt need border on valid
         }
     }
     else {
         ob[prop] = 0;
         if (oldob != null && oldob[prop] != ob[prop]){
-            // field.parentNode.style.border = updated;
             updateF(field.parentNode);
         }else{
-            // field.parentNode.style.border = initial;
             initialF(field.parentNode);
         }
     }

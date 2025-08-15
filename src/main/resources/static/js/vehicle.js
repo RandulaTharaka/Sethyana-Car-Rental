@@ -70,7 +70,7 @@ function loadTable(page, size, query) {
     createPagination('pagination', data.totalPages, data.number + 1, paginate); //json
 
     //fillTable(table_id, data_list, fill(), delete(), view())
-    fillTable('tblVehicle', vehicles, fillForm, btnDeleteMC, viewitem); //fill the table with customer list
+    fillTable('tblVehicle', vehicles, fillForm, btnDeleteMC, viewitem); //fill the table with vehicle list
     clearSelection(tblVehicle); //clear any selected row
     if (activerowno != "") selectRow(tblVehicle, activerowno, update); //select row if any & color
 }
@@ -424,12 +424,10 @@ function disableButtons(add, upd, del) {
     // select deleted data row
     for (index in vehicles) {
         if (vehicles[index].vehicle_status_id.name == "Deleted") {
-            tblCustomer.children[1].children[index].style.color = "#f03e3e"; //change row color
-            tblCustomer.children[1].children[index].style.cursor = "not-allowed";
-            // tblCustomer.children[1].children[index].style.border = "2px solid red"; //change border color
-            tblCustomer.children[1].children[index].lastChild.children[1].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
-            tblCustomer.children[1].children[index].lastChild.children[1].style.cursor = "not-allowed"; //cursor not allowed
-
+            tblVehicle.children[1].children[index].style.color = "#f03e3e"; //change row color
+            tblVehicle.children[1].children[index].style.cursor = "not-allowed";
+            tblVehicle.children[1].children[index].lastChild.children[2].disabled = true; //disable delete btn // Table Body->Row->Last Column->Delete Button
+            tblVehicle.children[1].children[index].lastChild.children[2].style.cursor = "not-allowed"; //cursor not allowed
         }
     }
 
@@ -563,6 +561,7 @@ function btnAddMC() {
     }
 }
 
+
 //Get Confirmation & Add
 function savedata() {
 
@@ -582,23 +581,8 @@ function savedata() {
             "\nFuel Type : " + vehicle.fuel_type_id.name +
             "\nColor : " + vehicle.color_id.name +
             "\nNo. of Seats : " + vehicle.num_of_seats +
-            "\nLuggage : " + vehicle.num_of_luggage +
-            "\nMax Weight : " + vehicle.max_weight +
-            "\nOdometer at Entry : " + vehicle.entry_odometer +
-            "\nKillometre per Liter : " + vehicle.km_per_liter +
-            "\nMusic Player : " + vehicle.music_player +
-            "\nUSB Charging : " + vehicle.usb_charging +
-            "\nRearview Camera : " + vehicle.rearview_camera +
-            "\nOwner Type : " + vehicle.owner_type_id.name +
-            "\nRevenue License Expire Date : " + vehicle.revenue_license_exp_date +
-            "\nInsurance Expire Date : " + vehicle.insurance_exp_date +
-            "\nNext Service Odometer : " + vehicle.next_service_odometer +
-            "\nNext Service Date : " + vehicle.next_service_date +
-            "\nDamage Update Date : " + vehicle.damage_update_date +
-            "\nNotes : " + vehicle.notes +
-            "\nVehicle Status : " + vehicle.vehicle_status_id.name +
-            "\nAdded By : " + vehicle.employee_id.callingname +
-            "\nAdded Date : " + vehicle.added_date,
+            getOptionalFieldsDetails() +
+            getOwnerDetails(),
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -609,13 +593,13 @@ function savedata() {
                 swal({
                     position: 'center',
                     icon: 'success',
-                    title: 'Your work has been Done \n Save SuccessFully..!',
+                    title: 'Save Successfully..!',
                     text: '\n',
                     button: false,
-                    timer: 1200
+                    timer: 2000
                 });
-                activepage = 1;
-                activerowno = 1; //1: highlight added row which is 1 row
+                // activepage = 1;
+                // activerowno = 1; //1: highlight added row which is 1 row
                 loadSearchedTable();
                 $('#addVehicleModal').modal('hide');
                 loadForm();
@@ -627,6 +611,70 @@ function savedata() {
         }
     });
 
+}
+
+function getOptionalFieldsDetails(){
+    let optionalFieldsDetails = "";
+
+    if(vehicle.num_of_luggage !== undefined){
+        optionalFieldsDetails += "\nLuggage : " + vehicle.num_of_luggage;
+    }
+
+    if(vehicle.max_weight !== undefined){
+        optionalFieldsDetails += "\nMax Weight : " + vehicle.max_weight + " Kg";
+    }
+
+    if(vehicle.km_per_liter !== undefined){
+        optionalFieldsDetails += "\nKillometre per Liter : " + vehicle.km_per_liter;
+    }
+
+    if(vehicle.entry_odometer !== undefined){ // Required field, placed here to display in order
+        optionalFieldsDetails += "\nOdometer at Entry : " + vehicle.entry_odometer + " Km";
+    }
+
+    if(vehicle.usb_charging !== undefined && vehicle.usb_charging !== 0 ){
+        optionalFieldsDetails += "\nUSB Charging : Yes";
+    }
+
+    if(vehicle.rearview_camera !== undefined && vehicle.rearview_camera !== 0){
+        optionalFieldsDetails += "\nRearview Camera : Yes";
+    }
+
+    if(vehicle.revenue_license_exp_date !== undefined){ // Required field, placed here to display in order
+        optionalFieldsDetails += "\nRevenue License Expire Date : " + vehicle.revenue_license_exp_date;
+    }
+
+    if(vehicle.insurance_exp_date !== undefined){ // Required field, placed here to display in order
+        optionalFieldsDetails += "\nInsurance Expire Date : " + vehicle.insurance_exp_date;
+    }
+
+    if(vehicle.next_service_odometer !== undefined){
+        optionalFieldsDetails += "\nNext Service Odometer : " + vehicle.next_service_odometer + " Km";
+    }
+
+    if(vehicle.next_service_date !== undefined){
+        optionalFieldsDetails += "\nNext Service Date : " + vehicle.next_service_date;
+    }
+
+    if(vehicle.damage_update_date !== undefined){
+        optionalFieldsDetails += "\nDamage Update Date : " + vehicle.damage_update_date;
+    }
+
+    if(vehicle.notes !== undefined){
+        optionalFieldsDetails += "\nNotes : " + vehicle.notes;
+    }
+
+    return optionalFieldsDetails;
+}
+
+function getOwnerDetails(){
+    let ownerDetails = "\nOwner Type : " + vehicle.owner_type_id.name;
+    if(vehicle.owner_type_id.id == 2){ // 2=Outside
+        ownerDetails += "\nOwner Name : " + vehicle.owner_name;
+        ownerDetails += "\nOwner Phone : " + vehicle.owner_phone;
+        ownerDetails += "\nOwner Address : " + vehicle.owner_address;
+    }
+    return ownerDetails;
 }
 
 function btnClearMC() {
@@ -659,7 +707,7 @@ function fillForm(vehi, rowno) {
     } else {
         swal({
             title: "Previous attempt to update the form has not submitted... Are you sure to discard the form ?",
-            text: "\n",
+            text    : "\n",
             icon: "warning", buttons: ["Cancel", "Discard"], dangerMode: true,
         }).then((yesUpdate) => {
             if (yesUpdate) {
@@ -880,10 +928,10 @@ function btnUpdateMC() {
                             swal({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'Your work has been Done \n Updated Successfully..!',
+                                title: 'Updated Successfully..!',
                                 text: '\n',
                                 button: false,
-                                timer: 1200
+                                timer: 2000
                             });
                             loadSearchedTable();
                             $('#addVehicleModal').modal('hide');
@@ -920,8 +968,8 @@ function btnDeleteMC(vehi) {
                 if (responce == 0) {
                     swal({
                         title: "Deleted Successfully....!",
-                        text: "\n\n  Status change to delete",
-                        icon: "success", button: false, timer: 1200,
+                        text: "\nStatus change to delete",
+                        icon: "success", button: false, timer: 2000,
                     });
                     loadSearchedTable();
                     loadForm();
@@ -934,7 +982,6 @@ function btnDeleteMC(vehi) {
                 }
             }
         });
-
 }
 
 //Set the Query & Pass to LoadTable
@@ -948,7 +995,8 @@ function loadSearchedTable() {
         query = "&searchtext=" + searchtext;
     //window.alert(query);
     loadTable(activepage, cmbPageSize.value, query); //call loadTable passing the query
-
+    //disable delete button
+    disableButtons(false, true, true);
 }
 
 function btnSearchMC() {
@@ -960,24 +1008,7 @@ function btnSearchClearMC() {
     loadView();
 }
 
-function btnPrintTableMC() {
-
-    var newwindow = window.open(); //open new window
-    formattab = tblCustomer.outerHTML;
-
-    newwindow.document.write("" +
-        "<html>" +
-        "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
-        "<link rel='stylesheet' href='/vendor/bootstrap/css/bootstrap.min.css'/></head>" +
-        "<body><div style='margin-top: 50px; '> <h1>Customer Details : </h1></div>" +
-        "<div>" + formattab + "</div>" +
-        "</body>" +
-        "</html>");
-    //Stop loading the document after time interval and auto open print
-    setTimeout(function () {
-        newwindow.print();
-    }, 100);
-}
+function btnPrintTableMC() {}
 
 function sortTable(cind) {
     cindex = cind;

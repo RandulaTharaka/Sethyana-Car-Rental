@@ -799,16 +799,18 @@
                                     <div class="row mt-3 align-items-center">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="form-label" for="txtEntryOdometer">Odometer at Vehicle Entry
+                                                <label class="form-label" for="txtEntryOdometer">Odometer at Vehicle Entry<span
+                                                        class="required">
+                                                        *</span>
                                                 </label>
                                                 <div class="input-group">
                                                     <div class="d-flex align-items-center d-block2">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text d-block"><i class="fas fa-tachometer-alt icon-light"></i></span>
                                                         </div>
-                                                        <input class="form-control" id="txtEntryOdometer" required type="text"
+                                                        <input class="form-control" id="txtEntryOdometer" type="text"
                                                                onkeyup="textFieldBinder(txtEntryOdometer, '','vehicle', 'entry_odometer','oldVehicle')"
-                                                               placeholder="eg: 45000">
+                                                               placeholder="eg: 45000" required>
 
                                                         <i class="fas fa-exclamation-circle text-danger ml-2 d-none iconInvalid"></i>
                                                         <i class="fas fa-check-circle text-tertiary ml-2 d-none tickUpdate"></i>
@@ -1019,7 +1021,7 @@
                                                                                 class="fas fa-mobile-alt icon-light"></i></span>
                                                         </div>
                                                         <input class="form-control" id="txtOwnerPhone"
-                                                               onkeyup="textFieldBinder(txtOwnerPhone, '','vehicle', 'owner_phone','oldVehicle')"
+                                                               onkeyup="textFieldBinder(txtOwnerPhone, '^[0][0-9]{9}$','vehicle', 'owner_phone','oldVehicle')"
                                                                placeholder="eg: 0778232543"
                                                                type="text" required>
 

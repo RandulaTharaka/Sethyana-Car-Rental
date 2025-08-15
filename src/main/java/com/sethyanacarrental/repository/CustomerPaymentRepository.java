@@ -19,11 +19,12 @@ public interface CustomerPaymentRepository extends JpaRepository<CustomerPayment
     @Query("SELECT cp FROM CustomerPayment cp WHERE cp.payment_status_id='4' AND cp.self_drive_reservation_id.id=:reservation_id")
     CustomerPayment getCompletedPayment(int reservation_id);
 
-    @Query("SELECT cp FROM CustomerPayment cp WHERE " +
-            "(cp.invoice_number LIKE CONCAT('%', :searchtext, '%') OR " +
-            "cp.reservation_type_id.name LIKE CONCAT('%', :searchtext, '%') OR " +
-            "cp.payment_status_id.name LIKE CONCAT('%', :searchtext, '%'))")
-    Page<CustomerPayment> findAll(@Param("searchtext") String searchtext, Pageable of);
+    @Query("SELECT cp FROM CustomerPayment cp " +
+            "LEFT JOIN cp.chauffeur_drive_reservation_id cdr " +
+            "LEFT JOIN cp.self_drive_reservation_id sdr " +
+            "WHERE cp.invoice_number LIKE CONCAT('%', :searchtext, '%') " +
+            "OR (cp.reservation_type_id.id = 1 AND cdr.cd_reservation_code LIKE CONCAT('%', :searchtext, '%')) " +
+            "OR (cp.reservation_type_id.id = 2 AND sdr.sd_reservation_code LIKE CONCAT('%', :searchtext, '%'))")
+    Page<CustomerPayment> findAll(@Param("searchtext") String searchtext, Pageable pageable);
+
 }
-
-

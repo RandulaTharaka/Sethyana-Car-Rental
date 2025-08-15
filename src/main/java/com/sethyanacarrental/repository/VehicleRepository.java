@@ -10,6 +10,9 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDateTime;
 import java.util.List;
 
+// vehicle status: 1=Available,  2=Reserved, 3=On Rent
+// reservation status: 1=Booking 2=Reserved, 7=On Rent
+
 public interface VehicleRepository extends JpaRepository<Vehicle, Integer> {
     @Query("SELECT v FROM Vehicle v JOIN v.model_id m JOIN m.vehicle_type_id vt ORDER BY vt.id")
     Page<Vehicle> findAllOrderedByVehicleTypeId(Pageable pageable);

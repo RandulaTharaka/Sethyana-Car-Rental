@@ -97,9 +97,12 @@ function viewitem(ctm, rowno) {
         tdName.innerHTML = customer.first_name + " " + customer.last_name;
         tdEmail.innerHTML = customer.email;
         tdContacts.innerHTML = customer.phone;
+        tdAddress.innerHTML = customer.address;
+
     } else if (customer.customer_type_id.name == "Company") {
         tdName.innerHTML = customer.company_name;
         tdEmail.innerHTML = customer.company_email;
+        tdAddress.innerHTML = customer.company_address;
 
         if (customer.contact_person_phone != null) {
             tdContacts.innerHTML = customer.company_phone + "</br>" + customer.contact_person_phone + "(Contact Person)";
@@ -388,9 +391,7 @@ function savedata() {
                 "\nAddress : " + customer.address +
                 "\nPhone : " + customer.phone +
                 "\nEmail : " + customer.email +
-                "\nNIC : " + customer.nic +
-                "\ncustomer Status : " + customer.customer_status_id.name +
-                "\nAdded Date : " + customer.added_date,
+                "\nNIC : " + customer.nic,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -401,10 +402,10 @@ function savedata() {
                     swal({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your work has been Done \n Save SuccessFully..!',
+                        title: 'Save SuccessFully..!',
                         text: '\n',
                         button: false,
-                        timer: 3200
+                        timer: 2000
                     });
                     activepage = 1;
                     activerowno = 1; //1: highlight added row which is 1 row
@@ -427,9 +428,7 @@ function savedata() {
                 "\nCompany Email : " + customer.company_email +
                 "\nContact Person Name : " + customer.contact_person_name +
                 "\nContact Person Phone : " + customer.contact_person_phone +
-                "\nCompany Address : " + customer.company_address +
-                "\ncustomer Status : " + customer.customer_status_id.name +
-                "\nAdded Date : " + customer.added_date,
+                "\nCompany Address : " + customer.company_address,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -440,10 +439,10 @@ function savedata() {
                     swal({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your work has been Done \n Save SuccessFully..!',
+                        title: 'Save SuccessFully..!',
                         text: '\n',
                         button: false,
-                        timer: 1200
+                        timer: 2000
                     });
                     activepage = 1;
                     activerowno = 1; //highlight row 1 (added row)
@@ -641,10 +640,10 @@ function btnUpdateMC() {
                             swal({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'Your work has been Done \n Updated Successfully..!',
+                                title: 'Updated Successfully..!',
                                 text: '\n',
                                 button: false,
-                                timer: 1200
+                                timer: 2000
                             });
                             loadSearchedTable();
                             $('#addCustomerModal').modal('hide');
@@ -682,8 +681,8 @@ function btnDeleteMC(ctm) {
                 if (responce == 0) {
                     swal({
                         title: "Deleted Successfully....!",
-                        text: "\n\n  Status change to delete",
-                        icon: "success", button: false, timer: 1200,
+                        text: "\nStatus change to delete",
+                        icon: "success", button: false, timer: 2000,
                     });
                     loadSearchedTable();
                     loadForm();
@@ -709,8 +708,8 @@ function btnDeleteMC(ctm) {
                 if (responce == 0) {
                     swal({
                         title: "Deleted Successfully....!",
-                        text: "\n\n  Status change to delete",
-                        icon: "success", button: false, timer: 1200,
+                        text: "\n Status change to delete",
+                        icon: "success", button: false, timer: 2000,
                     });
                     loadSearchedTable();
                     loadForm();
@@ -724,8 +723,6 @@ function btnDeleteMC(ctm) {
             }
         });
     }
-
-
 }
 //Set the Query & Pass to LoadTable
 function loadSearchedTable() {
@@ -740,7 +737,6 @@ function loadSearchedTable() {
     loadTable(activepage, cmbPageSize.value, query); //call loadTable passing the query
     //disable delete button
     disableButtons(false, true, true);
-
 }
 
 function btnSearchMC() {
@@ -761,7 +757,7 @@ function btnPrintTableMC() {
     newwindow.document.write("" +
         "<html>" +
         "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
-        "<link rel='stylesheet' href='/vendor/bootstrap/css/bootstrap.min.css'/></head>" +
+        "<link rel='stylesheet' href='/vendor/bootstrap/css/bootstrap2.min.css'/></head>" +
         "<body><div style='margin-top: 50px; '> <h1>Customer Details : </h1></div>" +
         "<div>" + formattab + "</div>" +
         "</body>" +

@@ -32,9 +32,10 @@ public interface VehicleModelRepository extends JpaRepository<VehicleModel, Inte
             "WHERE vm.id IN (SELECT phm.model_id FROM PackageHasModel phm " +
             "WHERE phm.package_id.id=:package_id) AND " +
             "vm.id IN (SELECT v.model_id FROM Vehicle v " +
-            "WHERE v.vehicle_status_id='1' AND " +
+            "WHERE v.vehicle_status_id='1' OR " +
+            "(v.vehicle_status_id = '2' OR v.vehicle_status_id = '3') AND " +
             "v.id NOT IN(SELECT cdr.vehicle_id FROM ChauffeurDriveReservation cdr " +
-            "WHERE cdr.reservation_status_id='1' AND " +
+            "WHERE cdr.reservation_status_id='2' AND " +
             "cdr.expect_pick_up_datetime <=:cdr_expt_return_date AND " +
             "cdr.expect_return_datetime >=:cdr_expt_pick_date) AND " +
             "v.id NOT IN (SELECT cdr.vehicle_id FROM ChauffeurDriveReservation cdr " +

@@ -275,7 +275,7 @@ function btnUpdateMC() {
                 title: 'Make sure payment is received..', icon: "warning",
                 text: '\n',
                 button: false,
-                timer: 1200
+                timer: 2000
             });
         }else{
             customerPayment.payment_status_id = payment_statuses[3] ; //complete
@@ -284,10 +284,10 @@ function btnUpdateMC() {
                 swal({
                     position: 'center',
                     icon: 'success',
-                    title: 'Your work has been Done \n Updated Successfully..!',
+                    title: 'Updated Successfully..!',
                     text: '\n',
                     button: false,
-                    timer: 1200
+                    timer: 2000
                 });
                 $('#addCustomerModal').modal('hide');
                 loadSearchedTable();
@@ -302,7 +302,36 @@ function btnUpdateMC() {
     // if (getErrors() == "") {}
 }
 
-function btnDeleteMC(ctm) {}
+function btnDeleteMC(ctmpay) {
+    customerPayment = JSON.parse(JSON.stringify(ctmpay));
+
+    swal({
+        title: "Are you sure to delete following payment ?",
+        text:"\n Invoice No: " + customerPayment.invoice_number +
+             "\n Paid Date: " + sqlDateTimeToLocalC(customerPayment.paid_date_time),
+        icon: "warning", buttons: ["Cancel", "Delete"], closeOnClickOutside: false, dangerMode: true,
+
+    }).then((willDelete) => {
+        if (willDelete) {
+            var responce = httpRequest("/customer_payment", "DELETE", customerPayment);
+            if (responce == 0) {
+                swal({
+                    title: "Deleted Successfully....!",
+                    text: "\nStatus change to delete",
+                    icon: "success", button: false, timer: 2000,
+                });
+                loadSearchedTable();
+                loadForm();
+            } else {
+                swal({
+                    title: "You have following erros....!",
+                    text: "\n\n" + responce,
+                    icon: "error", button: true,
+                });
+            }
+        }
+    });
+}
 
 //Set the Query & Pass to LoadTable
 function loadSearchedTable() {
