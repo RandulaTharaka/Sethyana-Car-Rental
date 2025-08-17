@@ -249,7 +249,7 @@ function btnPrintRowMC() {
 
     var newwindow = window.open();
     newwindow.document.write("<html>" +
-        "<head><base href='http://localhost:8080/'>" +
+        "<head><base href='/'>" +
         "<style type='text/css'>.google-visualization-table-th {text-align: left;}</style>" +
         "<link rel=\'stylesheet\'  href=\'../vendor/bootstrap/css/bootstrap.min.css\'>" + // use '' in ""
         "<link rel=\'stylesheet\'  href=\'../vendor/fontawesome/css/all.min.css\'>" +

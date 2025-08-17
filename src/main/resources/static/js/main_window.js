@@ -22,10 +22,10 @@ window.onload = function () {
             loadchangepassword();
             spnDesignation.innerHTML = loggedUser.employeeId.designationId.name;
         }else {
-            window.location.href = "http://localhost:8080/login";
+            window.location.href = "/login";
         }
     }else
-		 window.location.href = "http://localhost:8080/login";
+		 window.location.href = "/login";
 
 
 	// Module desabled
