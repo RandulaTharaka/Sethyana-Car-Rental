@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the built JAR file from your local machine into the container
 # The `*` matches the specific JAR file name
-COPY build/libs/*.jar app.jar
+COPY build/libs/sethyana_car_rental-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port the Spring Boot app will use
 EXPOSE 8080
