@@ -34,9 +34,6 @@ This is a Java Spring Boot web application that digitizes car rental operations 
 
 As my final year project for the Bachelor in IT at the University of Colombo, I chose to tackle a complex, real-world problem to deepen my software engineering skills. My goal was to design and implement a robust solution that delivers genuine value and addresses actual business needs.
 
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer      | Tools & Technologies                                                                                                                |
@@ -49,9 +46,6 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
 | Tooling    | IntelliJ IDEA, MySQL Workbench, Google Cloud Run                                                                                    |
 | Other      | Server/client-side validation (regex, annotations)                                                                                  |
 
-
-
----
 ## ✨ Core Features
 
 - Secure user authentication & role-based access (manager, receptionist, driver)
@@ -71,8 +65,7 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
 - Server & client-side form validation (regex, annotations)
 - Error handling with custom error pages
 - Responsive UI with Bootstrap
- 
----
+
 
 ## 🎬 Feature Demos
 
@@ -110,7 +103,7 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
   Dockerfile                  # Containerization
   system.properties           # JVM settings
 ```
----
+
 
 ## 🧠 Developer Notes
 
@@ -120,7 +113,7 @@ Personal study notes included (React, Redux, architectural reasoning):
 
 > These are raw learning artifacts, intentionally left to show thought process & growth.
 
----
+
 
 ## 🔐 Security & Best Practices
 
