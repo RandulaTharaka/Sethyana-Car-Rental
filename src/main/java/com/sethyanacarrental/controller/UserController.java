@@ -85,7 +85,6 @@ public class UserController {
 
         if (exuser != null && priv.get("add")) {
             try {
-                System.out.println("aaaaaaaaaaaaaaaaaa");
                 userService.saveUser(user);
                 return "0";
             } catch (Exception e) {

@@ -2,9 +2,8 @@
 ---
 
 [![Repo Size](https://img.shields.io/github/repo-size/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
-[![Top Language](https://img.shields.io/github/languages/top/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
 [![Last Commit](https://img.shields.io/github/last-commit/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
-![License](https://img.shields.io/badge/license-Custom-blue)
+![License](https://img.shields.io/badge/license-Sethyana_Car_Rental_Software-blue)
 
 # 🚗 Sethyana Car Rental Management System
 > A Full-Stack Java Spring Boot Web Application
@@ -66,6 +65,14 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
 - Error handling with custom error pages
 - Responsive UI with Bootstrap
 
+## 🧠 Developer Notes
+
+Personal study notes included (React, Redux, architectural reasoning):
+
+📄 [Developer Notes PDF](docs/TechMartX_DeveloperNotes.pdf)
+
+> These are raw learning artifacts, intentionally left to show thought process & growth.
+
 
 ## 🎬 Feature Demos
 
@@ -77,6 +84,20 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
 
 ![Admin Panel](docs/screenshots/admin_panel.gif)
 
+## 📚 Selected API Endpoints
+
+| Method | Endpoint                                                                                  | Description                                                  |
+|--------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| POST   | /api/user                                                                                 | Register a new user                                          |
+| GET    | /api/vehicle/list                                                                         | Retrieve vehicle list                                        |
+| POST   | /api/cd_reservation/                                                                      | Create chauffeur-drive reservation                           |
+| GET    | /api/package/cdr_list                                                                     | Retrieve chauffeur-drive packages                            |
+| GET    | /api/customer_payment/next_pay_invoice_no                                                 | Generate next payment invoice number                         |
+| GET    | /api/customer_payment/advance_payment?reservation_id={id}                                 | Make advance payment for a reservation                       |
+| GET    | /api/sd_reservation/on_going_list_by_vehicle?vehicle_id={id}                              | List ongoing self-drive reservations for a vehicle           |
+| GET    | /api/sd_reservation/findAll?page={page}&size={size}&searchtext={text}                     | Retrieve paginated self-drive reservations (with search)     |
+| GET    | /api/report/revenue_report?sdate={sdate}&edate={edate}&type={type}                        | Generate revenue report for a date range                     |
+| GET    | /driver/list_by_pickdate_returndate?cdr_expt_pick_date={date}&cdr_expt_return_date={date} | List available drivers for specified pickup and return dates |
 
 
 ## 🧩 Architecture Overview
@@ -104,36 +125,97 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
   system.properties           # JVM settings
 ```
 
+## 📦 Installation
 
-## 🧠 Developer Notes
+### Prerequisites
 
-Personal study notes included (React, Redux, architectural reasoning):
+- **Java 11**
+- **MySQL 8.0**
+- **MySQL Workbench**
+- **IntelliJ IDEA**
+- **Web browser**
+- **Docker**  
+- **Google Cloud SDK**
+- **Twilio Account**
 
-📄 [Developer Notes PDF](docs/TechMartX_DeveloperNotes.pdf)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/RandulaTharaka/Car-Rental-Management-System.git
 
-> These are raw learning artifacts, intentionally left to show thought process & growth.
+2. **Create a MySQL Connection**
+   - Open MySQL Workbench.
+   - Click the + icon next to MySQL Connections.
+   - Set Connection Name (e.g., Sethyana Car Rental).
+   - Set Hostname to localhost.
+   - Set Port to 3306.
+   - Set a Username.
+   - Click Store in Vault... and enter a password.
+   - Click Test Connection to verify.
+   - Click OK to save the connection.
 
 
+3. **Create the database**
+   - Open MySQL Workbench and connect to your MySQL server.
+   - Go to File → Open SQL Script.
+   - Select your `sethyana-database.sql` file in the `sql-scripts` folder in root.
+   - The SQL script will open in a new tab.
+   - Click the Execute (lightning bolt) button to run the script and import the database.
 
-## 🔐 Security & Best Practices
 
-- Passwords hashed with bcrypt.
-- JWT stored client‑side; protected routes validate token server‑side.
-- Environment variables for secrets & external service keys.
-- Data validation at model + route level (extensible).
-- Avoids exposing admin-only operations to non‑privileged users.
-- MIT licensed (see LICENSE).
+4. **Import the project**
+   - Open the `sethyana_car_rental` folder in IntelliJ IDEA.
+   - Allow Gradle to download dependencies.
 
----
 
-## ⚙️ Performance Considerations
+5. **Set up environment variables:**  
+   Rename the `.env.example` file to `.env` and add the following
 
-- RTK Query caching reduces duplicate API calls.
-- Pagination limits payload for product lists.
-- Lean Mongoose queries where applicable (extendable).
-- Image dimensions constrained for consistent layout.
+   ```env
+   # Database configuration
+   DB_URL=jdbc:mysql://<HOST>:<PORT>/<DATABASE_NAME>?useSSL=true
+   DB_USERNAME=your_mysql_username
+   DB_PASSWORD=your_mysql_password
+   
+   # Twilio configuration
+   ACCOUNT_SID=your_twilio_account_sid
+   AUTH_TOKEN=your_twilio_auth_token
+   FROM_NUMBER=your_twilio_phone_number
+   ```
+   Now load these environment variables in IntelliJ IDEA:
+   - Go to `Run -> Edit Configurations`.
+   - Select `SethyanaCarRentalApp` from the list on the left.
+   - Select `Modify Options` and then select `Environmental variables` from the list.
+   - Click on the `Folder icon` in the `Environment variables` field.
+   - Browse and select the `.env` file.
+   - Click OK to save.
 
----
+
+6. **Run the application**
+   - In IntelliJ IDEA, select `Run SethyanaCarRentalApp` from the menu.
+
+
+7. **Access the app**
+   - Open your browser and go to `localhost:8080/login`.
+   - Log in using the provided demo credentials.
+
+       |     Role             |     User Name     |     Password      |
+       |----------------------|-------------------|-------------------|
+       |     Manager          |     Chamal85      |     Chamal85      |
+       |     Receptionist     |     Nipuni92      |     Nipuni92      |
+       |     Receptionist     |     Hasitha91     |     Hasitha91     |
+       |     Driver           |     Sampath79     |     Sampath79     |
+       |     Driver           |     Chaminda82    |     Chaminda82    |
+       |     Driver           |     Sameera86     |     Sameera86     |
+
+
+## 🚢 Deployment
+
+- **Containerization:** Backend packaged with Docker for consistent deployment.
+- **Cloud Hosting:** Deployed on Google Cloud Run for scalable, serverless operation.
+- **CI/CD:** Automated build and deployment pipelines for rapid updates.
+- **Configuration:** Environment variables and secrets managed securely via cloud platform settings.
+- **Database:** MySQL hosted on Google Cloud SQL.
+- **Frontend:** Static assets served from the Spring Boot application.
 
 ## 🚧 Future Enhancements (Roadmap)
 
@@ -146,101 +228,16 @@ Personal study notes included (React, Redux, architectural reasoning):
 | Reporting    | Expand reporting features (fleet, revenue, usage analytics)  |
 | Mobile       | Enhance responsiveness or develop Android mobile app         |
 
-## 📦 Installation
-
-1. Clone repository
-
-   ```sh
-   git clone https://github.com/RandulaTharaka/TechMartX.git
-   cd TechMartX
-   ```
-
-2. Install root & frontend dependencies
-
-   ```sh
-   npm install
-   cd frontend && npm install && cd ..
-   ```
-
-3. Configure environment  
-   Duplicate `.env.example` → `.env` and fill:
-
-   ```
-   NODE_ENV=development
-   PORT=5000
-   MONGO_URI=your_mongodb_uri
-   JWT_SECRET=your_jwt_secret
-   PAYPAL_CLIENT_ID=your_paypal_client_id
-   PAYPAL_APP_SECRET=your_paypal_app_secret
-   PAYPAL_API_URL=https://api-m.sandbox.paypal.com
-   PAGINATION_LIMIT=8
-   ```
-
-4. Run development (concurrent)
-
-   ```sh
-   npm run dev
-   ```
-
-5. Backend only / Frontend only
-
-   ```sh
-   npm run server   # backend on :5000
-   cd frontend && npm start   # frontend on :3000
-   ```
-
-6. Production build
-   ```sh
-   cd frontend
-   npm run build
-   ```
-
----
-
-## 📚 Selected API Endpoints
-
-| Method | Endpoint                | Description                               |
-| ------ | ----------------------- | ----------------------------------------- |
-| GET    | /api/products           | List products (with pagination & keyword) |
-| GET    | /api/products/:id       | Product details                           |
-| POST   | /api/users/login        | Authenticate user                         |
-| POST   | /api/users              | Register user                             |
-| POST   | /api/orders             | Create order                              |
-| GET    | /api/orders/:id         | Get order details                         |
-| PUT    | /api/orders/:id/pay     | Mark order paid (PayPal)                  |
-| PUT    | /api/orders/:id/deliver | Mark delivered (admin)                    |
-
-> Additional endpoints include reviews, admin CRUD, and profile updates.
-
----
-
-## 🧪 Testing (Planned)
-
-Upcoming:
-
-- Unit tests for utils (price/date formatting)
-- API tests with Supertest
-- Component tests with React Testing Library
-- Integration snapshots for critical flows
-
----
 
 ## 📄 License
 
-Released under the [MIT License](LICENSE).
+This project is open source and available under the [Sethyana Car Rental Software License](LICENSE).
 
----
+## 🤝 Connect With Me
 
-## 🤝 Connect
+I'm passionate about building full-stack applications and open to new opportunities in software development.
 
-I’m actively seeking opportunities in full‑stack / frontend engineering.  
-Feedback, collaboration, or discussion welcome.
+Feel free to connect or reach out!
 
-- LinkedIn: (add your profile link)
-- Email: (add contact email)
-
----
-
-### ⭐ If this project interests you, a star on the repo is appreciated!
-
-> Thanks for reviewing TechMartX — built with a focus on clarity, scalability,
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Randula%20Tharaka-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/randula-tharaka-79a61a145/)
+[![Email](https://img.shields.io/badge/Email-iamrandula%40gmail.com-red?style=flat-square&logo=gmail)](mailto:iamrandula@gmail.com)
