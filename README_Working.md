@@ -137,17 +137,14 @@ Personal study notes included (React, Redux, architectural reasoning):
 
 ## 🚧 Future Enhancements (Roadmap)
 
-| Category      | Planned                                               |
-| ------------- | ----------------------------------------------------- |
-| UX            | Wishlist / favorites, recently viewed items           |
-| Performance   | Image optimization & CDN usage                        |
-| Security      | Refresh token rotation, rate limiting                 |
-| Admin         | Bulk product import / CSV export                      |
-| Testing       | Jest + React Testing Library + Supertest API coverage |
-| Observability | Basic request logging & metrics dashboard             |
-| Payments      | Stripe alternative integration                        |
-
----
+| Category     | Planned Improvements                                         |
+|--------------|--------------------------------------------------------------|
+| Tracking     | Integrate vehicle tracking with GPS technology               |
+| Maps         | Google Maps API for pickup/drop-off selection                |
+| Reservations | Enable online reservation for customers                      |
+| Payments     | Add online payment facility                                  |
+| Reporting    | Expand reporting features (fleet, revenue, usage analytics)  |
+| Mobile       | Enhance responsiveness or develop Android mobile app         |
 
 ## 📦 Installation
 
