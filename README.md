@@ -1,213 +1,243 @@
 ![Sethyana Logo with title 12](https://github.com/RandulaTharaka/Car-Rental-Management-System/assets/60685092/cd5eb713-acec-4c34-8c5c-05695dd37bd8)
 ---
-![repo-size](https://img.shields.io/github/repo-size/RandulaTharaka/Car-Rental-Management-System)
-![files](https://img.shields.io/github/directory-file-count/RandulaTharaka/Car-Rental-Management-System)
-![top-language](https://img.shields.io/github/languages/top/RandulaTharaka/Car-Rental-Management-System)
-![languages](https://img.shields.io/github/languages/count/RandulaTharaka/Car-Rental-Management-System)
-![last-commit](https://img.shields.io/github/last-commit/RandulaTharaka/Car-Rental-Management-System)
-![commit-merge](https://img.shields.io/github/commit-status/RandulaTharaka/Car-Rental-Management-System/main/8d835e2)
 
-## Introduction
-This web-based car rental management application offers a streamlined solution to the company Sethyana Rent a Car & Cab Service's manual paper-based system. It addresses the limitations of the paper-based approach by providing staff members with efficient tools for managing reservations, vehicle fleets, drivers, and generating reports.
+[![Repo Size](https://img.shields.io/github/repo-size/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
+[![Last Commit](https://img.shields.io/github/last-commit/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
+![License](https://img.shields.io/badge/license-Sethyana_Car_Rental_Software-blue)
 
-![Vehicle Management Screenshot](https://github.com/RandulaTharaka/Car-Rental-Management-System/assets/60685092/5d41b653-aeab-4433-91e9-99c71f474aa1)
+# 🚗 Sethyana Car Rental Management System
+> A Full-Stack Java Spring Boot Web Application
 
-## Motivations
+🌐 Visit Site: [www.sethyana.rental](https://sethyana-car-rental-1047985755351.us-central1.run.app)
 
-As the final year project for the Bachelor in IT of the University of Colombo, I had the opportunity to choose from various projects. However, I deliberately selected a more complex and challenging one since my main motivation was to gain real-world software engineering skills and build a compelling solution that effectively addresses an existing problem.
+![Screens](docs/screenshots/screens.jpg)
 
-At the time, Sethyana Car Rental company was facing several challenges. The company undertook all the reservations over the phone and recorded details on paper manually. Searching for existing clients and retrieving information about upcoming trips were very inefficient.
-- Registering a new customer, a new vehicle, and making a new reservation took too much time from the customer.
-- Filling paper-based forms had no data validation mechanism, which led to entering inaccurate and duplicated records.
-- Daily available vehicle fleets and drivers were not updated on time, therefore leading to conflicts when allocating them to new reservations.
-- There was no organized and systematic way to view upcoming trips and rentals.
-- Timely tasks such as renewing revenue licenses, vehicle insurances, and driver licenses had been missed and often had been performed after an extended due date.
-- Daily and monthly reports took too much time to generate due to a lack of a systematic approach.
+## 🚀 Project Overview
 
-## System Features
+This is a Java Spring Boot web application that digitizes car rental operations for Sethyana Rent a Car & Cab Service. Includes secure auth, role‑based access, reservations, payments, reporting, and a mobile‑friendly driver portal.
 
-- **🔐  Manage System Users and Privileges**
-<br>System users can be created only by the manager, and relevant privileges can be assigned to the users based on their role in the company. Registered users can log into the system securely by validating their usernames and passwords.
+[//]: # (### ✅ Quick Glance)
 
-- **🚘  Manage Vehicles**
-<br>Vehicles are added to the system through a detailed vehicle registration form. Those details can be edited and updated as necessary.
+[//]: # ()
+[//]: # (| Area       | Highlights                                                                                                                            |)
 
-- **🗳  Manage Rental Packages**
-<br>The package module allows the manager to create various rental packages for vehicle models and update them when required.
+[//]: # (| ---------- |---------------------------------------------------------------------------------------------------------------------------------------|)
 
-- **👨‍👧‍👦  Manage Customers**
-<br>System users can add new customers and edit their details. The customer table shows all the customers in the database and allows users to filter and search by name or NIC.
+[//]: # (| Frontend   | HTML, CSS, Bootstrap, JavaScript, jQuery with responsive UI                                                                           |)
 
-- **📰  Manage Chauffeur-Drive Reservations**
-<br>When a customer calls the office, this module is facilitated to enter the customer booking details into the system, then search for available packages, and allocate vehicles and drivers based on their attendance all inside one module with guided tabs. If the customer has previously violated any terms and conditions and is being blacklisted, the system would not allow the user to make a reservation for that customer.
+[//]: # (| Backend    | Java 11 / Spring Boot REST controllers, Spring Web Security, Hibernate/JPA, Gradle build, MySQL integration                           |)
 
-- **📰  Manage Self-Drive Reservations**
-<br>This module is facilitated to enter customer reservation details and then checks if the customer is blacklisted or if the driving license expires before the agreed vehicle return date. If the right conditions are met, the user can proceed with the reservation. During vehicle pickup at the office, the system displays the total trip cost and requests an advance payment. Upon vehicle return, the system recalculates the actual rented days and prompts for any additional payments if necessary.
+[//]: # (| Data Layer | Hibernate/JPA entities and repositories for relational data &#40;Users, Vehicles, Reservations, Drivers, Payments&#41; with MySQL integration |)
 
-- **🕹  Driver Portal**
-<br>Drivers can log into their accounts on mobile or tablet devices by providing their usernames and passwords. All the upcoming rentals can be seen on the home page. At the end of a trip, the system will display the cost of the trip alongside trip details and the driver can print the receipt and give it to the customer.
+## 🎯 Why I Built This
 
-- **💵  Manage Customer Payments**
-<br>Through this module, advance payments and total rental amounts can be calculated and printed to the customer.
+As my final year project for the Bachelor in IT at the University of Colombo, I chose to tackle a complex, real-world problem to deepen my software engineering skills. My goal was to design and implement a robust solution that delivers genuine value and addresses actual business needs.
 
-- **🔍  Check the Availability of Packages, Vehicles, and Drivers**
-<br>The system centralizes the checking of package, vehicle and driver availability for a specified period inside one module.
+## 🛠️ Tech Stack
 
-- **📊  Generate Reports**
-<br>Reports such as revenue reports and income reports can be generated daily or monthly as specified.
+| Layer      | Tools & Technologies                                                                                                                |
+| ---------- |-------------------------------------------------------------------------------------------------------------------------------------|
+| Frontend   | HTML, CSS, Bootstrap (SASS customized), JavaScript, jQuery, Adobe XD (wireframes & mockups)                                         |                                                                        |
+| Backend    | Java, Spring Boot, Spring Security, Hibernate (JPA), REST controllers, Gradle, JavaMailSender (Email service), Twilio (SMS service) |
+| Auth       | Spring Security (role-based access), BCrypt password encryption                                                                     |
+| Database   | MySQL, Google Cloud SQL Instance                                                                                                    |
+| Deployment | Docker, Google Cloud Run, Heroku (containerized deployment, CI/CD ready)                                                            |
+| Tooling    | IntelliJ IDEA, MySQL Workbench, Google Cloud Run                                                                                    |
+| Other      | Server/client-side validation (regex, annotations)                                                                                  |
 
-- **🔔  Generate Notifications**
-<br>The system will be facilitated to generate important notifications such as driver's license, vehicle revenue license and insurance expirations. Also, system-generated emails and text messages will be sent to the customer on reservation confirmation and driver’s arrival.
+## ✨ Core Features
 
-## NFRs (Non-Functional Requirements)
+- Secure user authentication & role-based access (manager, receptionist, driver)
+- Self-drive & Chauffeur-drive reservation management
+- Checkout flow: Time&Location → Package → Vehicle → Driver → Customer → Confirm → Payment
+- Vehicle listing, detail view & availability search
+- Rental package management 
+- Customer management & blacklist checks
+- Driver job assignments & ratings
+- Payment processing & printable receipts & agreements
+- Email and SMS notifications for booking confirmations 
+- Driver portal for mobile-friendly job management
+- Admin dashboard for fleet, users, and revenue reporting
+- Search & filtering with pagination
+- Daily & monthly revenue reports
+- Notifications for expirations (driving license, insurance, revenue license) 
+- Server & client-side form validation (regex, annotations)
+- Error handling with custom error pages
+- Responsive UI with Bootstrap
 
-- Security
-  <br> The system is facilitated to create strong user passwords using alphanumeric combinations and passwords are stored in the database after encryption. To prevent unauthorized access, the system would be locked for a user for a certain period if he tried to enter incorrect passwords consecutively more than five times. Manager has the authority to assign appropriate privileges to the system users, confining them to their designated responsibilities.
+## 🧠 Developer Notes
 
-- Reliability
-  <br> The system validates data input on both the front-end and back-end using techniques like Regex and database constraints. This ensures accuracy and reliability. Regular data backups are taken to facilitate easy restoration in case of emergencies.
+Personal study notes included (React, Redux, architectural reasoning):
 
-- Performance
-  <br> The system is designed to operate at maximum efficiency while meeting minimal hardware and software requirements. It ensures seamless operation even under heavy loads, preventing crashes. As a web application, data consumption is minimized to optimize user experience. Get requests are optimized to retrieve only essential data.
+📄 [Developer Notes PDF](docs/TechMartX_DeveloperNotes.pdf)
 
-- Usability
-  <br> The system prioritizes user-friendly design to ensure a minimal learning curve in a way that users can easily understand and utilize features effectively. Interface design adheres to essential principles, including color principles and visual hierarchy. Easy navigation is facilitated through the implementation of a sidebar and quick access panel.
+> These are raw learning artifacts, intentionally left to show thought process & growth.
 
-- Portability
-  <br> Since this is a web-based application, it can run on any operating system in which any modern browser is installed, whether it is windows, mac OS, Linux, or Android. Particularly  the system is well tested on Google Chrome and Mozilla Firefox web browsers.
-  
-## Tech-Stack
-Here are the back-end and front-end technologies used in developing the system. 
-<table>
-  <tr>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="35" height="35" />
-      <br>Java
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="35" height="35" />
-      <br>Spring
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://www.svgrepo.com/show/353874/hibernate.svg" width="35" height="35" />
-      <br>Hibernate
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="35" height="35" />
-      <br>MySQL
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tomcat/tomcat-original.svg" width="35" height="35" />
-      <br>Tomcat
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gradle/gradle-plain.svg" width="35" height="35" />
-      <br>Gradle
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="35" height="35" />
-      <br>HTML
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="35" height="35"/>
-      <br>CSS
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="35" height="35" />
-      <br>Bootstrap
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="35" height="35" />
-      <br>JavaScript
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" width="35" height="35" />
-      <br>jQuery
-    </td>
-    <td align="center" width="100" style="padding: 10px;">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-line.svg" width="35" height="35" />
-      <br>Adobe Xd
-    </td>
-  </tr>
-</table></br>
 
-## Prerequisites
-Make sure you have following applications installed on your system.
-- Java 11
-- MySQL 8.0
-- MySQL Workbench 8.0
-- IntelliJ IDEA 2021
-- Web Browser (Latest)
+## 🎬 Feature Demos
 
-## Installation 
-1. Clone the repository 
-    - ```git clone https://github.com/RandulaTharaka/Car-Rental-Management-System.git```
+### 🛒 Cart & Checkout
+
+![Checkout Flow](docs/screenshots/checkout_flow.gif)
+
+### 🛠 Admin Panel
+
+![Admin Panel](docs/screenshots/admin_panel.gif)
+
+## 📚 Selected API Endpoints
+
+| Method | Endpoint                                                                                  | Description                                                  |
+|--------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| POST   | /api/user                                                                                 | Register a new user                                          |
+| GET    | /api/vehicle/list                                                                         | Retrieve vehicle list                                        |
+| POST   | /api/cd_reservation/                                                                      | Create chauffeur-drive reservation                           |
+| GET    | /api/package/cdr_list                                                                     | Retrieve chauffeur-drive packages                            |
+| GET    | /api/customer_payment/next_pay_invoice_no                                                 | Generate next payment invoice number                         |
+| GET    | /api/customer_payment/advance_payment?reservation_id={id}                                 | Make advance payment for a reservation                       |
+| GET    | /api/sd_reservation/on_going_list_by_vehicle?vehicle_id={id}                              | List ongoing self-drive reservations for a vehicle           |
+| GET    | /api/sd_reservation/findAll?page={page}&size={size}&searchtext={text}                     | Retrieve paginated self-drive reservations (with search)     |
+| GET    | /api/report/revenue_report?sdate={sdate}&edate={edate}&type={type}                        | Generate revenue report for a date range                     |
+| GET    | /driver/list_by_pickdate_returndate?cdr_expt_pick_date={date}&cdr_expt_return_date={date} | List available drivers for specified pickup and return dates |
+
+
+## 🧩 Architecture Overview
+```
+ src/
+    main/
+      java/
+        com/
+          sethyanacarrental/
+            config/         # Spring web security configuration
+            controller/     # REST controllers
+            model/          # JPA entities (User, Vehicle, etc.)
+            repository/     # Data access layer
+            service/        # Email & SMS services
+            util/           # Helpers & validation
+      resources/
+        static/             # Frontend assets (HTML, CSS, JS, images)
+        application.properties   # Spring Boot app settings (DB, server port, credentials)
+    test/
+      java/
+        com/
+          sethyanacarrental/  # Unit & integration tests
+  build.gradle                # Build config
+  Dockerfile                  # Containerization
+  system.properties           # JVM settings
+```
+
+## 📦 Installation
+
+### Prerequisites
+
+- **Java 11**
+- **MySQL 8.0**
+- **MySQL Workbench**
+- **IntelliJ IDEA**
+- **Web browser**
+- **Docker**  
+- **Google Cloud SDK**
+- **Twilio Account**
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/RandulaTharaka/Car-Rental-Management-System.git
+
+2. **Create a MySQL Connection**
+   - Open MySQL Workbench.
+   - Click the + icon next to MySQL Connections.
+   - Set Connection Name (e.g., Sethyana Car Rental).
+   - Set Hostname to localhost.
+   - Set Port to 3306.
+   - Set a Username.
+   - Click Store in Vault... and enter a password.
+   - Click Test Connection to verify.
+   - Click OK to save the connection.
+
+
+3. **Create the database**
+   - Open MySQL Workbench and connect to your MySQL server.
+   - Go to File → Open SQL Script.
+   - Select your `sethyana-database.sql` file in the `sql-scripts` folder in root.
+   - The SQL script will open in a new tab.
+   - Click the Execute (lightning bolt) button to run the script and import the database.
+
+
+4. **Import the project**
+   - Open the `sethyana_car_rental` folder in IntelliJ IDEA.
+   - Allow Gradle to download dependencies.
+
+
+5. **Set up environment variables:**  
+   Rename the `.env.example` file to `.env` and add the following
+
+   ```env
+   # Database configuration
+   DB_URL=jdbc:mysql://<HOST>:<PORT>/<DATABASE_NAME>?useSSL=true
+   DB_USERNAME=your_mysql_username
+   DB_PASSWORD=your_mysql_password
    
-2. Create the MySQL user account
-    - Open MySQL Workbench and navigate to File -> Open SQL Script.
-    - Open the '01-create-user.sql' file located in the 'sql-scripts' folder in the repository.
-    - Click the execute button in MySQL Workbench to create the user account.
-
-3. Create the database
-    - In MySQL Workbench, go to File -> Open SQL Script.
-    - Open the '02-students.sql' file located in the 'sql-scripts' folder in the repository.
-    - Click the execute button in MySQL Workbench to create the database.
-
-4. Import the project
-    - Open the 'sethyana_car_rental' folder in IntelliJ IDEA IDE.
-    - Allow a few minutes for automatic package and dependency downloads.
-
-5. Run the project
-    - Once the configuration is complete, select "Run" from the menu bar and choose 'Run SethyanaCarRentalApp'.
-    - The project will be built and launched locally on your machine if you didnt encounter any error.
-   
-6. Access the app
-    - Open your web browser and enter "localhost:8080/login" in the address bar.
-    - Use the provided usernames and passwords below to log in to the system with different privileges.
-    </br>
-
-      |     Role             |     User Name     |     Password      |
-      |----------------------|-------------------|-------------------|
-      |     Manager          |     Chamal85      |     Chamal85      |
-      |     Receptionist     |     Nipuni92      |     Nipuni92      |
-      |     Receptionist     |     Hasitha91     |     Hasitha91     |
-      |     Driver           |     Sampath79     |     Sampath79     |
-      |     Driver           |     Chaminda82    |     Chaminda82    |
-      |     Driver           |     Sameera86     |     Sameera86     |
-    
-## Usage Example
-### Creating a New Chauffeur-Drive Reservation
-Making a new reservation is guided through a tab design wizard. Users can navigate through each tab from left to right and fill in the required details to create a new reservation. A Field label marked with a red asterisk (*) denotes that it is a required field, and the user cannot leave it blank.
-Follow each tab wizard and the instructions mentioned below to create a new chauffeur-drive reservation.
-
-- **Time & Location Tab** <br> 
-Here the user can fill time and location related details regarding the new reservation. If the customer's pick up location is far from the office, the user can specify the pick up charge by selecting the ‘Yes’ radio button under the ‘Charge for pick up?’. The system is facilitated to add a few multiple stops before the drop off location by selecting the relevant radio button. The ‘Get Duration’ option calculates the duration of pick-up and drop-off time. User can open the google map by clicking the ‘Open Map.’
-
-- **Package Tab** <br> 
-In the package tab, the required duration and distance will be displayed on the top. User can use the filter section to filter out the available packages according to customer needs. Then, click on the relevant radio button to select the required package.
-
-- **Vehicle Tab** <br> 
-All the available vehicles will be displayed here alongside vehicle details according to the previously selected vehicle model and pick up and drop off dates. Click on the relevant radio button to select the required vehicle.
-
-- **Driver Tab** <br> 
-In the driver tab, all the available drivers will be shown according to the specified pick up and drop off times and dates. The user can search for a particular driver by driver's calling name or license number. Click on the relevant radio button to select the preferred driver.
-
-- **Customer Tab** <br>
-User can search and select the customer if the customer exists in the database. The system is also facilitated to update customer information right on this tab without navigating elsewhere. User can also add a new customer by clicking the link ‘New Customer’ and filling in the correct information.
-
-- **Confirm Tab** <br> 
-A summary of the reservation can be seen on the left side of the confirmation tab. User can add a note to the reservation, and the driver will also be able to see it. By default, reservation status is selected as ‘reserved’; however: if the reservation is not confirmed, the user can select ‘booking’ from the drop-down. Finally, the user can click on the ‘Add Reservation’ button to add the reservation.
+   # Twilio configuration
+   ACCOUNT_SID=your_twilio_account_sid
+   AUTH_TOKEN=your_twilio_auth_token
+   FROM_NUMBER=your_twilio_phone_number
+   ```
+   Now load these environment variables in IntelliJ IDEA:
+   - Go to `Run -> Edit Configurations`.
+   - Select `SethyanaCarRentalApp` from the list on the left.
+   - Select `Modify Options` and then select `Environmental variables` from the list.
+   - Click on the `Folder icon` in the `Environment variables` field.
+   - Browse and select the `.env` file.
+   - Click OK to save.
 
 
-    
-## License
-This project is licensed under the Car Rental Management System License.
+6. **Run the application**
+   - In IntelliJ IDEA, select `Run SethyanaCarRentalApp` from the menu.
 
-The Car Rental Management System License allows individuals to obtain a copy of the software and associated documentation files solely for the purpose of review and evaluation. Users are granted permission to copy, install, and run the software on their local machines for personal, non-commercial use.
 
-**Modifying, altering, or redistributing the software for commercial purposes is strictly prohibited without prior written permission from the copyright holder.**
+7. **Access the app**
+   - Open your browser and go to `localhost:8080/login`.
+   - Log in using the provided demo credentials.
 
-Please review the [License](LICENSE.md) file for more details.
+       |     Role             |     User Name     |     Password      |
+       |----------------------|-------------------|-------------------|
+       |     Manager          |     Chamal85      |     Chamal85      |
+       |     Receptionist     |     Nipuni92      |     Nipuni92      |
+       |     Receptionist     |     Hasitha91     |     Hasitha91     |
+       |     Driver           |     Sampath79     |     Sampath79     |
+       |     Driver           |     Chaminda82    |     Chaminda82    |
+       |     Driver           |     Sameera86     |     Sameera86     |
 
+
+## 🚢 Deployment
+
+- **Containerization:** Backend packaged with Docker for consistent deployment.
+- **Cloud Hosting:** Deployed on Google Cloud Run for scalable, serverless operation.
+- **CI/CD:** Automated build and deployment pipelines for rapid updates.
+- **Configuration:** Environment variables and secrets managed securely via cloud platform settings.
+- **Database:** MySQL hosted on Google Cloud SQL.
+- **Frontend:** Static assets served from the Spring Boot application.
+
+## 🚧 Future Enhancements (Roadmap)
+
+| Category     | Planned Improvements                                         |
+|--------------|--------------------------------------------------------------|
+| Tracking     | Integrate vehicle tracking with GPS technology               |
+| Maps         | Google Maps API for pickup/drop-off selection                |
+| Reservations | Enable online reservation for customers                      |
+| Payments     | Add online payment facility                                  |
+| Reporting    | Expand reporting features (fleet, revenue, usage analytics)  |
+| Mobile       | Enhance responsiveness or develop Android mobile app         |
+
+
+## 📄 License
+
+This project is open source and available under the [Sethyana Car Rental Software License](LICENSE).
+
+## 🤝 Connect With Me
+
+I'm passionate about building full-stack applications and open to new opportunities in software development.
+
+Feel free to connect or reach out!
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Randula%20Tharaka-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/randula-tharaka-79a61a145/)
+[![Email](https://img.shields.io/badge/Email-iamrandula%40gmail.com-red?style=flat-square&logo=gmail)](mailto:iamrandula@gmail.com)
