@@ -1,4 +1,4 @@
-![Sethyana Logo with title 12](https://github.com/RandulaTharaka/Car-Rental-Management-System/assets/60685092/cd5eb713-acec-4c34-8c5c-05695dd37bd8)
+![Sethyana Logo](/docs/logo.jpg)
 ---
 
 [![Repo Size](https://img.shields.io/github/repo-size/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
@@ -10,7 +10,7 @@
 
 🌐 Visit Site: [www.sethyana.rental](https://sethyana-car-rental-1047985755351.us-central1.run.app)
 
-![Screens](docs/screenshots/screens.jpg)
+![Screens](docs/screens/screens.jpg)
 
 ## 🚀 Project Overview
 
@@ -78,11 +78,11 @@ Personal study notes included (React, Redux, architectural reasoning):
 
 ### 🛒 Cart & Checkout
 
-![Checkout Flow](docs/screenshots/checkout_flow.gif)
+![Checkout Flow](docs/screens/checkout_flow.gif)
 
 ### 🛠 Admin Panel
 
-![Admin Panel](docs/screenshots/admin_panel.gif)
+![Admin Panel](docs/screens/admin_panel.gif)
 
 ## 📚 Selected API Endpoints
 
@@ -102,6 +102,12 @@ Personal study notes included (React, Redux, architectural reasoning):
 
 ## 🧩 Architecture Overview
 ```
+ docs/
+   screenshots/   # App screenshots
+   wireframes/    # Initial wireframes & mockups
+   diagrams/      # Architecture & ER diagrams
+   Sethyana_Car_Rental_Developer_Notes.pdf
+   database.sql # SQL script to create & populate the database
  src/
     main/
       java/
@@ -157,7 +163,7 @@ Personal study notes included (React, Redux, architectural reasoning):
 3. **Create the database**
    - Open MySQL Workbench and connect to your MySQL server.
    - Go to File → Open SQL Script.
-   - Select your `sethyana-database.sql` file in the `sql-scripts` folder in root.
+   - Select your `database.sql` file in the `docs` folder in root.
    - The SQL script will open in a new tab.
    - Click the Execute (lightning bolt) button to run the script and import the database.
 
@@ -168,6 +174,7 @@ Personal study notes included (React, Redux, architectural reasoning):
 
 
 5. **Set up environment variables:**  
+
    Rename the `.env.example` file to `.env` and add the following
 
    ```env

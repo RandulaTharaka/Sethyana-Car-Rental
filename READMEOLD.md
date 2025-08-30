@@ -209,5 +209,5 @@ The Car Rental Management System License allows individuals to obtain a copy of 
 
 **Modifying, altering, or redistributing the software for commercial purposes is strictly prohibited without prior written permission from the copyright holder.**
 
-Please review the [License](LICENSE.md) file for more details.
+Please review the [License](LICENSE) file for more details.
 
