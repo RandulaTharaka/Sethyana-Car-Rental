@@ -10,7 +10,6 @@
 
 🌐 Visit Site: [www.sethyana.rental](https://sethyana-car-rental-1047985755351.us-central1.run.app)
 
-
 ![Screens](docs/screens/screens.jpg)
 
 ## 🚀 Project Overview
