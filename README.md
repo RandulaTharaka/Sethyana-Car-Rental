@@ -76,9 +76,9 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
 
 ## 🎬 Feature Demos
 
-### 🛒 Cart & Checkout
+### 🛒 Self-Drive Reservation Flow
 
-![Checkout Flow](docs/screens/checkout_flow.gif)
+![Self-Drive-Reservation](docs/screens/self-drive-flow.gif)
 
 ### 🛠 Admin Panel
 
