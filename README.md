@@ -5,10 +5,11 @@
 [![Last Commit](https://img.shields.io/github/last-commit/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
 ![License](https://img.shields.io/badge/license-Sethyana_Car_Rental_Software-blue)
 
-# 🚗 Sethyana Car Rental Management System
+# Sethyana Car Rental Management System 
 > A Full-Stack Java Spring Boot Web Application
 
 🌐 Visit Site: [www.sethyana.rental](https://sethyana-car-rental-1047985755351.us-central1.run.app)
+
 
 ![Screens](docs/screens/screens.jpg)
 
@@ -67,12 +68,10 @@ As my final year project for the Bachelor in IT at the University of Colombo, I 
 
 ## 🧠 Developer Notes
 
-Personal study notes included (React, Redux, architectural reasoning):
+📄 [Final Year Dissertation (University of Colombo)](docs/Sethyana_Car_Rental_Dissertation.pdf)
 
-📄 [Developer Notes PDF](docs/TechMartX_DeveloperNotes.pdf)
-
-> These are raw learning artifacts, intentionally left to show thought process & growth.
-
+> This dissertation covers the complete research, analysis, design, implementation, and evaluation of the Sethyana Car Rental Management System. 
+> It includes system requirements, architecture, UML diagrams, testing strategies, and user manuals, as submitted for the Bachelor in IT final year project at the University of Colombo.
 
 ## 🎬 Feature Demos
 
