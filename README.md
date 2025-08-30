@@ -1,9 +1,11 @@
 ![Sethyana Logo](/docs/logo.jpg)
 ---
 
-[![Repo Size](https://img.shields.io/github/repo-size/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
-[![Last Commit](https://img.shields.io/github/last-commit/RandulaTharaka/Sethyana-Car-Rental)](https://github.com/RandulaTharaka/Sethyana-Car-Rental)
-![License](https://img.shields.io/badge/license-Sethyana_Car_Rental_Software-blue)
+[//]: # ([![Repo Size]&#40;https://img.shields.io/github/repo-size/RandulaTharaka/Sethyana-Car-Rental&#41;]&#40;https://github.com/RandulaTharaka/Sethyana-Car-Rental&#41;)
+
+[//]: # ([![Last Commit]&#40;https://img.shields.io/github/last-commit/RandulaTharaka/Sethyana-Car-Rental&#41;]&#40;https://github.com/RandulaTharaka/Sethyana-Car-Rental&#41;)
+
+[//]: # (![License]&#40;https://img.shields.io/badge/license-Sethyana_Car_Rental_Software-blue&#41;)
 
 # Sethyana Car Rental Management System 
 > A Full-Stack Java Spring Boot Web Application
